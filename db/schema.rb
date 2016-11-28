@@ -10,10 +10,96 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128165312) do
+ActiveRecord::Schema.define(version: 20161128171734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "facilities", force: :cascade do |t|
+    t.string   "parking"
+    t.string   "water_spot"
+    t.string   "shop"
+    t.string   "rescue"
+    t.string   "shower"
+    t.text     "comment"
+    t.integer  "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_facilities_on_spot_id", using: :btree
+  end
+
+  create_table "favorite_spots", force: :cascade do |t|
+    t.integer  "spot_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_favorite_spots_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_favorite_spots_on_user_id", using: :btree
+  end
+
+  create_table "forecasts", force: :cascade do |t|
+    t.datetime "date_time"
+    t.integer  "wind_direction"
+    t.float    "wind_strength"
+    t.float    "wind_gusting"
+    t.string   "weather"
+    t.integer  "spot_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["spot_id"], name: "index_forecasts_on_spot_id", using: :btree
+  end
+
+  create_table "harbors", force: :cascade do |t|
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recommended_wind_directions", force: :cascade do |t|
+    t.integer  "spot_id"
+    t.integer  "sector_start"
+    t.integer  "sector_end"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["spot_id"], name: "index_recommended_wind_directions_on_spot_id", using: :btree
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "spot_id"
+    t.integer  "user_id"
+    t.string   "content"
+    t.integer  "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_reviews_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_reviews_on_user_id", using: :btree
+  end
+
+  create_table "spots", force: :cascade do |t|
+    t.integer  "harbor_id"
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "description"
+    t.integer  "user_id"
+    t.boolean  "accepted"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["harbor_id"], name: "index_spots_on_harbor_id", using: :btree
+    t.index ["user_id"], name: "index_spots_on_user_id", using: :btree
+  end
+
+  create_table "tides", force: :cascade do |t|
+    t.integer  "harbor_id"
+    t.boolean  "high_tide"
+    t.integer  "coefficient"
+    t.datetime "date_time"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["harbor_id"], name: "index_tides_on_harbor_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -28,8 +114,35 @@ ActiveRecord::Schema.define(version: 20161128165312) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "ambassador"
+    t.integer  "weight"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "weather_feedbacks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "spot_id"
+    t.integer  "direction"
+    t.float    "strength"
+    t.float    "wing_size"
+    t.integer  "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id"], name: "index_weather_feedbacks_on_spot_id", using: :btree
+    t.index ["user_id"], name: "index_weather_feedbacks_on_user_id", using: :btree
+  end
+
+  add_foreign_key "facilities", "spots"
+  add_foreign_key "favorite_spots", "spots"
+  add_foreign_key "favorite_spots", "users"
+  add_foreign_key "forecasts", "spots"
+  add_foreign_key "recommended_wind_directions", "spots"
+  add_foreign_key "reviews", "spots"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "spots", "harbors"
+  add_foreign_key "spots", "users"
+  add_foreign_key "tides", "harbors"
+  add_foreign_key "weather_feedbacks", "spots"
+  add_foreign_key "weather_feedbacks", "users"
 end
