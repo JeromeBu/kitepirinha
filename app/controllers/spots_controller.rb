@@ -16,7 +16,9 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = current_user.spots.new(spot_params)
+    @spot = Spot.new(spot_params)
+    @spot.user_id = current_user.id
+    @spot.harbor_id = Harbor.first.id
     authorize @spot
 
     if @spot.save
@@ -51,6 +53,6 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-    require.params(:spot).permit(:description, :lat, :lng, :user_id)
+    params.require(:spot).permit(:name, :description, :latitude, :longitude)
   end
 end
