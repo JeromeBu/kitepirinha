@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
+
       <h1><%= @spot.name %></h1>
       <br>
       <p>You're on spot n# <%= @spot.id %></p>
+      <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
       <br>
       <br>
       <% @spot.reviews.each do |review| %>
@@ -12,6 +14,16 @@
       <% end %>
       <br>
       <%= link_to "Add a comment", new_spot_review_path(@spot) %>
+      <br>
+      <% @spot.weather_feedbacks.each do |feedback| %>
+        <p>Feedback #<%= feedback.id %></p>
+        <p>Wind direction : <%= feedback.direction %></p>
+        <p>Wind strength : <%= feedback.strength %></p>
+        <p>Wing size : <%= feedback.wing_size %></p>
+        <p>Rating : <%= feedback.rating %></p>
+        <p>-----------------</p>
+      <% end %>
+      <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
     </div>
   </div>
 </div>
