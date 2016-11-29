@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129112737) do
+ActiveRecord::Schema.define(version: 20161129135712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,8 +44,12 @@ ActiveRecord::Schema.define(version: 20161129112737) do
     t.float    "wind_gusting"
     t.string   "weather"
     t.integer  "spot_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.float    "precip_intensity"
+    t.float    "precip_probability"
+    t.float    "cloud_cover"
+    t.float    "temperature"
     t.index ["spot_id"], name: "index_forecasts_on_spot_id", using: :btree
   end
 
