@@ -1,6 +1,11 @@
 class SpotsController < ApplicationController
 
   before_action :set_spot, only: [:show, :edit, :update]
+  skip_before_action :authenticate_user!, only: :index
+
+  def index
+    @spots = policy_scope(Spot)
+  end
 
   def show
   end
@@ -40,5 +45,4 @@ class SpotsController < ApplicationController
   def spot_params
     require.params(:spot).permit(:description, :lat, :lng, :user_id)
   end
-
 end
