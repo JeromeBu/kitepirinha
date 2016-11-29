@@ -93,9 +93,9 @@ ActiveRecord::Schema.define(version: 20161129222256) do
     t.float    "lng"
     t.text     "description"
     t.integer  "user_id"
-    t.boolean  "accepted",    default: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.boolean  "accepted"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["harbor_id"], name: "index_spots_on_harbor_id", using: :btree
     t.index ["user_id"], name: "index_spots_on_user_id", using: :btree
   end

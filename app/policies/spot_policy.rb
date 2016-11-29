@@ -18,7 +18,8 @@ class SpotPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    # record.user == user --> à modifier par user = ambassadeur
+    true #--> utilisé pour les besoins de tests par Julie. A remplacer par ambassadeur
   end
 
   def destroy?

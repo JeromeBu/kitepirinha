@@ -1,0 +1,6 @@
+<h1>Index des pending spots</h1>
+<% @pending_spots.each do |pending_spot| %>
+  <p><%= link_to pending_spot.name, spot_path(pending_spot) %></p>
+  <li class ="btn btn-success" ><%= link_to "Accept",  spot_path(pending_spot, :do => "accept"), method: :patch %></li>
+  <li class ="btn btn-danger" ><%= link_to "Decline",  spot_path(pending_spot, :do => "decline"), method: :patch %></li>
+<% end %>

@@ -1,5 +1,5 @@
 <h1>List of all spots</h1>
 <% @spots.each do |spot| %>
-  <%= link_to spot.name, spot_path(spot) %>
+  <p><%= link_to spot.name, spot_path(spot) %></p>
 <% end %>
 
