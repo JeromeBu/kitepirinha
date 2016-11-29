@@ -1,0 +1,12 @@
+[1mdiff --git a/db/schema.rb b/db/schema.rb[m
+[1mindex 2081c34..9ef3063 100644[m
+[1m--- a/db/schema.rb[m
+[1m+++ b/db/schema.rb[m
+[36m@@ -10,7 +10,6 @@[m
+ #[m
+ # It's strongly recommended that you check this file into your version control system.[m
+ [m
+[31m-[m
+ ActiveRecord::Schema.define(version: 20161129143914) do[m
+ [m
+   # These are extensions that must be enabled in order to support this database[m
