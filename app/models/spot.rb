@@ -1,4 +1,7 @@
 class Spot < ApplicationRecord
+  # geocoded_by :name
+  # after_validation :geocode, if: :name_changed?
+
   belongs_to :harbor
   belongs_to :user
   has_many :weather_feedbacks
@@ -11,7 +14,5 @@ class Spot < ApplicationRecord
   has_many :tides, through: :harbors
 
   validates :name, presence: true
-  validates :lat, presence: true
-  validates :lng, presence: true
   validates :description, presence: true
 end
