@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [ :show, :edit, :update ]
   resources :favorite_spots, only: [ :create, :index, :destroy ]
   resources :spots do
-    resources :reviews, only: [ :create ]
+    resources :reviews, only: [ :create, :new ]
     resources :weather_feedbacks, only: [ :new, :create ]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
