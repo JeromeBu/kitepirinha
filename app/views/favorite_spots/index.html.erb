@@ -1,0 +1,7 @@
+<h1>List of your favorite spots</h1>
+<% @favorite_spots.each do |favorite_spot| %>
+  <p><%= link_to favorite_spot.spot.name, spot_path(favorite_spot.spot) %></p>
+  <p><%= link_to "remove this spot as favorite", favorite_spot_path(favorite_spot), method: :delete %></p>
+<% end %>
+
+<%= link_to "Back to all spots", spots_path %>
