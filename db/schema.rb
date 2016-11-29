@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 20161129101720) do
     t.index ["user_id"], name: "index_weather_feedbacks_on_user_id", using: :btree
   end
 
-  add_foreign_key "facilities", "spots"
+  add_foreign_key "facilities", "spotsa"
   add_foreign_key "favorite_spots", "spots"
   add_foreign_key "favorite_spots", "users"
   add_foreign_key "forecasts", "spots"
