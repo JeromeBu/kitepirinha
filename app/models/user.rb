@@ -8,5 +8,5 @@ class User < ApplicationRecord
   has_many :spots
   has_many :favorite_spots
 
-  validates :weight, numericality: { only_integer: true }
+  validates :weight, numericality: { only_integer: true }, allow_blank: true
 end

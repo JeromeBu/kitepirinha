@@ -1,0 +1,7 @@
+<%= simple_form_for ([@spot, @weather_feedback]) do |f| %>
+  <%= f.input :direction %>
+  <%= f.input :strength %>
+  <%= f.input :wing_size %>
+  <%= f.input :rating %>
+  <%= f.submit "add a weather feedback", class: "btn btn-primary" %>
+<% end %>
