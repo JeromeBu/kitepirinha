@@ -5,8 +5,12 @@
       <p>you're on spot n# <%= @spot.id %></p>
       <br>
       <br>
+      <% @spot.reviews.each do |review| %>
+        <p>Review #<%= review.id %> : <%= review.content %></p>
+        <p>Rating : <%= review.rating %></p>
+      <% end %>
       <br>
-      <%= link_to "Create a comment, Julie :D", new_spot_review_path %>
+      <%= link_to "Create a comment, Julie :D", new_spot_review_path(@spot) %>
     </div>
   </div>
 </div>
