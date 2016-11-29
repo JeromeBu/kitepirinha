@@ -15,7 +15,12 @@ class SpotsController < ApplicationController
   end
 
   def create
-    @spot = current_user.spots.new(spot_params)
+    @spot = Spot.new(spot_params)
+    a = ArtisanalGeocoder.geo(spot_params[:name])
+    @spot.user= current_user
+    @spot.lat = a[:lat]
+    @spot.lng = a[:lng]
+    @spot.harbor = Harbor.first
     authorize @spot
 
     if @spot.save
@@ -23,6 +28,7 @@ class SpotsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def edit
@@ -50,6 +56,6 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-    require.params(:spot).permit(:description, :lat, :lng, :user_id)
+    params.require(:spot).permit(:name, :description, :latitude, :longitude)
   end
 end
