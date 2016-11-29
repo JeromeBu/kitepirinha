@@ -3,6 +3,7 @@
     <div class="col-sm-8 col-sm-offset-2">
       <h1>Salut Les Amis</h1>
       <p>you're on spot n# <%= @spot.id %></p>
+      <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
       <br>
       <br>
       <% @spot.reviews.each do |review| %>
