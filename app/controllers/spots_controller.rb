@@ -19,7 +19,11 @@ class SpotsController < ApplicationController
     @spot = current_user.spots.new(spot_params)
     authorize @spot
 
-    @spot.save ? redirect_to @spot : render :new
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -27,7 +31,11 @@ class SpotsController < ApplicationController
 
   def update
     @spot.update(spot_params)
-    @spot.save ? redirect_to @spot : render :new
+    if @spot.save
+      redirect_to spot_path(@spot)
+    else
+      render :edit
+    end
   end
 
   def destroy
