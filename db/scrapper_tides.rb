@@ -7,8 +7,10 @@ require 'capybara/poltergeist'
 require 'pry-byebug'
 require 'csv'
 
+
 class Scraper
   include Capybara::DSL
+
 
   def run
     Capybara.default_max_wait_time = 15
@@ -54,7 +56,7 @@ class Scraper
 
     require 'csv'
     csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
-    filepath    = 'ports.csv'
+    filepath    = 'db/ports.csv'
     CSV.open(filepath, 'wb', csv_options) do |csv|
       csv << ['Name', 'Country', 'Query_Name']
       ports.each do |port|
@@ -85,7 +87,59 @@ class Scraper
       loop until page.evaluate_script('jQuery.active').zero?
     end
   end
+
+  def geocode_them_all
+    require "csv"
+
+    in_ram_csv = []
+
+    CSV.foreach("db/ports.csv") do |row|
+      in_ram_csv << row
+    end
+
+
+    count = 0
+    in_ram_csv.map do |row|
+      if count == 0
+        row[3] = "Latitude"
+        row[4] = "Longitude"
+      else
+        if row[3] == "" || !row[3]
+          coords = ArtisanalGeocoder.geo(row[0] + " " + row[1])
+          puts coords
+          row[3] = coords[:lat]
+          row[4] = coords[:lng]
+        end
+      end
+      count += 1
+      row
+    end
+
+    csv_options = { col_sep: ',', force_quotes: true, quote_char: '"' }
+    CSV.open('db/ports.csv', 'wb', csv_options) do |csv|
+      in_ram_csv.each do |line|
+        csv << line
+      end
+    end
+
+    p in_ram_csv.first
+    p in_ram_csv.second
+      # if count < 10
+      #   puts row
+      #   if count == 0
+      #   else
+      #     if row[3] == "" || !row[3]
+      #     end
+      #   end
+      #   count += 1
+      # end
+      # # row is an array. For first iteration:
+      # # row[0] is "Paris"
+      # # row[1] is 2211000, etc.
+
+  end
+
 end
 
 a = Scraper.new
-a.run
+a.geocode_them_all
