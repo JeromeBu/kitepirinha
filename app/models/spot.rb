@@ -9,4 +9,9 @@ class Spot < ApplicationRecord
   has_many :forecasts
   has_many :harbors
   has_many :tides, through: :harbors
+
+  validates :name, presence: true
+  validates :lat, presence: true
+  validates :lng, presence: true
+  validates :description, presence: true
 end
