@@ -2,29 +2,42 @@
   <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
 
-      <h1><%= @spot.name %></h1>
-      <h3>Accepted ? <%= @spot.accepted %></h3>
-      <br>
-      <p>You're on spot n# <%= @spot.id %></p>
-      <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
-      <br>
-      <br>
-      <% @spot.reviews.each do |review| %>
-        <p>Review #<%= review.id %> : <%= review.content %></p>
-        <p>Rating : <%= review.rating %></p>
-      <% end %>
+      <div class="title-section padded">
+        <h1><%= @spot.name %></h1>
+        <h3>Accepted ? <%= @spot.accepted %></h3>
+        <br>
+        <p>You're on spot n# <%= @spot.id %></p>
+        <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
+      </div>
+
+      <div class="forecast-data">
+        <h3>forecast data</h3>
+      </div>
+
+      <div class="tide-data">
+        <h3>tide-data</h3>
+      </div>
+
+      <div class="reviews">
+        <% @spot.reviews.each do |review| %>
+          <p>Review #<%= review.id %> : <%= review.content %></p>
+          <p>Rating : <%= review.rating %></p>
+        <% end %>
       <br>
       <%= link_to "Add a comment", new_spot_review_path(@spot) %>
-      <br>
-      <% @spot.weather_feedbacks.each do |feedback| %>
-        <p>Feedback #<%= feedback.id %></p>
-        <p>Wind direction : <%= feedback.direction %></p>
-        <p>Wind strength : <%= feedback.strength %></p>
-        <p>Wing size : <%= feedback.wing_size %></p>
-        <p>Rating : <%= feedback.rating %></p>
-        <p>-----------------</p>
-      <% end %>
-      <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
+      </div>
+
+      <div class="feedbacks">
+        <% @spot.weather_feedbacks.each do |feedback| %>
+          <p>Feedback #<%= feedback.id %></p>
+          <p>Wind direction : <%= feedback.direction %></p>
+          <p>Wind strength : <%= feedback.strength %></p>
+          <p>Wing size : <%= feedback.wing_size %></p>
+          <p>Rating : <%= feedback.rating %></p>
+          <p>-----------------</p>
+        <% end %>
+        <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
+      </div>
     </div>
   </div>
 </div>
