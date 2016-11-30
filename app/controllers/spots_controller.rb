@@ -24,11 +24,11 @@ class SpotsController < ApplicationController
     authorize @spot
 
     if @spot.save
+      @spot.fetch_and_parse_forecast_data
       redirect_to spot_path(@spot)
     else
       render :new
     end
-
   end
 
   def edit
