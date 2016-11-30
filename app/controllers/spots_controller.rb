@@ -7,6 +7,7 @@ class SpotsController < ApplicationController
   end
 
   def show
+    @spot.mean_weather_feedbacks
   end
 
   def new
