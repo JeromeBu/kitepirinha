@@ -16,28 +16,47 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    @spot.user_id = current_user.id
-    @spot.harbor_id = Harbor.first.id
+    a = ArtisanalGeocoder.geo(spot_params[:name])
+    @spot.user= current_user
+    @spot.lat = a[:lat]
+    @spot.lng = a[:lng]
+    @spot.harbor = Harbor.first
     authorize @spot
 
     if @spot.save
+      @spot.fetch_and_parse_forecast_data
       redirect_to spot_path(@spot)
     else
       render :new
     end
-    @spot.fresh_forecasts
   end
 
   def edit
   end
 
   def update
-    @spot.update(spot_params)
+    # si le spot vient d'être ajouté et donc accepted = nil
+    # je veux l'afficher à un ambassadeur et lui laisser le choix d'accepter ou décliner
+
+    if @spot.accepted = "nil"
+      if params[:do] == "accept"
+        @spot.update(accepted: true)
+      elsif params[:do] == "decline"
+        @spot.update(accepted: false)
+      end
+
+    # comportement normal autrement, autrement dit si accepted est différent de nil et a donc déjà été traité
+    else
+      @spot.update(spot_params)
+    end
+
+    # quels que soient les changements, je sauvegarde
     if @spot.save
       redirect_to spot_path(@spot)
     else
       render :edit
     end
+  authorize @spot
   end
 
   def destroy

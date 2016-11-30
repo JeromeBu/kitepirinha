@@ -14,7 +14,8 @@ class FavoriteSpotsController < ApplicationController
     if @favorite_spot.save
       redirect_to favorite_spots_path
     else
-      redirect_to spot_path(@spot)
+      flash[:alert] = "You can't add a post twice to your favorite spots, of course, pffff"
+      redirect_to :back
     end
   end
 
