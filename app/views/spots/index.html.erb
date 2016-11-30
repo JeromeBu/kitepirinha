@@ -8,8 +8,9 @@
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-6">
           <div class="spot-card" style="background-image: url('<%= image_path "background.jpg" %>')">
-            <div class="spot-infos">
-              <h2><%= link_to spot.name, spot_path(spot) %></h2>
+            <%= link_to "", spot_path(spot), class: "spot-card-link" %>
+            <div class="spot-infos small">
+              <h2><%= spot.name %></h2>
             </div>
           </div>
         </div>
