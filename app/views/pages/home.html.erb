@@ -1,10 +1,31 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg" %>');">
-  <div class="banner-content">
-    <%= form_tag(spots_path, :method => "get", class: "navbar-wagon-search", id: "search-form") do %>
-        <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where do you wanna go?">
-        <button type="submit" class="btn btn-primary banner-wagon-button"><i class="fa fa-search"></i>  SEARCH</button>
-    <% end %>
-  <%= link_to "All spots", spots_path %>
-  <%= link_to "Create a spot", new_spot_path %>
+<div class="container-fluid" id="home-container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg" %>');">
+        <div class="row" id="titre">
+          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-1">
+            <div id="banner-content">
+              <h2>
+                Discover the best spots around you
+              </h2>
+                <%= form_tag(spots_path, :method => "get", class: "navbar-wagon-search", id: "search-form") do %>
+                    <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where do you wanna go?">
+                    <button type="submit" class="btn btn-primary banner-wagon-button"><i class="fa fa-search"></i>  SEARCH</button>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+        <div class="row text-center" id="home-links">
+          <div class="col-xs-12 col-sm-12 col-md-2 col-md-offset-4">
+            <%= link_to "See all spots", spots_path, class: "home-link" %>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-2">
+              <%= link_to "Create a spot", new_spot_path, class: "home-link" %>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </div>
 </div>

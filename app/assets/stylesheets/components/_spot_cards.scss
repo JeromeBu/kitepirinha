@@ -11,5 +11,38 @@
   bottom: 0px;
   right: 0px;
   left: 0px;
-  height: 80px;
+  text-align: center;
 }
+
+.spot-infos.small {
+  height: 20%;
+}
+
+.spot-infos.full {
+  height: 100%;
+  opacity: 0.7;
+  transition: 0.4s ease;
+}
+
+.spot-full-infos {
+  display: none;
+}
+
+.home-card {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.spot-card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+
