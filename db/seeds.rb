@@ -7,6 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if true #write false if you don't wanna seed the harbors ;-)
+  User.destroy_all
+  User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
+  User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
+  User.create!(email: "julie@mail.com", password: "azerty", first_name: "Julie")
+  User.create!(email: "jeremy@mail.com", password: "azerty", first_name: "Jeremy")
+
   Harbor.destroy_all
   Harbor.create(name: "Aber Benoit", lat: 48.563119, lng: -4.560159, query: "ABER_BENOIT_MEAN_RENEAT")
   Harbor.create(name: "h", lat: 46.227638, lng: 2.213749, query: "ABER_WRAC_H")
@@ -1024,4 +1030,24 @@ if true #write false if you don't wanna seed the harbors ;-)
   Harbor.create(name: "Zanzibar", lat: -6.165916999999999, lng: 39.202641, query: "ZANZIBAR")
   Harbor.create(name: "Zeebrugge", lat: 51.3189468, lng: 3.2068507, query: "ZEEBRUGGE")
   Harbor.create(name: "Zhanjiang Gang", lat: 21.1, lng: 110.4666667, query: "ZHANJIANG")
+
+  Spot.destroy_all
+  Spot.new(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin.
+Grande plage de sable assez mou, avec de nombreuses baines", user: User.sample)
+
+
+create_table "spots", force: :cascade do |t|
+    t.integer  "harbor_id"
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "description"
+    t.integer  "user_id"
+    t.boolean  "accepted"
+
+    t.integer  "spot_id"
+    t.integer  "sector_start"
+    t.integer  "sector_end"
+
+
 end
