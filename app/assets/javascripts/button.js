@@ -14,7 +14,7 @@ function toggleButton(el) {
   }, false);
 };
 
-toggleButton('[data-js="btn"]');
+//toggleButton('[data-js="btn"]');
 
 // jQuery
 /*

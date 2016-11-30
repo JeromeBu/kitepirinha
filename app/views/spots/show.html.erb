@@ -18,8 +18,10 @@
             </div>
           </div>
           <div class="col-xs-12 col-sm-4">
-            <div class="tide-data">
-              <h3>tide-data</h3>
+            <div class="tide-data hidden">
+              <% query = @spot.harbor.query if @spot.harbor %>
+              <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
+              <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
             </div>
           </div>
         </div>
