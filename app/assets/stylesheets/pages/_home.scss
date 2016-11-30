@@ -44,20 +44,20 @@
 
 #home-links {
   margin-top: 200px;
+
 }
 
 #home-links a {
-  -webkit-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  -moz-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  -ms-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  -o-transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
-  transition: all 200ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -webkit-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -moz-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -ms-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -o-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
   display: block;
   margin: 20px auto;
-  max-width: 180px;
   text-decoration: none;
   border-radius: 4px;
-  padding: 20px 30px;
+  padding: 40px 50px;
   cursor: pointer;
   font-weight: bolder;
   opacity: 1;
@@ -66,12 +66,12 @@
 #home-links a.home-link {
   background: white;
   opacity: 0.5;
-  color: rgba(30, 22, 54, 0.6);
-  box-shadow: rgba(30, 22, 54, 0.4) 0 0px 0px 2px inset;
+  color: #4A6B89;
+  box-shadow: #4A6B89 0 0px 0px 2px inset;
 }
 
 #home-links a.home-link:hover {
-  color: rgba(255, 255, 255, 0.85);
+  color: white;
   opacity: 1;
-  box-shadow: rgba(30, 22, 54, 0.7) 0 0px 0px 40px inset;
+  box-shadow: #4A6B89 0 0px 0px 60px inset;
 }
