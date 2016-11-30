@@ -23,7 +23,7 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    a = ArtisanalGeocoder.geo(spot_params[:name])
+    a = ArtisanalGeocoder.geo(spot_params[:address])
     @spot.user= current_user
     @spot.lat = a[:lat]
     @spot.lng = a[:lng]
@@ -31,7 +31,6 @@ class SpotsController < ApplicationController
     authorize @spot
 
     if @spot.save
-      raise
       @spot.fetch_and_parse_forecast_data
       redirect_to spot_path(@spot)
     else
