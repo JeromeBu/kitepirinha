@@ -25,6 +25,7 @@
 }
 
 .title-section h2 {
+  color: $blue;
   font-size: 22px;
   margin-top: 10px;
 }
@@ -44,6 +45,10 @@
   background-color: white;
 }
 
+.reviews a {
+  font-size: 12px;
+}
+
 .spot-facilities {
   text-align: left;
   padding-left: 10px;
@@ -53,10 +58,28 @@
   background-color: white;
 }
 
+.forecast-data {
+  border: 2px solid blue;
+}
+
+
+
 hr {
   margin: 10px 0px;
 }
 
+.weather-infos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast-data {
+  flex: 1 0 65%
+}
+
+.tide-data {
+  flex: 1 0 35%
+}
 
 
 // thead {
