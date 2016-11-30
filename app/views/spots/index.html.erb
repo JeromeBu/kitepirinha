@@ -1,5 +1,24 @@
-<h1>List of all spots</h1>
-<% @spots.each do |spot| %>
-  <p><%= link_to spot.name, spot_path(spot) %></p>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <h1>List of all spots</h1>
+  </div>
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-12 col-md-8">
+      <% @spots.each do |spot| %>
+        <div class="col-xs-12 col-sm-6">
+          <div class="spot-card" style="background-image: url('<%= image_path "background.jpg" %>')">
+
+            <p><%= link_to spot.name, spot_path(spot) %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-4">
+      <h1>MAPS</h1>
+    </div>
+
+  </div>
+
+</div>
 
