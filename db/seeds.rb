@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if true #write false if you don't wanna seed the harbors ;-)
+  Harbor.destroy_all
   Harbor.create(name: "Aber Benoit", lat: 48.563119, lng: -4.560159, query: "ABER_BENOIT_MEAN_RENEAT")
   Harbor.create(name: "h", lat: 46.227638, lng: 2.213749, query: "ABER_WRAC_H")
   Harbor.create(name: "Aberdeen", lat: 57.149717, lng: -2.094278, query: "ABERDEEN_SCOTLAND")

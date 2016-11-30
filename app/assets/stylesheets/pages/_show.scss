@@ -28,6 +28,7 @@
   color: $blue;
   font-size: 22px;
   margin-top: 10px;
+  text-align: center;
 }
 .title-section p {
   font-size: 12px;
@@ -47,6 +48,13 @@
 
 .reviews a {
   font-size: 12px;
+}
+
+.reviews h4 {
+  color: $blue;
+  font-size: 18px;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .spot-facilities {
