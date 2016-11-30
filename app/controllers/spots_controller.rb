@@ -27,11 +27,12 @@ class SpotsController < ApplicationController
     @spot.user= current_user
     @spot.lat = a[:lat]
     @spot.lng = a[:lng]
-    @spot.harbor = Harbor.first
     authorize @spot
 
     if @spot.save
       @spot.fetch_and_parse_forecast_data
+      @spot.harbor = Harbor.find_closest_from(@spot.lat, @spot.lng)
+      @spot.save
       redirect_to spot_path(@spot)
     else
       render :new

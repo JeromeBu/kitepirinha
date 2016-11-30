@@ -1,3 +1,5 @@
+# app/services/geocoding_tools.rb
+
 def find_closest collection, lat, lng
   currently_closest_item = nil
   current_min_distance = nil

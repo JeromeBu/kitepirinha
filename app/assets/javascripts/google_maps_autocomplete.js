@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  var spot_address = $('#spot_address').get(0);
+  var spot_address = $('#search_address').get(0);
 
   if (spot_address) {
     var autocomplete = new google.maps.places.Autocomplete(spot_address, { types: ['geocode'] });
@@ -16,10 +16,11 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
-  $('#flat_zip_code').val(components.zip_code);
-  $('#flat_city').val(components.city);
+  $('#spot_address').trigger('blur').val(components.address);
+  $('#spot_zip_code').val(components.zip_code);
+  $('#spot_city').val(components.city);
   if (components.country_code) {
-    $('#flat_country').val(components.country_code);
+    $('#spot_country').val(components.country_code);
   }
 }
 
@@ -52,9 +53,6 @@ function getAddressComponents(place) {
   }
 
   return {
-    address: street_number == null ? route : (street_number + ' ' + route),
-    zip_code: zip_code,
-    city: city,
-    country_code: country_code
+    address: street_number == null ? route : (street_number + ' ' + route + ',' + zip_code + city + country_code)
   };
 }

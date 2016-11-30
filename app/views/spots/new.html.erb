@@ -5,7 +5,7 @@
        <%= simple_form_for @spot do |f| %>
         <div class="form-inputs">
           <%= f.input :name %>
-          <%= f.input :address %>
+          <%= f.input :address, input_html: { id: "search_address" } %>
           <%= f.input :description, as: :text %>
         </div>
 
