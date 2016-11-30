@@ -6,7 +6,7 @@
         <div class="col-xs-12">
           <div class="title-section bg-white">
             <h2><%= @spot.name %> - <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post, class: "btn btn-primary" %></h1>
-            <p><%= @spot.description unless @spot.description.nil?%></p>
+            <p><%= @spot.description %></p>
             <p>Accepted ? <%= @spot.accepted %></p>
             <p>You're on spot n# <%= @spot.id %></p>
           </div>
@@ -52,7 +52,6 @@
             <% end %>
           </div>
         </div>
-
       </div>
     </div>
   </div>
