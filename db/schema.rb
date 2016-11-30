@@ -52,8 +52,12 @@ ActiveRecord::Schema.define(version: 20161129222256) do
     t.float    "wind_gusting"
     t.string   "weather"
     t.integer  "spot_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.float    "precip_intensity"
+    t.float    "precip_probability"
+    t.float    "cloud_cover"
+    t.float    "temperature"
     t.index ["spot_id"], name: "index_forecasts_on_spot_id", using: :btree
   end
 

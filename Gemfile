@@ -19,10 +19,10 @@ gem 'autoprefixer-rails'
 gem 'pundit'
 
 
-
 #scrapping for tides
 gem 'capybara'
 gem 'poltergeist'
+
 gem 'geocoder'
 
 group :development, :test do
