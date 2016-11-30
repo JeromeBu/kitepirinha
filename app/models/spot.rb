@@ -48,7 +48,6 @@ class Spot < ApplicationRecord
     # Calling darksky api and saving in DB
     lat = self.lat
     lng = self.lng
-    url_raw = "https://api.darksky.net/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}?units=ca"
     url = open("https://api.darksky.net/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}?units=ca").read
     forecast_raw_json = JSON.parse(url)
 
