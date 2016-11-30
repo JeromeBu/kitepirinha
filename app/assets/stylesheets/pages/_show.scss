@@ -1,0 +1,109 @@
+// .card {
+//   height: 175px;
+//   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+//   background-size: cover !important;
+//   color: white;
+//   position: relative;
+// }
+// .card-user {
+//   position: absolute;
+//   right: 10px;
+//   top: 10px;
+// }
+// .card-category {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   font-size: 10px;
+//   text-transform: uppercase;
+// }
+.title-section {
+  bottom: 10px;
+  left: 10px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.title-section h2 {
+  color: $blue;
+  font-size: 22px;
+  margin-top: 10px;
+}
+.title-section p {
+  font-size: 12px;
+}
+.title-section a {
+  font-size: 12px;
+}
+
+.reviews {
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px #AAAAAA;
+  background-color: white;
+}
+
+.reviews a {
+  font-size: 12px;
+}
+
+.spot-facilities {
+  text-align: left;
+  padding-left: 10px;
+  padding-top: 1px;
+  border-radius: 5px;
+  box-shadow: 2px 2px #AAAAAA;
+  background-color: white;
+}
+
+.forecast-data {
+  border: 2px solid blue;
+}
+
+
+
+hr {
+  margin: 10px 0px;
+}
+
+.weather-infos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forecast-data {
+  flex: 1 0 65%
+}
+
+.tide-data {
+  flex: 1 0 35%
+}
+
+
+// thead {
+//   float: left;
+// }
+
+// thead th {
+//   display: block;
+// }
+
+// tbody {
+//   float: right;
+// }
+
+// .card-link {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   right: 0;
+//   width: 100%;
+//   z-index:2;
+//   background: black;
+//   opacity: 0;
+// }
+// .card-link:hover{
+//   opacity: 0.1;
+// }
