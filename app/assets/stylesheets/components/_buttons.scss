@@ -11,7 +11,7 @@ $alizarin: #e74c3c;
   display: inline-block;
   border: 6px solid lighten($alizarin, 10%);
   @extend %vertical-align;
-  transition: all .1s ease-in-out;
+  transition: all .08s ease-in-out;
   z-index: 99;
   &.active { box-shadow: 2px 2px 4px rgba(0,0,0, .25); }
   &:focus,
@@ -37,7 +37,7 @@ $alizarin: #e74c3c;
   background: lighten($alizarin, 10%);
   padding: 1em 2em;
   margin: 6px;
-  transition: all .1s ease-in-out;
+  transition: all .08s ease-in-out;
   &:focus,
   &:hover {
     background: $alizarin;
