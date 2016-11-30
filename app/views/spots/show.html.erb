@@ -6,7 +6,7 @@
         <h1><%= @spot.name %></h1>
         <h3>Accepted ? <%= @spot.accepted %></h3>
         <br>
-        <p>You're on spot n# <%= @spot.id %></p>
+        <p>You're on spot lat <%= @spot.lat %>, lng <%= @spot.lng %></p>
         <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
       </div>
 

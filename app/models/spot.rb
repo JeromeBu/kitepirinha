@@ -2,8 +2,9 @@ require "json"
 require "open-uri"
 
 class Spot < ApplicationRecord
-  # geocoded_by :name
-  # after_validation :geocode, if: :name_changed?
+
+  # geocoded_by :address
+  # after_validation :geocode
 
   belongs_to :harbor
   belongs_to :user
@@ -47,6 +48,7 @@ class Spot < ApplicationRecord
     # Calling darksky api and saving in DB
     lat = self.lat
     lng = self.lng
+    url_raw = "https://api.darksky.net/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}?units=ca"
     url = open("https://api.darksky.net/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}?units=ca").read
     forecast_raw_json = JSON.parse(url)
 

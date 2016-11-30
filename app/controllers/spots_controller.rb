@@ -3,7 +3,14 @@ class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @spots = policy_scope(Spot)
+    @spots_index = policy_scope(Spot)
+    @spots = Spot.where.not(lat: nil, lng: nil)
+
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+      marker.lat spot.lat
+      marker.lng spot.lng
+      # marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
+    end
   end
 
   def show
@@ -24,6 +31,7 @@ class SpotsController < ApplicationController
     authorize @spot
 
     if @spot.save
+      raise
       @spot.fetch_and_parse_forecast_data
       redirect_to spot_path(@spot)
     else
@@ -72,6 +80,6 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-    params.require(:spot).permit(:name, :description, :latitude, :longitude)
+    params.require(:spot).permit(:name, :description, :lat, :lng, :address)
   end
 end
