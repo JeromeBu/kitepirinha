@@ -15,7 +15,7 @@
           <div class="weather-infos">
             <div class="forecast-data bg-white">
               <h4>forecast data</h4>
-              <%= render 'forecast' %>
+              <%= render 'forecast', forecasts: nil %>
             </div>
             <div class="tide-data bg-white hidden">
               <% query = @spot.harbor.query if @spot.harbor %>
@@ -54,7 +54,6 @@
               <p><%= review.content %></p>
               <hr>
             <% end %>
->>>>>>> master
           </div>
         </div>
 
