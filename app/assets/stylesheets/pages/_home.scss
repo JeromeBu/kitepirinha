@@ -1,13 +1,11 @@
 body {
   position: relative;
   text-align: center;
-  overflow: hidden;
   &:after {
     position: absolute;
     display: block;
     background: linear-gradient(135deg, #2980b9 0%,#9B59B6 100%);
     // background-size: 100% auto;
-    opacity: 0;
     transition: all .65s ease-in-out;
   }
 }
