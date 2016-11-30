@@ -1,50 +1,67 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-sm-offset-2">
-
-      <div class="title-section padded col-xs-12">
-        <h1><%= @spot.name %></h1>
-        <h3>Accepted ? <%= @spot.accepted %></h3>
-        <br>
-        <p>You're on spot n# <%= @spot.id %></p>
-        <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
-      </div>
-
-      <div class="col-xs-12 col-sm-8">
-        <div class="weather-infos">
-          <div class="col-xs-12 col-sm-8">
-            <div class="forecast-data">
-              <h3>forecast data</h3>
-            </div>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="col-xs-12">
+          <div class="title-section bg-white">
+            <h2><%= @spot.name %></h1>
+            <p><%= @spot.description unless @spot.description.nil?%></p>
+            <p>Accepted ? <%= @spot.accepted %></p>
+            <p>You're on spot n# <%= @spot.id %></p>
+            <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post %>
           </div>
-          <div class="col-xs-12 col-sm-4">
-            <div class="tide-data">
-              <h3>tide-data</h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-8">
+          <div class="weather-infos bg-white">
+            <div class="col-xs-12 col-sm-8">
+              <div class="forecast-data bg-white">
+                <h4>forecast data</h4>
+                <%= render 'forecast' %>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <div class="tide-data bg-white">
+                <h3>tide-data</h3>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+
+        <div class="col-xs-12 col-sm-4">
+          <div class="feedbacks bg-white">
+            <% @spot.weather_feedbacks.each do |feedback| %>
+              <p>Feedback #<%= feedback.id %></p>
+              <p>Wind direction : <%= feedback.direction %></p>
+              <p>Wind strength : <%= feedback.strength %></p>
+              <p>Wing size : <%= feedback.wing_size %></p>
+              <p>Rating : <%= feedback.rating %></p>
+              <p>-----------------</p>
+            <% end %>
+            <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="spot-facilities bg-white">
+            <p>Facilities: <%= @spot.facilities %></p>
+          </div>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="reviews bg-white">
+          <h4>Reviews - <%= link_to "Add a comment", new_spot_review_path(@spot) %></h4>
+          <hr>
+            <% @spot.reviews.each do |review| %>
+              <p><strong><%= review.user.first_name || review.user.email %> - Rating : <%= review.rating %></strong></p>
+              <p><%= review.content %></p>
+              <hr>
+            <% end %>
+          </div>
+        </div>
 
 
-      <div class="reviews col-sm-4">
-        <% @spot.reviews.each do |review| %>
-          <p>Review #<%= review.id %> : <%= review.content %></p>
-          <p>Rating : <%= review.rating %></p>
-        <% end %>
-      <br>
-      <%= link_to "Add a comment", new_spot_review_path(@spot) %>
-      </div>
 
-      <div class="feedbacks">
-        <% @spot.weather_feedbacks.each do |feedback| %>
-          <p>Feedback #<%= feedback.id %></p>
-          <p>Wind direction : <%= feedback.direction %></p>
-          <p>Wind strength : <%= feedback.strength %></p>
-          <p>Wing size : <%= feedback.wing_size %></p>
-          <p>Rating : <%= feedback.rating %></p>
-          <p>-----------------</p>
-        <% end %>
-        <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
       </div>
     </div>
   </div>
