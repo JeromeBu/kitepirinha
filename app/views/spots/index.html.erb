@@ -2,12 +2,14 @@
   <div class="row">
     <h1>List of all spots</h1>
   </div>
+
+
   <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-8">
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-6">
-          <div class="spot-card" style="background-image: url('<%= image_path "background.jpg" %>')">
+          <div class="spot-card" style="background-image: url('<%= cl_image_path("image1_henvzi.jpg", width: 330, height: 400, crop: :fill) %>')">
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
               <h2><%= spot.name %></h2>
@@ -17,6 +19,7 @@
         </div>
       <% end %>
     </div>
+
     <div class="col-xs-12 col-sm-12 col-md-4">
       <h1>MAPS</h1>
     </div>
