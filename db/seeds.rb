@@ -6,6 +6,31 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+  User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
+  User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
+  User.create!(email: "julie@mail.com", password: "azerty", first_name: "Julie")
+  User.create!(email: "jeremy@mail.com", password: "azerty", first_name: "Jeremy")
+
+  Spot.destroy_all
+  Spot.new(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin.
+Grande plage de sable assez mou, avec de nombreuses baines", user: User.sample)
+
+
+create_table "spots", force: :cascade do |t|
+    t.integer  "harbor_id"
+    t.string   "name"
+    t.float    "lat"
+    t.float    "lng"
+    t.text     "description"
+    t.integer  "user_id"
+    t.boolean  "accepted"
+
+    t.integer  "spot_id"
+    t.integer  "sector_start"
+    t.integer  "sector_end"
+
+
 if true #write false if you don't wanna seed the harbors ;-)
   Harbor.destroy_all
   Harbor.create(name: "Aber Benoit", lat: 48.563119, lng: -4.560159, query: "ABER_BENOIT_MEAN_RENEAT")

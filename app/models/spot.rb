@@ -67,13 +67,14 @@ class Spot < ApplicationRecord
     end
   end
 
-  def mean_weather_feedbacks
+  def mean_weather_feedback
     last_feedbacks = self.weather_feedbacks.where("created_at > ?", DateTime.now - 2.hours)
     if last_feedbacks.empty?
       mean_feedbacks = {message: "No recent data for this spot"}
     else
       sum_strength = 0
-      sum_direction = 0
+      sum_x_direction = 0
+      sum_y_direction = 0
       max_strength = 0
       min_strength = 200
       last_feedback = last_feedbacks.last
@@ -81,20 +82,23 @@ class Spot < ApplicationRecord
         max_strength = feedback.strength if feedback.strength > max_strength
         min_strength = feedback.strength if feedback.strength < min_strength
         sum_strength = sum_strength + feedback.strength
-        sum_direction = sum_direction + (feedback.direction + 360)
+        sum_x_direction = sum_x_direction + Math.cos(feedback.direction * Math::PI / 180)
+        sum_y_direction = sum_y_direction + Math.sin(feedback.direction * Math::PI / 180)
         last_feedback = feedback if feedback.created_at > last_feedback.created_at
       end
-      mean_strength = sum_strength/last_feedbacks.length
-      mean_direction = (sum_direction/last_feedbacks.length) - 360
-      mean_feedbacks = {
-        message: "#{last_feedbacks.length} feedbacks in the 2 past hours",
+      mean_strength = (sum_strength/last_feedbacks.length).round(1)
+      mean_x_direction = (sum_x_direction/last_feedbacks.length)
+      mean_y_direction = (sum_y_direction/last_feedbacks.length)
+      mean_direction = (Math.atan2(mean_y_direction, mean_x_direction) * 180 / Math::PI).round
+      mean_direction = mean_direction + 360 if mean_direction < 0
+      mean_feedback = {
+        message: "#{last_feedbacks.length} feedbacks in the 2 past hours, last one at #{last_feedback.created_at.strftime('%H:%M')}",
         mean_strength: mean_strength,
         mean_direction: mean_direction,
         max_strength: max_strength,
         min_strength: min_strength,
         last_feedback: last_feedback
       }
-      raise
     end
   end
 end
