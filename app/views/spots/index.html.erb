@@ -7,9 +7,11 @@
     <div class="col-xs-12 col-sm-12 col-md-6">
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-12">
-          <div class="spot-card" style="background-image: url('<%= image_path "background.jpg" %>')">
-            <div class="spot-infos">
-              <h2><%= link_to spot.name, spot_path(spot) %></h2>
+          <div class="spot-card" style="background-image: url('<%= cl_image_path("image1_henvzi.jpg", width: 330, height: 400, crop: :fill) %>')">
+            <%= link_to "", spot_path(spot), class: "spot-card-link" %>
+            <div class="spot-infos small">
+              <h2><%= spot.name %></h2>
+              <p class="spot-full-infos"><%= spot.description %></p>
             </div>
           </div>
         </div>
