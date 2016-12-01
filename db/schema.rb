@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130180245) do
+ActiveRecord::Schema.define(version: 20161201120730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20161130180245) do
     t.integer  "spot_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "kite_school"
     t.index ["spot_id"], name: "index_facilities_on_spot_id", using: :btree
   end
 
@@ -105,16 +106,6 @@ ActiveRecord::Schema.define(version: 20161130180245) do
     t.index ["user_id"], name: "index_spots_on_user_id", using: :btree
   end
 
-  create_table "tides", force: :cascade do |t|
-    t.integer  "harbor_id"
-    t.boolean  "high_tide"
-    t.integer  "coefficient"
-    t.datetime "date_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["harbor_id"], name: "index_tides_on_harbor_id", using: :btree
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -158,7 +149,6 @@ ActiveRecord::Schema.define(version: 20161130180245) do
   add_foreign_key "reviews", "users"
   add_foreign_key "spots", "harbors"
   add_foreign_key "spots", "users"
-  add_foreign_key "tides", "harbors"
   add_foreign_key "weather_feedbacks", "spots"
   add_foreign_key "weather_feedbacks", "users"
 end
