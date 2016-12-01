@@ -17,7 +17,6 @@ end
 #   Spot.new(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin.
 # Grande plage de sable assez mou, avec de nombreuses baines", user: User.sample)
 
-
 # create_table "spots", force: :cascade do |t|
 #     t.integer  "harbor_id"
 #     t.string   "name"
