@@ -12,19 +12,6 @@
       <!-- Different navigation if login or not -->
       <% if user_signed_in? %>
 
-                    <!-- TEST Profile picture and dropdown -->
-                  <div class="navbar-wagon-item">
-                    <div class="dropdown">
-                      <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-                      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-                      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Dashboard</a></li>
-                        <li><a href="#">Log Out</a></li>
-                      </ul>
-                    </div>
-                  </div>
-
         <%= link_to "Profile", user_path(current_user), class: "navbar-item navbar-link" %>
         <%= link_to "Log out", destroy_user_session_path, class: "navbar-item navbar-link", method: :delete %>
       <% else %>
