@@ -14,10 +14,10 @@ body{
 
 .spot-show-card {
   text-align: left;
-  padding: 30px;
+  padding: 15px 30px;
   // border-radius: 5px;
   // box-shadow: 2px 2px #AAAAAA;
-  background-color: white;
+  // background-color: white;
 
   margin-top: 10px;
   position: relative;
@@ -25,7 +25,11 @@ body{
 
 .spot-show-card h2 {
   font-size: 25px;
-  color: $blue;
+  color: $dark_blue;
+}
+
+#spot-show-h1-title{
+ color: $dark_blue;
 }
 
 #feedbacks-container{
@@ -60,8 +64,10 @@ body{
 }
 
 #spot-rating.fa-star{
-  font-size: 30px;
-  border: 1px solid $dark_blue;
+  font-size: 5px;
+}
+#spot-rating.fa-star-o{
+  font-size: 5px;
 }
 
 .yellow-filled{

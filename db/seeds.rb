@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 if true #write false if you don't wanna seed the users
-    User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
-    User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
-    User.create!(email: "julie@mail.com", password: "azerty", first_name: "Julie")
-    User.create!(email: "jeremy@mail.com", password: "azerty", first_name: "Jeremy")
+  User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
+  User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
+  User.create!(email: "julie@mail.com", password: "azerty", first_name: "Julie")
+  User.create!(email: "jeremy@mail.com", password: "azerty", first_name: "Jeremy")
 end
 
 if true #write false if you don't wanna seed the harbors ;-)
