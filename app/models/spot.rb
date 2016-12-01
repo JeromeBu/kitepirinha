@@ -11,7 +11,7 @@ class Spot < ApplicationRecord
   has_many :weather_feedbacks, dependent: :destroy
   has_many :favorite_spots, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :facilities, dependent: :destroy
+  has_one :facility, dependent: :destroy
   has_many :recommended_wind_directions, dependent: :destroy
   has_many :forecasts, dependent: :destroy
   has_many :harbors
