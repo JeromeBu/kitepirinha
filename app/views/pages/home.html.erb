@@ -1,28 +1,20 @@
 <div class="container-fluid" id="home-container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('<%= image_path "background.jpg" %>');">
+      <div class="banner" style="background-image: linear-gradient(to left, rgba(215, 210, 204, 0.3), rgba(48, 67, 82, 0.4)), url('<%= image_url "background.jpg" %>');">
         <div class="row" id="titre">
-          <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-1">
+          <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-1"> -->
             <div id="banner-content">
-              <h2>
-                Discover the best spots around you
-              </h2>
-                <%= form_tag(spots_path, :method => "get", class: "navbar-wagon-search", id: "search-form") do %>
-                    <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where do you wanna go?">
-                    <button type="submit" class="btn btn-primary banner-wagon-button"><i class="fa fa-search"></i>  SEARCH</button>
-                <% end %>
+              <div class="text-center", id="home-text">
+                <h2>
+                  Discover Kitepirinha experience
+                </h2>
+                <h4>Find all the best kitesurf spots around you</h4>
+                  <%= link_to "FIND A SPOT", spots_path, class: "kite-std-btn" %>
+              </div>
 
             </div>
-          </div>
-        </div>
-        <div class="row text-center" id="home-links">
-          <div class="col-xs-12 col-sm-12 col-md-3 col-md-offset-3">
-            <%= link_to "SEE ALL SPOTS", spots_path, class: "home-link" %>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-3">
-              <%= link_to "CREATE A SPOT", new_spot_path, class: "home-link" %>
-          </div>
+          <!-- </div> -->
         </div>
 
       </div>
