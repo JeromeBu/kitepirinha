@@ -1,7 +1,10 @@
-.wrapper_maps {
-  height: inherit;
+.block_maps {
+  padding: 0;
 }
 
-#map {
+.width_box{
   position: fixed;
+  width: inherit;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
