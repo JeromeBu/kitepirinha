@@ -1,8 +1,5 @@
 <div class="container-fluid wrapper">
   <div class="row">
-    <h1 class="text-center">List of all spots</h1>
-  </div>
-  <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-6">
       <% @spots.each do |spot| %>
@@ -17,11 +14,11 @@
         </div>
       <% end %>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <div class="wrapper_maps">
-        <div id="map" style="width: 100%; height: 100vh;"></div>
+    <div class="col-xs-12 col-sm-12 col-md-6 block_maps">
+      <div class="width_box">
+        <div id="map" style="height: calc(100vh - 115px);"></div>
 
-        <% content_for(:after_js) do %>
+          <% content_for(:after_js) do %>
           <%= javascript_tag do %>
             $(document).ready(function() {
               var handler = Gmaps.build('Google');
@@ -42,4 +39,3 @@
     </div>
   </div>
 </div>
-
