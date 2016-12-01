@@ -1,5 +1,10 @@
 body{
   color: #616668;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.bg-white{
+  background-color: white;
 }
 
 .spot-show-card h1 {
@@ -9,9 +14,9 @@ body{
 
 .spot-show-card {
   text-align: left;
-  padding: 10px;
+  padding: 30px;
   // border-radius: 5px;
-  box-shadow: 2px 2px #AAAAAA;
+  // box-shadow: 2px 2px #AAAAAA;
   background-color: white;
 
   margin-top: 10px;
@@ -55,7 +60,13 @@ body{
 }
 
 #spot-rating.fa-star{
-  color: yellow;
   font-size: 30px;
+  border: 1px solid $dark_blue;
 }
 
+.yellow-filled{
+  color: #F1C40F;
+}
+.not-filled{
+  color: grey;
+}

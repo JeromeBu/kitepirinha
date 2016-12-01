@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12 bg-white">
 
         <!-- Title Section -->
         <div class="col-xs-12">
@@ -10,7 +10,10 @@
 
               <div id="spot-rating">
                 <% @spot.average_rating.round.times do %>
-                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star yellow-filled"></i>
+                <% end %>
+                <% (5 - @spot.average_rating.round).times do %>
+                  <i class="fa fa-star not-filled"></i>
                 <% end %>
               </div>
 
