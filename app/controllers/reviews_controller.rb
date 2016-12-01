@@ -1,20 +1,34 @@
 class ReviewsController < ApplicationController
   before_action :set_spot, only: [:new, :create]
 
-  def new
-    @review = Review.new
-    authorize @review
-  end
+  # def new
+  #   @review = Review.new
+  #   authorize @review
+  # end
 
   def create
     @review = Review.new(review_params)
     @review.spot = @spot
     @review.user = current_user
+    # if @review.save
+    #   redirect_to spot_path(@spot)
+    # else
+    #   render :new
+    # end
+
+    #AJAX in the spot show
     if @review.save
-      redirect_to spot_path(@spot)
+      respond_to do |format|
+        format.html { redirect_to spot_path(@spot) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render 'spots/show' }
+        format.js  # <-- idem
+      end
     end
+
     authorize @review
   end
 

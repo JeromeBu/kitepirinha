@@ -54,22 +54,60 @@
         <!-- Facilities -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <p>Facilities: <%= @spot.facilities %></p>
+            <h2>Facilities</h2>
+            <% unless @spot.facility.parking.nil? %><p><strong>Parking:</strong> <%= @spot.facility.parking %></p><% end %>
+            <% unless @spot.facility.safety_watch.nil? %><p><strong>Sécurité: <%= @spot.facility.safety_watch %></p><% end %></strong>
+            <% unless @spot.facility.kite_school.nil? %><p><strong>Schools:</strong> <%= @spot.facility.kite_school %></p><% end %>
+            <% unless @spot.facility.water_spot.nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility.water_spot %></p><% end %>
+            <% unless @spot.facility.shop.nil? %><p><strong>Shop:</strong> <%= @spot.facility.shop %></p><% end %>
+            <% unless @spot.facility.shower.nil? %><p><strong>Douches:</strong> <%= @spot.facility.shower %></p><% end %>
+            <% unless @spot.facility.comment.nil? %><p><strong>Commentaires:</strong> <%= @spot.facility.comment %></p><% end %>
           </div>
         </div>
 
         <!-- Reviews -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <h4>Reviews - <%= link_to "Add a comment", new_spot_review_path(@spot), class: "btn btn-primary" %></h4>
+            <div id="review-header">
+              <h2 id="reviews_count">
+                <%= render "spots/reviews_count", spot: @spot %>
+              </h2>
+
+              <!-- Modal for reviews -->
+              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="comment-button">
+                Add a review
+              </button>
+            </div>
             <hr>
-            <% @spot.reviews.each do |review| %>
-              <p><strong><%= review.user.first_name || review.user.email %> - Rating : <%= review.rating %></strong></p>
-              <p><%= review.content %></p>
-              <hr>
-            <% end %>
+            <div id="reviews">
+              <% @spot.reviews.each do |review| %>
+               <%= render 'reviews/show', review: review %>
+              <% end %>
+            </div>
           </div>
         </div>
+
+
+        <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Review</h4>
+                </div>
+                <div class="modal-body" id="review_form_container">
+                  <%= render 'reviews/form', spot: @spot, review: @review %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- End of features -->
+
       </div>
     </div>
   </div>

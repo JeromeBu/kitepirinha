@@ -1,0 +1,5 @@
+<%= simple_form_for([spot, review], remote: true) do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "Add review", class: "btn btn-primary", id: "add-review-button" %>
+<% end %>
