@@ -8,14 +8,16 @@
           <div class="spot-show-card">
             <h1><%= @spot.name.capitalize %>
 
-              <div id="spot-rating">
-                <% @spot.average_rating.round.times do %>
-                  <i class="fa fa-star yellow-filled"></i>
-                <% end %>
-                <% (5 - @spot.average_rating.round).times do %>
-                  <i class="fa fa-star not-filled"></i>
-                <% end %>
-              </div>
+              <% if @spot.average_rating %>
+                <div id="spot-rating">
+                  <% @spot.average_rating.round.times do %>
+                    <i class="fa fa-star yellow-filled"></i>
+                  <% end %>
+                  <% (5 - @spot.average_rating.round).times do %>
+                    <i class="fa fa-star not-filled"></i>
+                  <% end %>
+                </div>
+              <% end %>
 
             <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-round-btn" do %>
               <i class="fa fa-heart"></i>
@@ -58,13 +60,13 @@
         <div class="col-xs-12">
           <div class="spot-show-card">
             <h2>Facilities</h2>
-            <% unless @spot.facility.parking.nil? %><p><strong>Parking:</strong> <%= @spot.facility.parking %></p><% end %>
-            <% unless @spot.facility.safety_watch.nil? %><p><strong>Sécurité: <%= @spot.facility.safety_watch %></p><% end %></strong>
-            <% unless @spot.facility.kite_school.nil? %><p><strong>Schools:</strong> <%= @spot.facility.kite_school %></p><% end %>
-            <% unless @spot.facility.water_spot.nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility.water_spot %></p><% end %>
-            <% unless @spot.facility.shop.nil? %><p><strong>Shop:</strong> <%= @spot.facility.shop %></p><% end %>
-            <% unless @spot.facility.shower.nil? %><p><strong>Douches:</strong> <%= @spot.facility.shower %></p><% end %>
-            <% unless @spot.facility.comment.nil? %><p><strong>Commentaires:</strong> <%= @spot.facility.comment %></p><% end %>
+            <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
+            <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
+            <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
+            <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
+            <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
+            <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
+            <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
           </div>
         </div>
 

@@ -15,6 +15,7 @@ class SpotsController < ApplicationController
 
   def show
     @mean_weather_feedback = @spot.mean_weather_feedback
+    @forecasts = @spot.fresh_forecasts
     @review = Review.new
     authorize @review
   end
