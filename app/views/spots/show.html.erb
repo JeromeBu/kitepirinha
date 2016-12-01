@@ -2,10 +2,14 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
         <!-- Title Section -->
         <div class="col-xs-12">
-          <div class="title-section bg-white">
-            <h2><%= @spot.name %> - <%= link_to "Add this spot as a favorite spot", favorite_spots_path(spot_id: params[:id]), method: :post, class: "btn btn-primary" %></h1>
+          <div class="spot-show-card">
+            <h1><%= @spot.name.capitalize %></h1>
+            <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "btn btn-primary" do %>
+              <i class="fa fa-star"> Add to favorite spots</i>
+            <% end %>
             <p><%= @spot.description unless @spot.description.nil?%></p>
             <p>Accepted ? <%= @spot.accepted %></p>
             <p>You're on spot n# <%= @spot.id %></p>
@@ -13,13 +17,17 @@
         </div>
 
         <!-- Weather infos -->
-        <div class="col-xs-12 col-sm-8">
-          <div class="weather-infos">
-            <div class="forecast-data bg-white">
-              <h4>forecast data</h4>
-              <%= render 'forecast', forecasts: nil %>
-            </div>
-            <div class="tide-data bg-white hidden">
+        <div class="col-xs-12">
+          <div class="spot-show-card">
+            <h2>Forecast data</h2>
+            <%= render 'forecast', forecasts: nil %>
+          </div>
+        </div>
+
+        <!-- Tide infos -->
+        <div class="col-xs-12 col-sm-6" id="tide-container">
+          <div class="spot-show-card">
+            <div class="tide-data hidden">
               <% query = @spot.harbor.query if @spot.harbor %>
               <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
               <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
@@ -28,23 +36,24 @@
         </div>
 
         <!-- Feedback infos -->
-        <div class="col-xs-12 col-sm-4">
-          <%= render 'weather_feedbacks', feedbacks: @mean_weather_feedback %>
-
+        <div class="col-xs-12 col-sm-6" id='feedbacks-container'>
+          <div class="spot-show-card">
+            <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
+          </div>
         </div>
 
         <!-- Facilities -->
         <div class="col-xs-12">
-          <div class="spot-facilities bg-white">
+          <div class="spot-show-card">
             <p>Facilities: <%= @spot.facilities %></p>
           </div>
         </div>
 
         <!-- Reviews -->
         <div class="col-xs-12">
-          <div class="reviews bg-white">
-          <h4>Reviews - <%= link_to "Add a comment", new_spot_review_path(@spot), class: "btn btn-primary" %></h4>
-          <hr>
+          <div class="spot-show-card">
+            <h4>Reviews - <%= link_to "Add a comment", new_spot_review_path(@spot), class: "btn btn-primary" %></h4>
+            <hr>
             <% @spot.reviews.each do |review| %>
               <p><strong><%= review.user.first_name || review.user.email %> - Rating : <%= review.rating %></strong></p>
               <p><%= review.content %></p>
@@ -52,7 +61,6 @@
             <% end %>
           </div>
         </div>
-
       </div>
     </div>
   </div>

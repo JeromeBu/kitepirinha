@@ -2,8 +2,9 @@ require "json"
 require "open-uri"
 
 class Spot < ApplicationRecord
-  # geocoded_by :name
-  # after_validation :geocode, if: :name_changed?
+
+  # geocoded_by :address
+  # after_validation :geocode
 
   belongs_to :harbor
   belongs_to :user
