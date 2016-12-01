@@ -14,3 +14,6 @@
 </ul>
 
 <%= link_to "Edit your profile", edit_user_path(@user) %>
+
+<% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+<%= image_tag avatar_url %>
