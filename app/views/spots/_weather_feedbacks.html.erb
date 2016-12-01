@@ -1,9 +1,12 @@
 <p><%= @mean_weather_feedback[:message] %></p>
-<p>Mean wind direction : <%= @mean_weather_feedback[:mean_direction] %></p>
-<p>Mean wind strength : <%= @mean_weather_feedback[:mean_strength] %></p>
-<hr>
-<p>Last wind direction : <%= @mean_weather_feedback[:last_feedback][:direction] %></p>
-<p>Last wind strength : <%= @mean_weather_feedback[:last_feedback][:strength] %></p>
+
+<% unless @mean_weather_feedback[:last_feedback].nil? %>
+  <p>Mean wind direction : <%= @mean_weather_feedback[:mean_direction] %></p>
+  <p>Mean wind strength : <%= @mean_weather_feedback[:mean_strength] %></p>
+  <hr>
+  <p>Last wind direction : <%= @mean_weather_feedback[:last_feedback][:direction] %></p>
+  <p>Last wind strength : <%= @mean_weather_feedback[:last_feedback][:strength] %></p>
+<% end %>
 <p>-----------------</p>
 
 <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
