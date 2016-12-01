@@ -8,7 +8,16 @@
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
               <h2><%= spot.name %></h2>
-              <p class="spot-full-infos"></p>
+              <div class="card-content-action">
+                <% if spot.average_rating %>
+                  <% spot.average_rating.round.times do %>
+                    <i class="fa fa-star yellow-filled"></i>
+                  <% end %>
+                  <% (5 - spot.average_rating.round).times do %>
+                    <i class="fa fa-star not-filled"></i>
+                  <% end %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
