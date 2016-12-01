@@ -8,14 +8,11 @@ body{
 
 .spot-show-card {
   text-align: left;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 1px;
+  padding: 10px;
   // border-radius: 5px;
   box-shadow: 2px 2px #AAAAAA;
   background-color: white;
 
-  padding-bottom: 10px;
   margin-top: 10px;
   position: relative;
 }
@@ -37,6 +34,16 @@ body{
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+#review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#comment-button {
+  float: right;
 }
 
 #add-to-favorite2-btn{
