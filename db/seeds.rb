@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if true #write false if you don't wanna seed the users
+if false #write false if you don't wanna seed the users
     User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
     User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
     User.create!(email: "julie@mail.com", password: "azerty", first_name: "Julie")
@@ -1037,32 +1037,23 @@ if false #write false if you don't wanna seed the harbors ;-)
   Harbor.create(name: "Zanzibar", lat: -6.165916999999999, lng: 39.202641, query: "ZANZIBAR")
   Harbor.create(name: "Zeebrugge", lat: 51.3189468, lng: 3.2068507, query: "ZEEBRUGGE")
   Harbor.create(name: "Zhanjiang Gang", lat: 21.1, lng: 110.4666667, query: "ZHANJIANG")
-
-  Spot.destroy_all
-  Spot.new(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin.
-Grande plage de sable assez mou, avec de nombreuses baines", user: User.sample)
+end
 
 if true #write false if you don't wanna seed the spots
   Spot.destroy_all
-  Spot.new(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin.
-Grande plage de sable assez mou, avec de nombreuses baines", user: User.sample)
+
+  Spot.create!(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable assez mou, avec de nombreuses baines", lat: 49.2870, lng: -0.2071, user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by(name: "Ouistreham"))
+  Facility.create!(parking: "parking juste devant la plage", kite_school: "Kite-r (Franceville)",shop: "Le Menhir (Cabourg)", comment: "Dangers particuliers: il y a parfois beaucoup de monde dans la grande baïne", spot: Spot.find_by(name: "Franceville"))
+  RecommendedWindDirection.create!(sector_start: 270, sector_end: 45, spot: Spot.find_by(name: "Franceville"))
+
+  Spot.create!(name: "Vierville", description: "Vagues: plat dans les baines / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse, pas de plage à marée haute. Baines à marée basse très longue et pas large (300 x 15m), exploitable par vent on shore (Nord). Spot pas exploitable à marée haute: absence de plage.", lat: 49.3775, lng: -0.8980, user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by(name: "Grandcamp"))
+  Facility.create!(parking: "Au bout de la plage (coté gauche en regardant la mer)", kite_school: "Pas d'écoles à proximité", comment: "Dangers particuliers: digue le long de la plage", spot: Spot.find_by(name: "Deauville"))
+  RecommendedWindDirection.create!(sector_start: 205, sector_end: 45, spot: Spot.find_by(name: "Deauville"))
+
+  Spot.create!(name: "Antifer", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", lat: 49.6605, lng: 0.1537, user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"))
+  Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", spot: Spot.find_by(name: "Antifer"))
+  RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
+  RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
 end
 
 
-
-# create_table "spots", force: :cascade do |t|
-#     t.integer  "harbor_id"
-#     t.string   "name"
-#     t.float    "lat"
-#     t.float    "lng"
-#     t.text     "description"
-#     t.integer  "user_id"
-#     t.boolean  "accepted"
-
-#     t.integer  "spot_id"
-#     t.integer  "sector_start"
-#     t.integer  "sector_end"
-
-
-
-end
