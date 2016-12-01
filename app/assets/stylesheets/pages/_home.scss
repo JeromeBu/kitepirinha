@@ -1,26 +1,27 @@
-body {
-  position: relative;
-  text-align: center;
-  &:after {
-    position: absolute;
-    display: block;
-    background: linear-gradient(135deg, #2980b9 0%,#9B59B6 100%);
-    // background-size: 100% auto;
-    transition: all .20s ease-in-out;
-  }
+#home-container {
+  padding: 0px;
+}
+
+#titre {
+  width: 100%;
 }
 
 .banner {
   color: white;
-  text-align: center;
+  // text-align: center;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); */
   background-size: cover !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // position: relative;
 }
-.banner h1 {
+.banner h2 {
+  // position: absolute;
+  // top: 100px;
+  // left: 100px;
+  // width: 30%;
   font-size: 50px;
   font-weight: bold;
   text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
@@ -30,4 +31,47 @@ body {
   font-weight: lighter;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
+}
+
+#banner-content {
+  margin-top: 100px;
+}
+
+#search-form {
+  padding: 0px;
+  margin-top: 20px;
+}
+
+#home-links {
+  margin-top: 200px;
+
+}
+
+#home-links a {
+  -webkit-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -moz-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -ms-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  -o-transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  transition: all 50ms cubic-bezier(0.390, 0.500, 0.150, 1.360);
+  display: block;
+  margin: 20px auto;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 40px 50px;
+  cursor: pointer;
+  font-weight: bolder;
+  opacity: 1;
+}
+
+#home-links a.home-link {
+  background: white;
+  opacity: 0.5;
+  color: #4A6B89;
+  box-shadow: #4A6B89 0 0px 0px 2px inset;
+}
+
+#home-links a.home-link:hover {
+  color: white;
+  opacity: 1;
+  box-shadow: #4A6B89 0 0px 0px 60px inset;
 }

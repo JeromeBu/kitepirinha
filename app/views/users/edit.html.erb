@@ -1,1 +1,17 @@
 <h1>Edit your profile</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+      <%= simple_form_for(current_user) do |f| %>
+        <%= f.error_notification %>
+
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+        <%= f.input :weight %>
+
+        <button type="submit" class="btn btn-primary banner-wagon-button">Update</button>
+      <% end %>
+    </div>
+  </div>
+</div>

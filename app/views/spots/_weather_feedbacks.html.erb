@@ -1,11 +1,12 @@
-<div class="feedbacks bg-white">
-  <% @spot.weather_feedbacks.each do |feedback| %>
-    <p>Feedback #<%= feedback.id %></p>
-    <p>Wind direction : <%= feedback.direction %></p>
-    <p>Wind strength : <%= feedback.strength %></p>
-    <p>Wing size : <%= feedback.wing_size %></p>
-    <p>Rating : <%= feedback.rating %></p>
-    <p>-----------------</p>
-  <% end %>
-  <%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
-</div>
+<p><%= @mean_weather_feedback[:message] %></p>
+
+<% unless @mean_weather_feedback[:last_feedback].nil? %>
+  <p>Mean wind direction : <%= @mean_weather_feedback[:mean_direction] %></p>
+  <p>Mean wind strength : <%= @mean_weather_feedback[:mean_strength] %></p>
+  <hr>
+  <p>Last wind direction : <%= @mean_weather_feedback[:last_feedback][:direction] %></p>
+  <p>Last wind strength : <%= @mean_weather_feedback[:last_feedback][:strength] %></p>
+<% end %>
+<p>-----------------</p>
+
+<%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>

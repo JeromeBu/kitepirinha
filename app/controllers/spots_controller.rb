@@ -3,11 +3,18 @@ class SpotsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @spots = policy_scope(Spot)
+    @spots_index = policy_scope(Spot)
+    @spots = Spot.where.not(lat: nil, lng: nil)
+
+    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+      marker.lat spot.lat
+      marker.lng spot.lng
+      # marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
+    end
   end
 
   def show
-    @spot.mean_weather_feedbacks
+    @mean_weather_feedback = @spot.mean_weather_feedback
   end
 
   def new
@@ -17,15 +24,15 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    a = ArtisanalGeocoder.geo(spot_params[:name])
+    a = ArtisanalGeocoder.geo(spot_params[:address])
     @spot.user= current_user
     @spot.lat = a[:lat]
     @spot.lng = a[:lng]
     authorize @spot
+    @spot.harbor = Harbor.find_closest_from(@spot.lat, @spot.lng)
 
     if @spot.save
       @spot.fetch_and_parse_forecast_data
-      @spot.harbor = Harbor.find_closest_from(@spot.lat, @spot.lng)
       @spot.save
       redirect_to spot_path(@spot)
     else
@@ -74,6 +81,6 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-    params.require(:spot).permit(:name, :description, :latitude, :longitude)
+    params.require(:spot).permit(:name, :description, :lat, :lng, :address)
   end
 end
