@@ -20,7 +20,7 @@
       <th scope="row">Strength</th>
       <% @forecasts.each do |forecast|%>
         <% if forecast[:date_time].strftime('%H').to_i.even? %>
-          <td><%= forecast[:wind_strength].round(1) %></td>
+          <td><%= forecast[:wind_strength].round %></td>
         <% end %>
       <% end %>
     </tr>

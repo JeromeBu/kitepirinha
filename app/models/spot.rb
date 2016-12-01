@@ -21,7 +21,9 @@ class Spot < ApplicationRecord
 
   def fresh_forecasts
     #Retourne les forecasts de moins de 2H en allant les chercher si nécessaire
-
+    if self.forecasts.empty?
+      fetch_and_parse_forecast_data
+    end
 
   # Testing if the spot last data is older then 2 hours
     most_recent_date = 0
