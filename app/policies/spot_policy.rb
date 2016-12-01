@@ -9,8 +9,8 @@ class SpotPolicy < ApplicationPolicy
     return true
   end
 
-  def show
-    true
+  def show?
+    return true
   end
 
   def create?
