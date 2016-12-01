@@ -8,9 +8,7 @@
           <div class="spot-show-card">
             <h1><%= @spot.name.capitalize %></h1>
 
-            <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-std-btn" do %>
-            Add to favorite spots
-            <% end %>
+
 
             <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite2-btn", class: "kite-round-btn" do %>
               <i class="fa fa-heart"></i>
