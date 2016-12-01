@@ -5,5 +5,6 @@
       $('.tide-data').append(data_div);;
       $('.tide-data > script').remove();
       $('.tide-data').removeClass('hidden');
+      $('.tide-data table').addClass('table');
 
     });

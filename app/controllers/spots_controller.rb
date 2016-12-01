@@ -32,7 +32,6 @@ class SpotsController < ApplicationController
     @spot.lng = a[:lng]
     authorize @spot
     @spot.harbor = Harbor.find_closest_from(@spot.lat, @spot.lng)
-
     if @spot.save
       @spot.fetch_and_parse_forecast_data
       @spot.save

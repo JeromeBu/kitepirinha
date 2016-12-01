@@ -9,4 +9,7 @@
 <% end %>
 <p>-----------------</p>
 
-<%= link_to "Create a weather feedback", new_spot_weather_feedback_path(@spot) %>
+
+<%= link_to new_spot_weather_feedback_path(@spot), id: "add-feedback-btn", class: "kite-std-btn" do %>
+  Provide weather feedback
+<% end %>
