@@ -18,6 +18,7 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'pundit'
 gem 'cloudinary', '1.1.0'
+gem 'omniauth-facebook'
 
 
 #scrapping for tides
