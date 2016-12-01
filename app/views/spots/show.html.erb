@@ -52,13 +52,13 @@
         <div class="col-xs-12">
           <div class="spot-show-card">
             <h2>Facilities</h2>
-            <% unless @spot.facility.parking.nil? %><p><strong>Parking:</strong> <%= @spot.facility.parking %></p><% end %>
-            <% unless @spot.facility.safety_watch.nil? %><p><strong>Sécurité: <%= @spot.facility.safety_watch %></p><% end %></strong>
-            <% unless @spot.facility.kite_school.nil? %><p><strong>Schools:</strong> <%= @spot.facility.kite_school %></p><% end %>
-            <% unless @spot.facility.water_spot.nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility.water_spot %></p><% end %>
-            <% unless @spot.facility.shop.nil? %><p><strong>Shop:</strong> <%= @spot.facility.shop %></p><% end %>
-            <% unless @spot.facility.shower.nil? %><p><strong>Douches:</strong> <%= @spot.facility.shower %></p><% end %>
-            <% unless @spot.facility.comment.nil? %><p><strong>Commentaires:</strong> <%= @spot.facility.comment %></p><% end %>
+            <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot[:facility][:parking] %></p><% end %>
+            <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
+            <% unless @spot[:facility][:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot[:facility][:kite_school] %></p><% end %>
+            <% unless @spot[:facility][:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot[:facility][:water_spot] %></p><% end %>
+            <% unless @spot[:facility][:shop].nil? %><p><strong>Shop:</strong> <%= @spot[:facility][:shop] %></p><% end %>
+            <% unless @spot[:facility][:shower].nil? %><p><strong>Douches:</strong> <%= @spot[:facility][:shower] %></p><% end %>
+            <% unless @spot[:facility][:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot[:facility][:comment] %></p><% end %>
           </div>
         </div>
 
