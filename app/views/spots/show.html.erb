@@ -8,14 +8,16 @@
           <div class="spot-show-card">
             <h1><%= @spot.name.capitalize %>
 
-              <div id="spot-rating">
-                <% @spot.average_rating.round.times do %>
-                  <i class="fa fa-star yellow-filled"></i>
-                <% end %>
-                <% (5 - @spot.average_rating.round).times do %>
-                  <i class="fa fa-star not-filled"></i>
-                <% end %>
-              </div>
+              <% if @spot.average_rating %>
+                <div id="spot-rating">
+                  <% @spot.average_rating.round.times do %>
+                    <i class="fa fa-star yellow-filled"></i>
+                  <% end %>
+                  <% (5 - @spot.average_rating.round).times do %>
+                    <i class="fa fa-star not-filled"></i>
+                  <% end %>
+                </div>
+              <% end %>
 
             <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-round-btn" do %>
               <i class="fa fa-heart"></i>
