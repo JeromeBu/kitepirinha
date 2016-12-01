@@ -101,5 +101,11 @@ class Spot < ApplicationRecord
       }
     end
   end
+
+  def average_rating
+    ratings = self.reviews.map { |r| r.rating }
+    average = ratings.inject{ |sum, el| sum + el }.to_f / ratings.size if !ratings.empty?
+    average
+  end
 end
 

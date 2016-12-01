@@ -1,16 +1,22 @@
 body{
   color: #616668;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.bg-white{
+  background-color: white;
 }
 
 .spot-show-card h1 {
   font-family: 'Raleway', sans-serif;
+  position: relative;
 }
 
 .spot-show-card {
   text-align: left;
-  padding: 10px;
+  padding: 30px;
   // border-radius: 5px;
-  box-shadow: 2px 2px #AAAAAA;
+  // box-shadow: 2px 2px #AAAAAA;
   background-color: white;
 
   margin-top: 10px;
@@ -33,7 +39,7 @@ body{
 #add-to-favorite-btn{
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 2px;
 }
 
 #review-header {
@@ -46,8 +52,21 @@ body{
   float: right;
 }
 
-#add-to-favorite2-btn{
+#spot-rating{
   position: absolute;
-  right: 250px;
-  top: 10px;
+  top: 0px;
+  right: 100px;
+
+}
+
+#spot-rating.fa-star{
+  font-size: 30px;
+  border: 1px solid $dark_blue;
+}
+
+.yellow-filled{
+  color: #F1C40F;
+}
+.not-filled{
+  color: grey;
 }
