@@ -1,22 +1,36 @@
 <table>
   <tbody>
     <tr>
+      <th scope="row">Day</th>
+      <% @forecasts.each do |forecast|%>
+        <% if forecast[:date_time].strftime('%H').to_i.even? %>
+          <td><%= forecast[:date_time].strftime('%a')%></td>
+        <% end %>
+      <% end %>
+    </tr>
+    <tr>
       <th scope="row">Time</th>
-      <td>9</td>
-      <td>10</td>
-      <td>11</td>
+      <% @forecasts.each do |forecast|%>
+        <% if forecast[:date_time].strftime('%H').to_i.even? %>
+          <td><%= forecast[:date_time].strftime('%H')%></td>
+        <% end %>
+      <% end %>
     </tr>
     <tr>
       <th scope="row">Strength</th>
-      <td>14</td>
-      <td>15</td>
-      <td>16</td>
+      <% @forecasts.each do |forecast|%>
+        <% if forecast[:date_time].strftime('%H').to_i.even? %>
+          <td><%= forecast[:wind_strength].round %></td>
+        <% end %>
+      <% end %>
     </tr>
     <tr>
       <th scope="row">Direction</th>
-      <td>240</td>
-      <td>235</td>
-      <td>230</td>
+      <% @forecasts.each do |forecast|%>
+        <% if forecast[:date_time].strftime('%H').to_i.even? %>
+          <td><%= forecast[:wind_direction] %></td>
+          <% end %>
+      <% end %>
     </tr>
   </tbody>
 </table>
