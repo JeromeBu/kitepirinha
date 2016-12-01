@@ -4,6 +4,7 @@ body{
 
 .spot-show-card h1 {
   font-family: 'Raleway', sans-serif;
+  position: relative;
 }
 
 .spot-show-card {
@@ -36,11 +37,14 @@ body{
 #add-to-favorite-btn{
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 2px;
 }
 
-#add-to-favorite2-btn{
+#spot-rating{
   position: absolute;
-  right: 250px;
-  top: 10px;
+}
+
+#spot-rating.fa-star{
+  color: yellow;
+  font-size: 30px;
 }
