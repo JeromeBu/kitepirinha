@@ -1,5 +1,11 @@
 <div class="container-fluid wrapper">
   <div class="row">
+    <form id="search-form" class="form-inline" action="/spots" method="get">
+      <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?">
+      <button type="submit" class="btn banner-wagon-button"><i class="fa fa-search"></i>  SEARCH</button>
+    </form>
+  </div>
+  <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-6">
       <% @spots.each do |spot| %>
