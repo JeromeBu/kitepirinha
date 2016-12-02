@@ -66,7 +66,8 @@
         <!-- Facilities -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <%= render 'h2_title', title: "Facilities"%>
+            <%= render 'h2-title', title: "Facilities"%>
+
             <% unless @spot.facility.nil? %>
               <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
               <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
@@ -75,6 +76,8 @@
               <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
               <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
               <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+            <% else %>
+              <p>No facilities added for this spot</p>
             <% end %>
           </div>
         </div>
