@@ -24,6 +24,8 @@
 
                 <span><%= ['Perfect Conditions', 'Not the best time to go'].sample %></span>
 
+                  <% @wind_strength = 0 %>
+                  <% @wind_direction = 0 %>
                   <% @forecasts_results[spot.name].each do |forecast|%>
                     <% @wind_strength += forecast.wind_strength %>
                     <% @wind_direction += forecast.wind_direction %>

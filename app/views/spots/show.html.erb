@@ -86,9 +86,8 @@
         </div>
 
         <!-- Reviews -->
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
           <div class="spot-show-card">
-            <div id="review-header">
               <h2 id="reviews_count">
                 <%= render "spots/reviews_count", spot: @spot %>
               </h2>
@@ -100,7 +99,7 @@
               </button>
             </div>
             <hr>
-            <div id="reviews">
+            <div class="spot-show-card" id="reviews">
               <% @spot.reviews.each do |review| %>
                <%= render 'reviews/show', review: review %>
               <% end %>
@@ -121,7 +120,7 @@
                   <%= render 'reviews/form', spot: @spot, review: @review %>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>

@@ -1,3 +1,4 @@
-<p><strong><%= review.user.first_name || review.user.email %> - Rating : <%= review.rating %></strong></p>
-<p><%= review.content %></p>
-<hr>
+<h2 class="title-surrounding"></h2>
+<p>Review added by <%= review.user.first_name || review.user.email %></p>
+<p>Rating : <%= review.rating %></p>
+<p>Description : <%= review.content %></p>
