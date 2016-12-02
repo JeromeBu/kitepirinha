@@ -1057,6 +1057,12 @@ if true #write false if you don't wanna seed the spots
   RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
   s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
+
+  s = Spot.create!(name: "Antifer", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", lat: 49.6605, lng: 0.1537, user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"))
+  Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", spot: Spot.find_by(name: "Antifer"))
+  RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
+  RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
+  s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
 end
 
 
