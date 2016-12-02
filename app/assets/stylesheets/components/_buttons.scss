@@ -1,9 +1,9 @@
 .kite-home-btn{
   text-decoration: none;
   font-size: 17px;
-  color: $dark_blue;
+  color: $gray_bg;
   background-color: transparent;
-  border: 2px solid $dark_blue;
+  border: 2px solid $gray_bg;
   padding: 12px 15px;
   cursor: pointer;
   font-family: 'Raleway', sans-serif;
@@ -14,8 +14,8 @@
 .kite-home-btn:hover{
   opacity: 0.9;
   transition: all 0.3s ease;
-  color: $gray_bg;
-  border: 2px solid $gray_bg;
+  color: $dark_blue;
+  border: 2px solid $dark_blue;
   text-decoration: none;
 }
 
@@ -62,9 +62,3 @@
 
 }
 
-.kite-home-btn:hover{
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  color: white;
-  text-decoration: none;
-}
