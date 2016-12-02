@@ -1,7 +1,5 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @spot.photo.path %>')">
 
         <!-- Title Section -->
         <div class="col-xs-12">
@@ -29,6 +27,13 @@
             <p>You're on spot n# <%= @spot.id %></p>
           </div>
         </div>
+
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+
 
         <!-- Weather infos -->
         <div class="col-xs-12">
