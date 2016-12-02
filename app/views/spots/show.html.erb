@@ -53,6 +53,7 @@
         <!-- Feedback infos -->
         <div class="col-xs-12 col-sm-6" id='feedbacks-container'>
           <div class="spot-show-card">
+            <%= render 'h2-title', title: "Real time weather feedback"%>
             <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
           </div>
         </div>
