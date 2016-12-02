@@ -33,7 +33,7 @@
         <!-- Weather infos -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <%= render 'h2-title', title: "Weather forecast"%>
+            <%= render 'h2_title', title: "Weather forecast"%>
             <%= render 'forecast', forecasts: nil %>
           </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="col-xs-12 col-sm-6" id="tide-container">
           <div class="spot-show-card">
             <div class="tide-data hidden">
-              <%= render 'h2-title', title: "Tide forecast"%>
+              <%= render 'h2_title', title: "Tide forecast"%>
               <% query = @spot.harbor.query if @spot.harbor %>
               <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
               <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
@@ -53,7 +53,7 @@
         <!-- Feedback infos -->
         <div class="col-xs-12 col-sm-6" id='feedbacks-container'>
           <div class="spot-show-card">
-            <%= render 'h2-title', title: "Real time weather feedback"%>
+            <%= render 'h2_title', title: "Real time weather feedback"%>
             <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
           </div>
         </div>
@@ -61,14 +61,16 @@
         <!-- Facilities -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <%= render 'h2-title', title: "Facilities"%>
-            <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
-            <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
-            <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
-            <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
-            <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
-            <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
-            <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+            <%= render 'h2_title', title: "Facilities"%>
+            <% unless @spot.facility.nil? %>
+              <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
+              <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
+              <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
+              <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
+              <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
+              <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
+              <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+            <% end %>
           </div>
         </div>
 
