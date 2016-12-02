@@ -1,4 +1,4 @@
-.kite-std-btn{
+.kite-home-btn{
   text-decoration: none;
   font-size: 17px;
   color: $dark_blue;
@@ -11,11 +11,28 @@
   // box-shadow: 1px 1px 2px #0C7CDC;
 }
 
-.kite-std-btn:hover{
+.kite-home-btn:hover{
   opacity: 0.9;
   transition: all 0.3s ease;
   color: $gray_bg;
   border: 2px solid $gray_bg;
+  text-decoration: none;
+}
+
+.kite-std-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  background-color: $dark_blue;
+  padding: 12px 15px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+}
+
+.kite-std-btn:hover{
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  color: white;
   text-decoration: none;
 }
 
