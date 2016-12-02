@@ -7,7 +7,13 @@
 
           <!-- <div class="spot-card" style="background-image: url('<%#= cl_image_path spot.photo, height: 200, width: 658, crop: :fill %>')"> -->
 
-          <div class="spot-card" style="background-image: url('<%= cl_image_path spot.photo.path, height: 200, width: 658, crop: :fill %>')">
+          <% if spot.photo %>
+            <% img_url = cl_image_path spot.photo.path, height: 200, width: 658, crop: :fill %>
+          <% else %>
+            <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_200,w_658,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
+          <% end %>
+
+          <div class="spot-card" style="background-image: url('<%=  img_url %>')">
 
 
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
