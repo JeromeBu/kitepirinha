@@ -1,14 +1,24 @@
 <div class="container-fluid wrapper">
   <div class="row">
 
-    <div class="col-xs-12 col-sm-12 col-md-6">
+    <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">
       <% @spots.each do |spot| %>
-        <div class="col-xs-12 col-sm-12">
+        <div class="col-xs-12 col-sm-12 " id="spot-card-boundaries">
           <div class="spot-card" style="background-image: url('<%= cl_image_path("image1_henvzi.jpg", width: 330, height: 400, crop: :fill) %>')">
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
               <h2><%= spot.name %></h2>
-              <div class="card-content-action">
+              <div class="spot-full-infos">
+
+                <% @forecasts_results[spot.name].each do |forecast|%>
+                  <% @wind_strength += forecast.wind_strength %>
+                  <% @wind_direction += forecast.wind_direction %>
+                <% end %>
+                <% wind_strength_avg = @wind_strength / 6 %>
+                <% wind_direction_avg = @wind_direction / 6 %>
+                <span><%= wind_strength_avg.round %></span>
+                <span><%= wind_direction_avg.round %></span>
+
                 <% if spot.average_rating %>
                   <% spot.average_rating.round.times do %>
                     <i class="fa fa-star yellow-filled"></i>
@@ -17,6 +27,7 @@
                     <i class="fa fa-star not-filled"></i>
                   <% end %>
                 <% end %>
+
               </div>
             </div>
           </div>

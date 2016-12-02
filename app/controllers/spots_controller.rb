@@ -5,13 +5,16 @@ class SpotsController < ApplicationController
   def index
     @spots_index = policy_scope(Spot)
     @spots = Spot.where.not(lat: nil, lng: nil)
-    # @forecasts_results = {}
-    # @wind_strength_sum = 0
-    # @spots_index.each do |spot|
-    #   forecasts = spot.fresh_forecasts
-    #   @forecasts_results[spot.name] = forecasts
-    # end
-    # @forecasts_results
+
+    @forecasts_results = {}
+    @wind_strength = 0
+    @wind_direction = 0
+
+    @spots_index.each do |spot|
+      forecasts = spot.fresh_forecasts
+      @forecasts_results[spot.name] = forecasts.first(6)
+    end
+    @forecasts_results
 
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.lat
