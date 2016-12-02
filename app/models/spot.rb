@@ -5,6 +5,7 @@ class Spot < ApplicationRecord
 
   # geocoded_by :address
   # after_validation :geocode
+  has_attachment :photo
 
   belongs_to :harbor
   belongs_to :user

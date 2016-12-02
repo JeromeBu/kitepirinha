@@ -1,12 +1,10 @@
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 bg-white">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @spot.photo.path %>')">
 
         <!-- Title Section -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <h1><%= @spot.name.capitalize %>
+            <h1 id="spot-show-h1-title"><%= @spot.name.capitalize %>
 
               <% if @spot.average_rating %>
                 <div id="spot-rating">
@@ -14,7 +12,7 @@
                     <i class="fa fa-star yellow-filled"></i>
                   <% end %>
                   <% (5 - @spot.average_rating.round).times do %>
-                    <i class="fa fa-star not-filled"></i>
+                    <i class="fa fa-star-o"></i>
                   <% end %>
                 </div>
               <% end %>
@@ -30,10 +28,17 @@
           </div>
         </div>
 
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+
+
         <!-- Weather infos -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <h2>Forecast data</h2>
+            <%= render 'h2_title', title: "Weather forecast"%>
             <%= render 'forecast', forecasts: nil %>
           </div>
         </div>
@@ -42,6 +47,7 @@
         <div class="col-xs-12 col-sm-6" id="tide-container">
           <div class="spot-show-card">
             <div class="tide-data hidden">
+              <%= render 'h2_title', title: "Tide forecast"%>
               <% query = @spot.harbor.query if @spot.harbor %>
               <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
               <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
@@ -52,6 +58,7 @@
         <!-- Feedback infos -->
         <div class="col-xs-12 col-sm-6" id='feedbacks-container'>
           <div class="spot-show-card">
+            <%= render 'h2_title', title: "Real time weather feedback"%>
             <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
           </div>
         </div>
@@ -59,14 +66,16 @@
         <!-- Facilities -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <h2>Facilities</h2>
-            <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
-            <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
-            <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
-            <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
-            <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
-            <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
-            <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+            <%= render 'h2_title', title: "Facilities"%>
+            <% unless @spot.facility.nil? %>
+              <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
+              <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
+              <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
+              <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
+              <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
+              <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
+              <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+            <% end %>
           </div>
         </div>
 
@@ -79,7 +88,8 @@
               </h2>
 
               <!-- Modal for reviews -->
-              <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" id="comment-button">
+              <!-- btn btn-primary btn-lg -->
+              <button type="button" class="kite-std-btn" data-toggle="modal" data-target="#myModal" id="comment-button">
                 Add a review
               </button>
             </div>

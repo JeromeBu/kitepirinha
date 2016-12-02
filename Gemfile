@@ -19,7 +19,8 @@ gem 'autoprefixer-rails'
 gem 'pundit'
 gem 'cloudinary', '1.1.0'
 gem 'omniauth-facebook'
-
+gem "attachinary", github: "assembler/attachinary"
+gem "jquery-fileupload-rails"
 
 #scrapping for tides
 gem 'capybara'

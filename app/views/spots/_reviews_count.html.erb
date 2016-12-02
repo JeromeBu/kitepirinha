@@ -1,1 +1,2 @@
-<%= pluralize spot.reviews.size, "review" %>
+<% nb_reviews = pluralize spot.reviews.size, "review" %>
+<%= render 'spots/h2_title', title: nb_reviews %>

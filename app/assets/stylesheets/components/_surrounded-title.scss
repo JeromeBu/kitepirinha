@@ -1,0 +1,26 @@
+.surrounded-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.surrounded-title h2 {
+  margin-top: 11px;
+  flex: 1 0 auto;
+  text-align: center;
+}
+
+.title-surrounding{
+  height: 1px;
+  background-color: #bababa;
+  opacity: 0.6;
+  flex: 1 0 20%;
+}
+
+.left-surrounding{
+}
+
+.right-surrounding{
+
+}
