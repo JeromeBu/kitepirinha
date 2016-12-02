@@ -80,3 +80,35 @@ body{
 .not-filled{
   color: grey;
 }
+
+#forecast-data {
+    width: 100%;
+    background-color: #CAE0F3;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#forecast-data table {
+    width: 100%;
+    background-color: #CAE0F3;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#forecast-data td {
+  text-align: center;
+}
+
+#forecast-data th {
+  text-align: left;
+  border-right: 2px solid black;
+}
+
+#forecast-data th :first-of-type {
+  border-radius: 5px;
+}
+
+
+.time-infos {
+  opacity: 0.5;
+}
