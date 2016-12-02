@@ -1,6 +1,12 @@
 <div class="banner banner-show" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)),
          url('<%= cl_image_path @spot.photo.path, :width => 1600, :height => 700, :crop => :fill,
              :gravity => :south %>')">
+</div>
+
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
 
         <!-- Title Section -->
         <div class="col-xs-12">
@@ -22,19 +28,9 @@
               <i class="fa fa-heart"></i>
             <% end %>
             </h1>
-
             <p><%= @spot.description unless @spot.description.nil?%></p>
-            <p>Accepted ? <%= @spot.accepted %></p>
-            <p>You're on spot n# <%= @spot.id %></p>
           </div>
         </div>
-
-</div>
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-
 
         <!-- Weather infos -->
         <div class="col-xs-12">
@@ -67,7 +63,7 @@
         <!-- Facilities -->
         <div class="col-xs-12">
           <div class="spot-show-card">
-            <%= render 'h2-title', title: "Facilities"%>
+            <%= render 'h2_title', title: "Facilities"%>
 
             <% unless @spot.facility.nil? %>
               <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
