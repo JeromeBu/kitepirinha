@@ -6,14 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-if true #write false if you don't wanna seed the users
+
+if false #write false if you don't wanna seed the users
   User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
   User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
   User.create!(email: "julie@mail.com", password: "azerty", first_name: "Julie")
   User.create!(email: "jeremy@mail.com", password: "azerty", first_name: "Jeremy")
 end
 
-if true #write false if you don't wanna seed the harbors ;-)
+if false #write false if you don't wanna seed the harbors ;-)
   User.destroy_all
   User.create!(email: "jerome@mail.com", password: "azerty", first_name: "Jérôme")
   User.create!(email: "romain@mail.com", password: "azerty", first_name: "Romain")
