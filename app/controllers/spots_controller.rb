@@ -16,8 +16,6 @@ class SpotsController < ApplicationController
     end
     @forecasts_results
 
-
-
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.lat
       marker.lng spot.lng
