@@ -3,7 +3,7 @@ class WeatherFeedback < ApplicationRecord
   belongs_to :spot
 
   validates :strength, presence: true
-  validates :rating, numericality: { only_integer: true }, inclusion: { in: (0..5).to_a }
+  validates :rating, numericality: { only_integer: true }, inclusion: { in: (0..5).to_a }, allow_blank: true
 
   # estimation du vent selon aile pour un poid de 75kg
   # taille rating => (aile => vent)

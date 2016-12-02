@@ -1,37 +1,39 @@
-<table>
-  <tbody>
-    <tr>
-      <th scope="row">Day</th>
-      <% @forecasts.each do |forecast|%>
-        <% if forecast[:date_time].strftime('%H').to_i.even? %>
-          <td><%= forecast[:date_time].strftime('%a')%></td>
-        <% end %>
-      <% end %>
-    </tr>
-    <tr>
-      <th scope="row">Time</th>
-      <% @forecasts.each do |forecast|%>
-        <% if forecast[:date_time].strftime('%H').to_i.even? %>
-          <td><%= forecast[:date_time].strftime('%H')%></td>
-        <% end %>
-      <% end %>
-    </tr>
-    <tr>
-      <th scope="row">Strength</th>
-      <% @forecasts.each do |forecast|%>
-        <% if forecast[:date_time].strftime('%H').to_i.even? %>
-          <td><%= forecast[:wind_strength].round %></td>
-        <% end %>
-      <% end %>
-    </tr>
-    <tr>
-      <th scope="row">Direction</th>
-      <% @forecasts.each do |forecast|%>
-        <% if forecast[:date_time].strftime('%H').to_i.even? %>
-          <td><%= forecast[:wind_direction] %></td>
+<div id="forecast-data">
+  <table>
+    <tbody>
+      <tr>
+        <th scope="row">Day</th>
+        <% @forecasts.each do |forecast|%>
+          <% if forecast[:date_time].strftime('%H').to_i.even? %>
+            <td class="time-infos"><%= forecast[:date_time].strftime('%a')%></td>
           <% end %>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row">Time</th>
+        <% @forecasts.each do |forecast|%>
+          <% if forecast[:date_time].strftime('%H').to_i.even? %>
+            <td class="time-infos"><%= forecast[:date_time].strftime('%H')%>h</td>
+          <% end %>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row">Strength</th>
+        <% @forecasts.each do |forecast|%>
+          <% if forecast[:date_time].strftime('%H').to_i.even? %>
+            <td><%= forecast[:wind_strength].round %></td>
+          <% end %>
+        <% end %>
+      </tr>
+      <tr>
+        <th scope="row">Direction</th>
+        <% @forecasts.each do |forecast|%>
+          <% if forecast[:date_time].strftime('%H').to_i.even? %>
+            <td><%= forecast[:wind_direction] %></td>
+            <% end %>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
