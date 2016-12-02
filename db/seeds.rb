@@ -1059,10 +1059,14 @@ if true #write false if you don't wanna seed the spots
   RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
   s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
 
-  s = Spot.create!(name: "Antifer", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", lat: 49.6605, lng: 0.1537, user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"))
-  Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", spot: Spot.find_by(name: "Antifer"))
-  RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
-  RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
+  s = Spot.create!(name: "Saint-Aubin", description: "vagues: plat / clapot / petites vagues / shore. Vague par vent de Nord Est fort et par ouest quand il a de la houle. Pas de plage à marée haute. Le spot n'est pas naviguable 2 heure avant et 2 heures après la marée haute. Très bien pour s'initier à la vague sans risque.  ", lat: 49.8926, lng: 0.8607, user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by(name: "Etretat"))
+  Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", comment: "Pas mal de courant. il va de gauche à droite à la marée descendante et s'inverse à la remontante. Il y a des rochers à gauche de la plage de Saussemare et à droite de Saint Aubin (dès que la digue se termine).. Par grandes marées, faire attention à kk rochers au milieu du spot qui découvrent...", spot: Spot.find_by(name: "Saint-Aubin"))
+  RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Saint-Aubin"))
+  s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
+
+   s = Spot.create!(name: "Saint-Aubin", description: "vagues: plat / clapot / petites vagues / shore. Vague par vent de Nord Est fort et par ouest quand il a de la houle. Pas de plage à marée haute. Le spot n'est pas naviguable 2 heure avant et 2 heures après la marée haute. Très bien pour s'initier à la vague sans risque.  ", lat: 49.8926, lng: 0.8607, user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by(name: "Etretat"))
+  Facility.create!(parking: "Parking juste devant la plage", kite_school: "Learn Kite",shop: "Pas de shop dans le coin", comment: "Pas mal de courant. Il va de gauche à droite à la marée descendante et s'inverse à la remontante. Il y a des rochers à gauche de la plage de Saussemare et à droite de Saint Aubin (dès que la digue se termine).. Par grandes marées, faire attention à kk rochers au milieu du spot qui découvrent...", spot: Spot.find_by(name: "Saint-Aubin"))
+  RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Saint-Aubin"))
   s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
 end
 
