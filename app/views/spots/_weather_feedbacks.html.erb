@@ -1,4 +1,4 @@
-<h2><%= @mean_weather_feedback[:message] %></h2>
+<p><%= @mean_weather_feedback[:message] %></p>
 
 <% unless @mean_weather_feedback[:last_feedback].nil? %>
   <p>Mean wind direction : <%= @mean_weather_feedback[:mean_direction] %></p>
@@ -7,9 +7,10 @@
   <p>Last wind direction : <%= @mean_weather_feedback[:last_feedback][:direction] %></p>
   <p>Last wind strength : <%= @mean_weather_feedback[:last_feedback][:strength] %></p>
 <% end %>
-<p>-----------------</p>
 
 
-<%= link_to new_spot_weather_feedback_path(@spot), id: "add-feedback-btn", class: "kite-std-btn" do %>
-  Provide weather feedback
-<% end %>
+<div class="text-right add-feedback-btn-div">
+  <%= link_to new_spot_weather_feedback_path(@spot), id: "add-feedback-btn", class: "kite-std-btn text-center" do %>
+    Provide weather feedback
+  <% end %>
+</div>
