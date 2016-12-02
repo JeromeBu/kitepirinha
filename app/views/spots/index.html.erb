@@ -4,30 +4,36 @@
     <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-12 " id="spot-card-boundaries">
-          <div class="spot-card" style="background-image: url('<%= cl_image_path("image1_henvzi.jpg", width: 330, height: 400, crop: :fill) %>')">
+          <div class="spot-card" style="background-image: url('<%= cl_image_path spot.photo.path %>', height: 200px, width: 330px, crop: fill">
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
-              <h2><%= spot.name %></h2>
+              <h3><%= spot.name %></h3>
               <div class="spot-full-infos">
+                <div class="header-info-spot">
 
-                <% @forecasts_results[spot.name].each do |forecast|%>
-                  <% @wind_strength += forecast.wind_strength %>
-                  <% @wind_direction += forecast.wind_direction %>
-                <% end %>
-                <% wind_strength_avg = @wind_strength / 6 %>
-                <% wind_direction_avg = @wind_direction / 6 %>
-                <span><%= wind_strength_avg.round %></span>
-                <span><%= wind_direction_avg.round %></span>
+                <span><%= ['Perfect Conditions', 'Not the best time to go'].sample %></span>
 
-                <% if spot.average_rating %>
-                  <% spot.average_rating.round.times do %>
-                    <i class="fa fa-star yellow-filled"></i>
+                  <% @forecasts_results[spot.name].each do |forecast|%>
+                    <% @wind_strength += forecast.wind_strength %>
+                    <% @wind_direction += forecast.wind_direction %>
                   <% end %>
-                  <% (5 - spot.average_rating.round).times do %>
-                    <i class="fa fa-star not-filled"></i>
-                  <% end %>
-                <% end %>
+                  <% wind_strength_avg = @wind_strength / 6 %>
+                  <% wind_direction_avg = @wind_direction / 6 %>
+                  <span><%= image_tag "wind-4-icon.jpg", id: "strength" %><%= wind_strength_avg.round %> kt</span>
+                  <span><%= image_tag "direction_compass.ico", id: "direction" %> <%= wind_direction_avg.round %>°</span>
 
+                  <div class="stars-container">
+                  <% if spot.average_rating %>
+                    <% spot.average_rating.round.times do %>
+                      <i class="fa fa-star yellow-filled"></i>
+                    <% end %>
+                    <% (5 - spot.average_rating.round).times do %>
+                      <i class="fa fa-star not-filled"></i>
+                    <% end %>
+                  <% end %>
+
+                  </div>
+                </div>
               </div>
             </div>
           </div>
