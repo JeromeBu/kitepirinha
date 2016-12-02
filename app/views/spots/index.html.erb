@@ -4,7 +4,12 @@
     <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-12 " id="spot-card-boundaries">
-          <div class="spot-card" style="background-image: url('<%= cl_image_path spot.photo.path %>', height: 200px, width: 330px, crop: fill">
+
+          <!-- <div class="spot-card" style="background-image: url('<%#= cl_image_path spot.photo, height: 200, width: 658, crop: :fill %>')"> -->
+
+          <div class="spot-card" style="background-image: url('<%= cl_image_path spot.photo.path, height: 200, width: 658, crop: :fill %>')">
+
+
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
               <h3><%= spot.name %></h3>
