@@ -1042,18 +1042,21 @@ end
 if true #write false if you don't wanna seed the spots
   Spot.destroy_all
 
-  Spot.create!(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable assez mou, avec de nombreuses baines", lat: 49.2870, lng: -0.2071, user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by(name: "Ouistreham"))
+  s = Spot.create!(name: "Franceville", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable assez mou, avec de nombreuses baines", lat: 49.2870, lng: -0.2071, user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by(name: "Ouistreham"))
   Facility.create!(parking: "parking juste devant la plage", kite_school: "Kite-r (Franceville)",shop: "Le Menhir (Cabourg)", comment: "Dangers particuliers: il y a parfois beaucoup de monde dans la grande baïne", spot: Spot.find_by(name: "Franceville"))
   RecommendedWindDirection.create!(sector_start: 270, sector_end: 45, spot: Spot.find_by(name: "Franceville"))
+  s.photo_url = "http://www.place-to-be.fr/wp-content/uploads/2016/01/kite-surf.jpg"
 
-  Spot.create!(name: "Vierville", description: "Vagues: plat dans les baines / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse, pas de plage à marée haute. Baines à marée basse très longue et pas large (300 x 15m), exploitable par vent on shore (Nord). Spot pas exploitable à marée haute: absence de plage.", lat: 49.3775, lng: -0.8980, user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by(name: "Grandcamp"))
+  s = Spot.create!(name: "Vierville", description: "Vagues: plat dans les baines / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse, pas de plage à marée haute. Baines à marée basse très longue et pas large (300 x 15m), exploitable par vent on shore (Nord). Spot pas exploitable à marée haute: absence de plage.", lat: 49.3775, lng: -0.8980, user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by(name: "Grandcamp"))
   Facility.create!(parking: "Au bout de la plage (coté gauche en regardant la mer)", kite_school: "Pas d'écoles à proximité", comment: "Dangers particuliers: digue le long de la plage", spot: Spot.find_by(name: "Vierville"))
   RecommendedWindDirection.create!(sector_start: 205, sector_end: 45, spot: Spot.find_by(name: "Vierville"))
+  s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/08/gopr0050.jpg"
 
-  Spot.create!(name: "Antifer", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", lat: 49.6605, lng: 0.1537, user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"))
+  s = Spot.create!(name: "Antifer", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", lat: 49.6605, lng: 0.1537, user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
+  s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
 end
 
 
