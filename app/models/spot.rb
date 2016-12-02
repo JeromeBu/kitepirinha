@@ -71,7 +71,7 @@ class Spot < ApplicationRecord
   end
 
   def mean_weather_feedback
-    last_feedbacks = self.weather_feedbacks.where("created_at > ?", DateTime.now - 2.hours)
+    last_feedbacks = self.weather_feedbacks.where("created_at > ?", DateTime.now - 4.hours)
     if last_feedbacks.empty?
       mean_feedback = {message: "No recent data for this spot"}
     else
