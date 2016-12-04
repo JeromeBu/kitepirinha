@@ -13,7 +13,7 @@
             <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_200,w_658,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
           <% end %>
 
-          <div class="spot-card" style="background-image: url('<%=  img_url %>')">
+          <div class="spot-card" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)), url('<%=  img_url %>')">
 
 
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
@@ -33,6 +33,7 @@
                   <% wind_strength_avg = @wind_strength / 6 %>
                   <% wind_direction_avg = @wind_direction / 6 %>
                   <span><%= image_tag "wind-4-icon.jpg", id: "strength" %><%= wind_strength_avg.round %> kt</span>
+                  <% nb = wind_strength_avg.round %>
                   <span><%= image_tag "direction_compass.ico", id: "direction" %> <%= wind_direction_avg.round %>°</span>
 
                   <div class="stars-container">
@@ -61,7 +62,11 @@
           <%= javascript_tag do %>
             $(document).ready(function() {
               var handler = Gmaps.build('Google');
-              handler.buildMap({ internal: { id: 'map' } }, function() {
+              handler.buildMap({
+                provider: {
+                  styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c0e4f3"},{"visibility":"on"}]}]
+                },
+                internal: { id: 'map' } }, function() {
                 markers = handler.addMarkers(<%= raw @hash.to_json %>);
                 handler.bounds.extendWith(markers);
                 handler.fitMapToBounds();
