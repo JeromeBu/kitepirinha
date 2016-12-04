@@ -1,4 +1,17 @@
 <div class="container-fluid wrapper">
+
+  <div class="row">
+     <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
+        <label for="begginer">I am a beginner</label>
+        <input type="checkbox" name="beginner" id="beginner" value=<%= params[:begginer] %>>
+        <label for="confirmed">I am confirmed</label>
+        <input type="checkbox" name="confirmed" id="confirmed" value=<%= params[:confirmed] %>>
+        <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?">
+        <button type="submit" class="btn banner-wagon-button"><i class="fa fa-search"></i>  SEARCH</button>
+
+    <% end %>
+  </div>
+
   <div class="row">
 
     <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">

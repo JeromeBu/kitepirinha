@@ -10,7 +10,9 @@
                   Discover Kitepirinha experience
                 </h2>
                 <h4><span class="thinner">Find all the</span> <span id="best-kitesurf">best kitesurf spots</span> <span class="thinner">around you</span></h4>
-                  <%= link_to "FIND YOUR SPOT", spots_path, class: "kite-home-btn" %>
+
+                  <%= link_to "BEGINNER", spots_path(level: "beginner"), class: "kite-home-btn" %>
+                  <%= link_to "CONFIRMED", spots_path(level: "confirmed"), class: "kite-home-btn" %>
               </div>
 
             </div>
