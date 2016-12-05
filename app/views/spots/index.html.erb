@@ -31,17 +31,22 @@
 
                 <span><%= ['Perfect Conditions', 'Not the best time to go'].sample %></span>
 
-                  <% @wind_strength = 0 %>
-                  <% @wind_direction = 0 %>
-                  <% @forecasts_results[spot.name].each do |forecast|%>
-                    <% @wind_strength += forecast.wind_strength %>
-                    <% @wind_direction += forecast.wind_direction %>
-                  <% end %>
-                  <% wind_strength_avg = @wind_strength / 6 %>
-                  <% wind_direction_avg = @wind_direction / 6 %>
-                  <span><%= image_tag "wind-4-icon.jpg", id: "strength" %><%= wind_strength_avg.round %> kt</span>
-                  <% nb = wind_strength_avg.round %>
-                  <span><%= image_tag "direction_compass.ico", id: "direction" %> <%= wind_direction_avg.round %>°</span>
+                  <%# @wind_strength = 0 %>
+                  <%# @wind_direction = 0 %>
+                  <%# @forecasts_results[spot.name].each do |forecast|%>
+                    <%# @wind_strength += forecast.wind_strength %>
+                    <%# @wind_direction += forecast.wind_direction %>
+                  <%# end %>
+                  <%# wind_strength_avg = @wind_strength / 6 %>
+                  <%# wind_direction_avg = @wind_direction / 6 %>
+                  <span><%= image_tag "wind-4-icon.jpg", id: "strength" %><%= @forecasts_results[spot.name].first.wind_strength.round %> kt</span>
+                  <% angle = @forecasts_results[spot.name].first.wind_direction.to_i - 45 + 180%>
+                  <span>
+                    <div style = "transform: rotate(<%= angle %>deg)"><%= image_tag "direction_compass.ico", id: "direction" %></div>
+                   <%= @forecasts_results[spot.name].first.wind_direction %>°
+                   </span>
+                  <span><%= @forecasts_results[spot.name].first.temperature %></span>
+                  <span><%= @forecasts_results[spot.name].first.cloud_cover %></span>
 
                   <div class="stars-container">
                   <% if spot.average_rating %>
