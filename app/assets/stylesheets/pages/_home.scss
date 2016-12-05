@@ -1,48 +1,54 @@
 .pages-home {
   background-color: $blue;
   margin: 0;
-  position: relative;
   height: 100vh;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+
   #full-navbar {
     display: none;
   }
 }
 
 .main-title-section {
-  position: absolute;
-  top: 50px;
-  left: 90px;
+  width: 100vw;
+  margin: 30px 0 0 150px;
 
   color: #fff;
-  font-weight: bolder;
   #main-title {
     font-size: 75px;
+    font-family: Oswald;
+    font-weight: bolder;
   }
   #sub-title {
+    font-size: 30px;
+    font-weight: lighter;
   }
 }
 
 .lets-go {
-  position: absolute;
-  height: 100vh;
   width: 100vw;
 }
 
 .box-bottom-right {
-  position: absolute;
-  bottom: 20px;
-  right: 30px;
-  width: 50%;
+  width: 100vw;
+  margin: 0 45px 20px 0;
+
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-#title-buttom {
-  flex: 0 0 40%;
+#title-bottom {
+  flex: 0 0 25%;
   color: #fff;
-  font-weight: bolder;
+  font-weight: lighter;
   font-size: 25px;
+  font-family: Oswald;
+  margin: 0;
 }
 
 .svg-icon {
