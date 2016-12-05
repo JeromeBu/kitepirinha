@@ -137,15 +137,37 @@ class Spot < ApplicationRecord
 
   end
 
+
+
   def wing_wind_score(wing_size)
+    current_wind = fresh_forecasts.first.wind_strength
     # score for the wing (integer between 1 and 5)
     # 1 wind very light for the wing size, not navigable
     # 2 wind is a bit light for the wing size but navigable
     # 3 good conditions
     # 4 wind is a bit strong for the wing size but navigable
     # 5 wind is to strong for the wing size
-  end
+    wind_for_rating = []
+    WeatherFeedback::WIND_CORRESPONDANCE_75KG.each do |rating, wing_wind_h|
+      wind_for_rating << wing_wind_h[wing_size]
+    end
 
+    rating = 0
+    if current_wind <= wind_for_rating.first
+      return 1
+    elsif current_wind >= wind_for_rating.last
+      return 5
+    else
+      wind_for_rating.each_with_index do |wind, index|
+          if  current_wind >= wind
+            puts "Current wind : #{current_wind}, Wind: #{wind}, Index: #{index}"
+            rating = index + 1
+          end
+      end
+    end
+
+    return rating
+  end
 
 end
 

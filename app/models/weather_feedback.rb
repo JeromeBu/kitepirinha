@@ -7,7 +7,7 @@ class WeatherFeedback < ApplicationRecord
 
   # estimation du vent selon aile pour un poid de 75kg
   # taille rating => (aile => vent)
-  WIND_CORRESPONANCE_75KG = {
+  WIND_CORRESPONDANCE_75KG = {
     1 => {5 => 24, 6 => 21, 7 => 19, 8 => 17, 9 => 15, 10 => 13, 11 => 11.5, 12 => 10, 13 => 9, 14 => 8, 15 => 7.5, 16 => 7, 17 => 6
     },
     2 => {5 => 27, 6 => 25, 7 => 22.5, 8 => 20, 9 => 17.5, 10 => 15, 11 => 13.5, 12 => 12, 13 => 11, 14 => 10, 15 => 9.5, 16 => 9, 17 => 8.5
@@ -21,7 +21,7 @@ class WeatherFeedback < ApplicationRecord
   }
 
   def estimate_wind_strength(wing_size, rating, user)
-    WIND_CORRESPONANCE_75KG[rating][wing_size]
+    WIND_CORRESPONDANCE_75KG[rating][wing_size]
   end
 end
 
