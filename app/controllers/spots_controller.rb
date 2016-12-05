@@ -24,9 +24,14 @@ class SpotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
-      # marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
+      marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
+      marker.picture({
+        url: view_context.image_url("yellow-flag.svg"),
+        width:  70,
+        height: 70
+      })
     end
-
+    #replace color of flag by output given by jeremy's method
   end
 
   def show
