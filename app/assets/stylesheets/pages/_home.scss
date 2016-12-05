@@ -1,11 +1,8 @@
-body {
+.pages-home {
   background-color: $blue;
   margin: 0;
   position: relative;
   height: 100vh;
-}
-
-.pages-home {
   #full-navbar {
     display: none;
   }
@@ -19,6 +16,7 @@ body {
   color: #fff;
   font-weight: bolder;
   #main-title {
+    font-size: 75px;
   }
   #sub-title {
   }
@@ -28,28 +26,6 @@ body {
   position: absolute;
   height: 100vh;
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background-color: transparent;
-    border: 2px solid #fff;
-    padding: 20px 25px;
-    border-radius: 5px;
-    font-weight: bolder;
-
-    color: #fff;
-    text-decoration: none;
-  }
-  a:hover {
-    background-color: #fff;
-    color: $blue;
-    transition: all 0.3s ease;
-  }
 }
 
 .box-bottom-right {
