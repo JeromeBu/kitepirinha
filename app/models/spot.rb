@@ -57,6 +57,7 @@ class Spot < ApplicationRecord
     forecast_raw_json = JSON.parse(url)
 
     hourly = forecast_raw_json["hourly"]["data"]
+    hourly_for_icon = forecast_raw_json["hourly"]
 
     hourly.each do |data_for_the_hour|
       forecast = Forecast.new({
@@ -67,7 +68,8 @@ class Spot < ApplicationRecord
         precip_intensity: data_for_the_hour["precipIntensity"],
         precip_probability: data_for_the_hour["precipProbability"],
         cloud_cover: data_for_the_hour["cloudCover"],
-        temperature: data_for_the_hour["temperature"]
+        temperature: data_for_the_hour["temperature"],
+        icon: hourly_for_icon["icon"]
       })
       forecast.save
     end

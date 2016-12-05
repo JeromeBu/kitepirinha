@@ -21,6 +21,7 @@ gem 'cloudinary', '1.1.0'
 gem 'omniauth-facebook'
 gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
+gem 'jquery-ui-rails'
 
 #scrapping for tides
 gem 'capybara'

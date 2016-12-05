@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205104852) do
+ActiveRecord::Schema.define(version: 20161205170029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20161205104852) do
     t.float    "precip_probability"
     t.float    "cloud_cover"
     t.float    "temperature"
+    t.string   "icon"
     t.index ["spot_id"], name: "index_forecasts_on_spot_id", using: :btree
   end
 
