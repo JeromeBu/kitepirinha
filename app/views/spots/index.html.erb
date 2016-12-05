@@ -20,7 +20,7 @@
             <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_200,w_658,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
           <% end %>
 
-          <div class="spot-card" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)), url('<%=  img_url %>')">
+          <div class="spot-card" data-name="<%= spot.name %>" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)), url('<%=  img_url %>')">
 
 
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
@@ -66,25 +66,42 @@
         <div id="map" style="height: calc(100vh - 115px);"></div>
 
           <% content_for(:after_js) do %>
-          <%= javascript_tag do %>
-            $(document).ready(function() {
-              var handler = Gmaps.build('Google');
-              handler.buildMap({
-                provider: {
-                  styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c0e4f3"},{"visibility":"on"}]}]
-                },
-                internal: { id: 'map' } }, function() {
-                markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                handler.bounds.extendWith(markers);
-                handler.fitMapToBounds();
-                if (markers.length == 0) {
-                  handler.getMap().setZoom(2);
-                } else if (markers.length == 1) {
-                  handler.getMap().setZoom(14);
-                }
+            <script>
+              $(document).ready(function() {
+                var handler = Gmaps.build('Google');
+                handler.buildMap({
+                  provider: {
+                    styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c0e4f3"},{"visibility":"on"}]}]
+                  },
+                  internal: { id: 'map' } }, function() {
+                  markers = handler.addMarkers(<%= raw @hash.to_json %>);
+
+                  handler.bounds.extendWith(markers);
+                  handler.fitMapToBounds();
+                  if (markers.length == 0) {
+                    handler.getMap().setZoom(2);
+                  } else if (markers.length == 1) {
+                    handler.getMap().setZoom(14);
+                  }
+
+                  // Loads all infowindow in markers
+                  _.each(markers, function(marker){
+                    google.maps.event.trigger(marker.getServiceObject(), 'click');
+                  });
+                  //setTimeout(function() { $("#map .gm-style-iw + div").click() }, 50);
+                  $(".spot-card").on("mouseenter", function() {
+                    var name = $(this).data("name");
+                    marker = _.filter(markers, function(marker) {
+                      return marker.infowindow.content.match(new RegExp(name));
+                    })[0];
+                    google.maps.event.trigger(marker.getServiceObject(), 'click');
+
+                  });
+
+                });
+
               });
-            });
-          <% end %>
+          </script>
         <% end %>
       </div>
     </div>
