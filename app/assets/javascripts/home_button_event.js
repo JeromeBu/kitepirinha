@@ -1,5 +1,6 @@
+
 $('.kite-home-btn').on('click', function(event) {
-    event.preventDefault(1);
+  event.preventDefault();
   $('#main-title').toggleClass('hidden');
   $('#search').toggleClass('hidden');
   $('.wing_size').toggleClass('hidden');
