@@ -128,7 +128,7 @@ class Spot < ApplicationRecord
     end
   end
 
-
+  private
 
   def wind_direction_compatible?
     # true if belongs to wind sector
