@@ -128,6 +128,7 @@ class Spot < ApplicationRecord
     end
   end
 
+  private
 
   def wind_direction_compatible
     # true if belongs to wind sector
@@ -145,7 +146,7 @@ class Spot < ApplicationRecord
     # 4 wind is a bit strong for the wing size but navigable
     # 5 wind is to strong for the wing size
     wind_for_rating = []
-    WeatherFeedback::WIND_CORRESPONANCE_75KG.each do |rating, wing_wind_h|
+    WeatherFeedback::WIND_CORRESPONDANCE_75KG.each do |rating, wing_wind_h|
       wind_for_rating << wing_wind_h[wing_size]
     end
 
