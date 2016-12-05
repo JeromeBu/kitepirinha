@@ -61,6 +61,30 @@
   max-height: 24rem;
 }
 
+.wing-sizes-selector{
+  width: 400px;
+  height: 150px;
+  display: flex;
+  color: #fff;
+}
+
+
+
+.small-wing{
+  height: 70px;
+  width: 70px;
+  position: relative;
+}
+
+.wing-sizes-selector > p {
+  position: absolute;
+  top: 100px;
+  text-align: center;
+}
+
+.wing-selected{
+  border: solid white 5px;
+}
 
  // ******************************* HOME PAGE V1 *******************************
 
