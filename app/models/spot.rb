@@ -130,6 +130,36 @@ class Spot < ApplicationRecord
     end
   end
 
+  def nav_score_max(wing_sizes)
+    # Possible return values :
+    # 3: BEST CONDITIONS (best conditions to kite!)
+    # 2: AVERAGE CONDITIONS ! (a bit more wind or a bit less wind would be appreciated but we can kite)
+    # 1: BAD CONDITIONS ! IMPOSSIBLE TO KITE (too much wind or not enough wind)
+    scores = nav_score(wing_sizes)
+    max = nil
+    scores.each do |score_wing|
+      score = score_wing[:score]
+      local_score = 2 if score == 2 || score == 4
+      local_score = 1 if score == 1 || score == 5
+      local_score = 0 if score == 0
+
+      if score[:score] == 3
+        return 3
+      end
+
+      if max
+        max = local_score if local_score > max
+      else
+        max = local_score
+      end
+    end
+
+    if max == 0
+      return 1
+    end
+    return max
+  end
+
   private
 
   def wind_direction_compatible?
