@@ -1058,10 +1058,17 @@ if true #write false if you don't wanna seed the spots
   RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Saint-Aubin"))
   s.photo_url = "http://france3-regions.francetvinfo.fr/haute-normandie/sites/regions_france3/files/styles/top_big/public/assets/images/2016/09/04/kite_surfeur.jpg"
 
-  #  s = Spot.create!(name: "Saint-Aubin", description: "vagues: plat / clapot / petites vagues / shore. Vague par vent de Nord Est fort et par ouest quand il a de la houle. Pas de plage à marée haute. Le spot n'est pas naviguable 2 heure avant et 2 heures après la marée haute. Très bien pour s'initier à la vague sans risque.  ", lat: 49.8926, lng: 0.8607, user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by(name: "Etretat"))
-  # Facility.create!(parking: "Parking juste devant la plage", kite_school: "Learn Kite",shop: "Pas de shop dans le coin", comment: "Pas mal de courant. Il va de gauche à droite à la marée descendante et s'inverse à la remontante. Il y a des rochers à gauche de la plage de Saussemare et à droite de Saint Aubin (dès que la digue se termine).. Par grandes marées, faire attention à kk rochers au milieu du spot qui découvrent...", spot: Spot.find_by(name: "Saint-Aubin"))
-  # RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Saint-Aubin"))
-  # s.photo_url = "https://cliniquedelaplanche.files.wordpress.com/2012/07/aerial-en-north-rebel-2013-grise-whip-x-surf.jpg"
+  s = Spot.create!(name: "Utah Beach", address: "Utah Beach, Sainte-Marie-du-Mont, France", description: "Vagues: petites vagues / moyennes vagues. Profondeur d'eau : pieds loin. Grande plage avec des dunes.", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Iles Saint-Marcouf"))
+  RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Utah Beach"))
+  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1480688864/qgvgz5ux2fbf1bnw0ybj.jpg"
+
+  s = Spot.create!(name: "Coutainville", address: "Agon-Coutainville, France", description: "Sympathique spot normand.", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Agon"))
+  RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Coutainville"))
+  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1480689104/yiyy3neanxhw6o9ccs1t.jpg"
+
+  s = Spot.create!(name: "Quend Plage", address: "Quend Plage, Quend, France", description: "Super spot !", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Cayeux-sur-Mer"))
+  RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Quend Plage"))
+  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1480689281/jn8j9odml1yq4glq3wov.jpg"
 end
 
 
