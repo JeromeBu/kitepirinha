@@ -110,5 +110,40 @@ class Spot < ApplicationRecord
     average = ratings.inject{ |sum, el| sum + el }.to_f / ratings.size if !ratings.empty?
     average
   end
+
+  def nav_score(wing_sizes)
+
+    #Inputs (wing_sizes = [8, 5] etc..in m squarred)
+    #Returns array of hashes : [{score: 4, wing_size: 8}, {score: 2, wing_size: 5}]
+
+    score = []
+    if wind_direction_compatible
+      wing_sizes.each do |wing_size|
+        score << {wing_size: wing_size, score: wing_wind_score(wing_size)}
+      end
+    else
+      wing_sizes.each do |wing_size|
+        score << {wing_size: wing_size, score: 0}
+      end
+    end
+  end
+
+  private
+
+  def wind_direction_compatible
+    # true if belongs to wind sector
+
+  end
+
+  def wing_wind_score(wing_size)
+    # score for the wing (integer between 1 and 5)
+    # 1 wind very light for the wing size, not navigable
+    # 2 wind is a bit light for the wing size but navigable
+    # 3 good conditions
+    # 4 wind is a bit strong for the wing size but navigable
+    # 5 wind is to strong for the wing size
+  end
+
+
 end
 
