@@ -87,9 +87,13 @@
 
               <!-- Modal for reviews -->
               <!-- btn btn-primary btn-lg -->
-              <button type="button" class="kite-std-btn" data-toggle="modal" data-target="#myModal" id="comment-button">
-                Add a review
-              </button>
+              <% if user_signed_in? %>
+                <button type="button" class="kite-std-btn" data-toggle="modal" data-target="#myModalReview" id="comment-button">
+                  Add a review
+                </button>
+              <% else %>
+                <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+              <% end %>
             </div>
             <hr>
             <div class="spot-show-card" id="reviews">
@@ -133,8 +137,18 @@
             <div class="spot-show-card">
               <%= render 'h2_title', title: "Weather feedback"%>
               <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
+
+              <% if user_signed_in? %>
+                <button type="button" class="kite-std-btn" data-toggle="modal" data-target="#myModal" id="comment-button">
+                  Add a weather feedback
+                </button>
+              <% else %>
+                <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+              <% end %>
             </div>
           </div>
+
+
 
         </div>
 
@@ -143,8 +157,8 @@
 
 
 
-        <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- Review Modal -->
+          <div class="modal fade" id="myModalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -153,6 +167,24 @@
                 </div>
                 <div class="modal-body" id="review_form_container">
                   <%= render 'reviews/form', spot: @spot, review: @review %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+           <!-- Weather feedbacks Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Weather feedback</h4>
+                </div>
+                <div class="modal-body" id="review_form_container">
+                  <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>

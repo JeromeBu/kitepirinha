@@ -1,0 +1,5 @@
+<%= simple_form_for([spot, feedback], remote: true) do |f| %>
+  <%= f.input :direction %>
+  <%= f.input :rating %>
+  <%= f.submit "Add review", class: "kite-std-btn", id: "add-review-button" %>
+<% end %>
