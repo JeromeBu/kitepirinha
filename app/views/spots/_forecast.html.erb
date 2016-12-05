@@ -30,7 +30,7 @@
         <% @forecasts.each do |forecast|%>
           <% if forecast[:date_time].strftime('%H').to_i.even? %>
               <% angle = forecast[:wind_direction].to_i - 45 + 180 %>
-              <td><div style = "transform: rotate(<%= angle %>deg)"><%= image_tag "arrow.svg" %></div></td>
+              <td><div style = "transform: rotate(<%= angle %>deg)"><%= image_tag "cursor.svg" %></div></td>
             <% end %>
         <% end %>
       </tr>
