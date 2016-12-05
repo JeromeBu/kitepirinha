@@ -1,7 +1,8 @@
 .pages-home {
-background: $blue; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #00c6ff , $blue); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #00c6ff , $blue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */  margin: 0;
+  background: $blue;
+  // background: -webkit-linear-gradient(to left, #00c6ff , $blue);
+  // background: linear-gradient(to left, #00c6ff , $blue);
+  margin: 0;
   height: 100vh;
 
   display: flex;
@@ -52,14 +53,98 @@ background: linear-gradient(to left, #00c6ff , $blue); /* W3C, IE 10+/ Edge, Fir
   margin: 0;
 }
 
-.svg-icon {
-  // right: 30px;
+.svg-icon-wind {
   width: 7vw;
   height: 7vw;
   min-width: 8rem;
   min-height: 8rem;
   max-width: 24rem;
   max-height: 24rem;
+}
+
+.wing-sizes-selector{
+  width: 400px;
+  height: 150px;
+  display: flex;
+  color: #fff;
+}
+
+
+
+.small-wing{
+  height: 70px;
+  width: 70px;
+  position: relative;
+}
+
+.wing-sizes-selector > p {
+  position: absolute;
+  top: 100px;
+  text-align: center;
+}
+
+.wing-selected{
+  border: solid white 5px;
+}
+
+.bg  {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1000;
+}
+
+.path {
+  animation: draw 2s forwards;
+}
+
+.path-delay {
+  animation: draw 3s 1s forwards;
+}
+
+.path-delay--2 {
+  animation: draw 3s 1.5s forwards;
+}
+
+.path-delay--3 {
+  animation: draw 3s 2s forwards;
+}
+
+.path-delay--4 {
+  animation: draw 3s 2.5s forwards;
+}
+
+.clouds {
+  animation: draw 3s forwards, clouds 9.5s 3s forwards;
+}
+
+.wind {
+  animation: draw 3s forwards, wind 10s 2.5s forwards;
+}
+
+ @keyframes draw {
+  from{}
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+ @keyframes clouds {
+  from{}
+
+  to {
+    transform: translate(30px,0);
+  }
+}
+
+ @keyframes wind {
+  from{}
+
+  to {
+    transform: translate(35px,0);
+  }
 }
 
 

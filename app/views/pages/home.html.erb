@@ -1,49 +1,24 @@
-<!-- <div class="container-fluid" id="home-container">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="banner" style="background-image: linear-gradient(to left, rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)), url('<%#= image_url "background.jpg" %>');">
-        <div class="row" id="titre">
-            <div id="banner-content">
-              <div class="text-center", id="home-text">
-                <h2>
-                  Discover Kitepirinha experience
-                </h2>
-                <h4><span class="thinner">Find all the</span> <span id="best-kitesurf">best kitesurf spots</span> <span class="thinner">around you</span></h4>
-                  <%#= link_to "FIND YOUR SPOT", spots_path, class: "kite-home-btn" %>
-              </div>
-
-            </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="main-title-section">
   <h1 id="main-title">Just go kite-surfing.</h1>
   <h3 id="sub-title">Choose the right spot wherever you go</h3>
 </div>
 
 <div class="lets-go flex-center">
-  <%= link_to "Let's start !", spots_path, class:"kite-home-btn" %>
+  <%= link_to "Let's start !", spots_path, class:"btn kite-home-btn" %>
 </div>
 
+<%= render 'wing_size_selector' %>
+
+<!-- CATCHPHRASE -->
   <div class="box-bottom-right text-center">
     <h3 id="title-bottom">All the info you need in one place</h3>
     <div class="icon-wind">
-      <svg class="svg-icon" viewBox="0 0 20 20"
-        stroke-width="1"
-        fill="none">
-        <g transform="translate(0.000000, 2.000000)" stroke="#fff">
-          <path id="wind-1" d="M2.70315789,5.45157895 L9.43157895,5.45157895 C10.9168421,5.45157895 12.1231579,4.24631579 12.1231579,2.76 C12.1231579,1.27368421 10.9168421,0.0684210526 9.43157895,0.0684210526 L8.98315789,0.0684210526" />
+      <%= render "wind_button" %>
+      <!-- SEA -->
 
-          <path id="wind-2" d="M0.909473684,7.24631579 L14.8147368,7.24631579 C15.8063158,7.24631579 16.6084211,6.44210526 16.6084211,5.45157895 C16.6084211,4.46105263 15.8052632,3.65789474 14.8147368,3.65789474 L14.3652632,3.65789474" />
+      <div class="home_sea">
+        <%= render "home_sea" %>
+      </div>
 
-          <path id="wind-3" d="M2.70315789,9.04 L17.5052632,9.04 C18.4947368,9.04 19.2989474,9.84421053 19.2989474,10.8347368 C19.2989474,11.8252632 18.4947368,12.6284211 17.5052632,12.6284211 L17.0557895,12.6284211" />
-
-          <path id="wind-4" d="M4.49789474,10.8347368 L11.2263158,10.8347368 C12.7126316,10.8347368 13.9178947,12.04 13.9178947,13.5263158 C13.9178947,15.0126316 12.7115789,16.2178947 11.2263158,16.2178947 L10.7778947,16.2178947" />
-        </g>
-      </svg>
     </div>
   </div>
