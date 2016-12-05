@@ -4,6 +4,7 @@ body{
 
 .banner-show{
   height: 45vh;
+  position: relative;
 }
 
 .bg-white{
@@ -32,6 +33,9 @@ body{
 
 #spot-show-h1-title{
  color: $dark_blue;
+ margin-top: 0px;
+ margin-left: 200px;
+ padding-top: 50px;
 }
 
 #feedbacks-container{
@@ -53,8 +57,8 @@ body{
 
 #add-to-favorite-btn{
   position: absolute;
-  right: 10px;
-  top: 2px;
+  right: 50px;
+  top: 50px;
 }
 
 #review-header {
@@ -69,9 +73,9 @@ body{
 }
 
 #spot-rating{
-  position: absolute;
-  top: 0px;
-  right: 100px;
+  // position: absolute;
+  // top: 0px;
+  // right: 100px;
 
 }
 
@@ -119,4 +123,66 @@ body{
 
 .time-infos {
   opacity: 0.5;
+}
+
+.tabs {
+  position: absolute;
+  bottom: 0px;
+  left: 200px;
+  width: auto;
+  background: transparent;
+  display: flex;
+}
+
+.tabs a {
+  color: white;
+  text-decoration: none;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.tab {
+  flex: 0 0 25%;
+  text-align: center;
+  width: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  p {
+    margin: 0px;
+  }
+}
+
+#tab_weather {
+  border-bottom: 5px solid #FF8000;
+}
+
+#tab_infos {
+  border-bottom: 5px solid #004080;
+}
+
+#tab_reviews {
+  border-bottom: 5px solid #008000;
+}
+
+.tab.active {
+  background-color: #4C4C4C;
+  opacity: 0.8;
+  color: white;
+}
+
+.tab:hover{
+  background: white;
+  opacity: 0.8;
+  color: black;
+}
+
+.tab.active a {
+  opacity: 1;
+}
+
+.content.hidden {
+  display: none;
 }
