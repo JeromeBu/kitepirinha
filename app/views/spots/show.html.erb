@@ -88,7 +88,7 @@
               <!-- Modal for reviews -->
               <!-- btn btn-primary btn-lg -->
               <% if user_signed_in? %>
-                <button type="button" class="kite-std-btn" data-toggle="modal" data-target="#myModalReview" id="comment-button">
+                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
                   Add a review
                 </button>
               <% else %>
@@ -132,6 +132,7 @@
               </div>
             </div>
           </div>
+
           <!-- Feedback infos -->
           <div class="col-xs-12 col-sm-6" id='feedbacks-container'>
             <div class="spot-show-card">
@@ -139,7 +140,7 @@
               <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
 
               <% if user_signed_in? %>
-                <button type="button" class="kite-std-btn" data-toggle="modal" data-target="#myModal" id="comment-button">
+                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModal">
                   Add a weather feedback
                 </button>
               <% else %>
@@ -183,7 +184,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title" id="myModalLabel">Weather feedback</h4>
                 </div>
-                <div class="modal-body" id="review_form_container">
+                <div class="modal-body" id="forecast_form_container">
                   <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>
                 </div>
                 <div class="modal-footer">

@@ -1,5 +1,10 @@
 <%= simple_form_for([spot, feedback], remote: true) do |f| %>
+  <p>Pick the direction: </p>
+  <div id="picker"></div>
   <%= f.input :direction %>
+  <div></div>
+  <%= f.input :strength %>
+  <%= f.input :wing_size %>
   <%= f.input :rating %>
   <%= f.submit "Add review", class: "kite-std-btn", id: "add-review-button" %>
 <% end %>
