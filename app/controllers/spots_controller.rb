@@ -21,7 +21,7 @@ class SpotsController < ApplicationController
     end
     @forecasts_results
 
-    @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
+    @hash = Gmaps4rails.build_markers(@spots.reverse) do |spot, marker|
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
