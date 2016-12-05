@@ -45,7 +45,7 @@ class Spot < ApplicationRecord
       @fresh_forecasts = Forecast.where("created_at > ?", most_recent_date - 2.minutes).where(spot: self)
       # fin du pas très DRY
     end
-    @fresh_forecasts
+    @fresh_forecasts.sort_by { |k| k["date_time"] }
   end
 
   def fetch_and_parse_forecast_data
@@ -132,9 +132,26 @@ class Spot < ApplicationRecord
 
   private
 
-  def wind_direction_compatible
+  def wind_direction_compatible?
     # true if belongs to wind sector
+    wind_direction = self.forecasts.first[:wind_direction]
+    result = []
+    self.recommended_wind_directions.each do |recommended_wind_sector|
+      sector_start = recommended_wind_sector[:sector_start].to_i
+      sector_end = recommended_wind_sector[:sector_end].to_i
 
+      if sector_start > sector_end
+        sector_end += 360
+        wind_direction += 360
+      end
+
+      if sector_start <= wind_direction &&  wind_direction <= sector_end
+        result << true
+      else
+        result << false
+      end
+    end
+    return result.include?(true)
   end
 
 
