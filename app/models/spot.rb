@@ -3,8 +3,9 @@ require "open-uri"
 
 class Spot < ApplicationRecord
 
-  # geocoded_by :address
-  # after_validation :geocode
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   has_attachment :photo
 
   belongs_to :harbor
@@ -19,6 +20,7 @@ class Spot < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+  validates :address, presence: true
 
   def fresh_forecasts
     #Retourne les forecasts de moins de 2H en allant les chercher si nécessaire
@@ -48,8 +50,8 @@ class Spot < ApplicationRecord
 
   def fetch_and_parse_forecast_data
     # Calling darksky api and saving in DB
-    lat = self.lat
-    lng = self.lng
+    lat = self.latitude
+    lng = self.longitude
     url = open("https://api.darksky.net/forecast/#{ENV['DARKSKY_API_KEY']}/#{lat},#{lng}?units=ca").read
     forecast_raw_json = JSON.parse(url)
 

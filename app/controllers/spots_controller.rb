@@ -4,7 +4,12 @@ class SpotsController < ApplicationController
 
   def index
     @spots_index = policy_scope(Spot)
-    @spots = Spot.where.not(lat: nil, lng: nil)
+
+    if params[:address] == nil || params[:address] == ""
+      @spots = Spot.where.not(latitude: nil, longitude: nil)
+    else
+      @spots = Spot.near(params[:address], 50).where.not(latitude: nil, longitude: nil)
+    end
 
     @forecasts_results = {}
     @wind_strength = 0
@@ -17,10 +22,11 @@ class SpotsController < ApplicationController
     @forecasts_results
 
     @hash = Gmaps4rails.build_markers(@spots) do |spot, marker|
-      marker.lat spot.lat
-      marker.lng spot.lng
+      marker.lat spot.latitude
+      marker.lng spot.longitude
       # marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
     end
+
   end
 
   def show
@@ -37,12 +43,9 @@ class SpotsController < ApplicationController
 
   def create
     @spot = Spot.new(spot_params)
-    a = ArtisanalGeocoder.geo(spot_params[:address])
-    @spot.user= current_user
-    @spot.lat = a[:lat]
-    @spot.lng = a[:lng]
+    @spot.user = current_user
     authorize @spot
-    @spot.harbor = Harbor.find_closest_from(@spot.lat, @spot.lng)
+    @spot.harbor = Harbor.find_closest_from(@spot.latitude, @spot.longitude)
     if @spot.save
       @spot.fetch_and_parse_forecast_data
       @spot.save
@@ -93,6 +96,6 @@ class SpotsController < ApplicationController
   end
 
   def spot_params
-    params.require(:spot).permit(:name, :description, :lat, :lng, :address, :photo)
+    params.require(:spot).permit(:name, :description, :latitude, :longitude, :address, :photo)
   end
 end
