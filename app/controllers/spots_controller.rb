@@ -21,12 +21,25 @@ class SpotsController < ApplicationController
     end
     @forecasts_results
 
+    # à remplacer par les params selon la recherche home page
+    wing_sizes = [5, 17]
+    #########################################################
+
     @hash = Gmaps4rails.build_markers(@spots.reverse) do |spot, marker|
+      score = spot.nav_score_max(wing_sizes)
+      if score == 1
+        color = "red"
+      elsif score == 2
+        color = "yellow"
+      elsif score == 3
+        color = "green"
+      end
+
       marker.lat spot.latitude
       marker.lng spot.longitude
       marker.infowindow render_to_string(partial: "/spots/map_box", locals: { spot: spot })
       marker.picture({
-        url: view_context.image_url("yellow-flag.svg"),
+        url: view_context.image_url("#{color}-flag.svg"),
         width:  70,
         height: 70
       })
