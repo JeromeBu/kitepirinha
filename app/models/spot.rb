@@ -1,5 +1,6 @@
 require "json"
 require "open-uri"
+require "pry-byebug"
 
 class Spot < ApplicationRecord
 
@@ -119,15 +120,17 @@ class Spot < ApplicationRecord
     #Returns array of hashes : [{score: 4, wing_size: 8}, {score: 2, wing_size: 5}]
 
     score = []
-    if wind_direction_compatible
+    if wind_direction_compatible?
       wing_sizes.each do |wing_size|
         score << {wing_size: wing_size, score: wing_wind_score(wing_size)}
       end
     else
       wing_sizes.each do |wing_size|
         score << {wing_size: wing_size, score: 0}
+        #BAD WIND DIRECTION ;-)
       end
     end
+    return score
   end
 
   def nav_score_max(wing_sizes)
@@ -137,13 +140,14 @@ class Spot < ApplicationRecord
     # 1: BAD CONDITIONS ! IMPOSSIBLE TO KITE (too much wind or not enough wind)
     scores = nav_score(wing_sizes)
     max = nil
+
     scores.each do |score_wing|
       score = score_wing[:score]
       local_score = 2 if score == 2 || score == 4
       local_score = 1 if score == 1 || score == 5
       local_score = 0 if score == 0
 
-      if score[:score] == 3
+      if score == 3
         return 3
       end
 
@@ -164,12 +168,14 @@ class Spot < ApplicationRecord
 
   def wind_direction_compatible?
     # true if belongs to wind sector
-    wind_direction = self.forecasts.first[:wind_direction]
+    wind_direction = self.fresh_forecasts.first.wind_direction
+    puts "Current wind direction : #{wind_direction}"
     result = []
     self.recommended_wind_directions.each do |recommended_wind_sector|
       sector_start = recommended_wind_sector[:sector_start].to_i
       sector_end = recommended_wind_sector[:sector_end].to_i
-
+      puts "Recommended wind sector:"
+      p recommended_wind_sector
       if sector_start > sector_end
         sector_end += 360
         wind_direction += 360
