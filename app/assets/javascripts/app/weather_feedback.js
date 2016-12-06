@@ -36,5 +36,9 @@ $(function() {
     //   clockwise: true,
     // });
 
+  $('#add-feedback-modal-button').on('click', function(event) {
+    $('#weather-feedbacks-modal').modal('hide');
+  });
+
 
 });
