@@ -9,17 +9,19 @@
   border-radius: 5px;
   font-weight: bolder;
 
-  color: $blue;
+  color: $blue_home;
   font-weight: bolder;
   font-size: 20px;
   text-decoration: none;
-}
+  font-family: Oswald;
 
-.kite-home-btn:hover{
-  background-color: transparent;
-  color: #fff;
-  transition: all 0.3s ease;
-  text-decoration: none;
+  &:hover{
+    color: #fff;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-family: Oswald;
+  }
 }
 
 .kite-std-btn {
@@ -29,14 +31,13 @@
   background-color: $dark_blue;
   padding: 12px 15px;
   cursor: pointer;
-  font-family: 'Raleway', sans-serif;
-}
 
-.kite-std-btn:hover{
-  opacity: 0.7;
-  transition: all 0.3s ease;
-  color: white;
-  text-decoration: none;
+  &:hover{
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .kite-round-btn{
@@ -49,19 +50,34 @@
   font-size: 15px;
   transition: all 0.3s ease;
   position: relative;
-}
 
-.kite-round-btn:hover{
-  color: white;
-  background-color: $dark_blue;
-  transition: all 0.3s ease;
-  opacity: 0.8;
+  &:hover{
+    color: white;
+    background-color: $dark_blue;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+  }
 }
 
 .kite-round-btn i{
   top: 34%;
   left: 33%;
   position: absolute;
-
 }
 
+.kite-search-btn {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  background-color: $blue_home;
+  padding: 7px 10px;
+  cursor: pointer;
+
+  &:hover{
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #fff;
+  }
+}
