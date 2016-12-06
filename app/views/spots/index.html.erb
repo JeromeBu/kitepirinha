@@ -39,8 +39,8 @@
                     <%= @humidity.round %>%
                     <p>Humidity</p>
                   </div>
-                  <div class="info-spot-items">
-                    <%= image_tag "wind.svg", id: "strength" %>
+                  <div class="info-spot-items text-center">
+                    <%= image_tag "wind.svg", id: "strength" %> <br>
                     <%= spot.fresh_forecasts.first.wind_strength.round %> kt
                   </div>
                   <div class="info-spot-items">
