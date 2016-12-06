@@ -92,7 +92,8 @@
                   Add a review
                 </button>
               <% else %>
-                <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+                <%= link_to "Sign in and add a review", new_user_session_path(redirection: spot_path(@spot))  , class: "kite-std-btn"%>
+
               <% end %>
             </div>
             <hr>
@@ -140,7 +141,7 @@
               <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
 
               <% if user_signed_in? %>
-                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModal">
+                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#weather-feedbacks-modal">
                   Add a weather feedback
                 </button>
               <% else %>
@@ -177,7 +178,7 @@
           </div>
 
            <!-- Weather feedbacks Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="weather-feedbacks-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -187,9 +188,9 @@
                 <div class="modal-body" id="forecast_form_container">
                   <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>
                 </div>
-                <div class="modal-footer">
+<!--                 <div class="modal-footer">
                   <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

@@ -156,7 +156,7 @@ $.widget("ui.anglepicker", $.ui.mouse, {
         snap: 1,
         min: 0,
         shiftSnap: 15,
-        value: 0,
+        value: 270,
         clockwise: false // anti-clockwise if false
     }
 });

@@ -5,7 +5,15 @@ $(function() {
 
       },
       change: function(e, ui) {
-          $("#weather_feedback_direction").val(ui.value)
+          var rotated_angle = 0;
+          if (ui.value >= 270) {
+            rotated_angle = ui.value - 270;
+          }
+          else {
+            rotated_angle = ui.value + 90;
+          }
+          $("#wind_measured_angle").attr('value', rotated_angle);
+          $("p#current_value_degrees").text(rotated_angle + '°')
       },
       stop: function(e, ui) {
 
