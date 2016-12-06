@@ -6,6 +6,12 @@
   border-bottom: 5px solid $orange;
 }
 
+.feedbacks-content {
+  background: white;
+  margin-left: 29px;
+  margin-right: 29px;
+}
+
 .info-spot{
   display: flex;
   justify-content: space-around;
@@ -16,30 +22,32 @@
 
 .section-title {
   text-align: center;
-  border-bottom: 5px solid white;
-  margin-bottom: 50px;
+  background: white;
   margin-left: 29px;
   margin-right: 29px;
+  margin-top: 25px;
   h2 {
-    margin-bottom: -25px;
-    margin-left: 360px;
-    margin-right: 360px;
-    background: white;
     padding: 15px 0px;
-    border-radius: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   h2:hover {
     color: $light_blue;
   }
   h3 {
-    margin-bottom: -25px;
-    margin-left: 360px;
-    margin-right: 360px;
-    background: white;
     padding: 15px 0px;
-    border-radius: 25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
   h3:hover {
+    color: $light_blue;
+  }
+  h4 {
+    padding: 15px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  h4:hover {
     color: $light_blue;
   }
   a {
@@ -50,18 +58,36 @@
   }
 }
 
+.orange-underlining {
+  border-bottom: 5px solid #F6A623;
+}
+
+.arrow {
+  text-align: center;
+  margin-top: -5px;
+}
+
 #weather_forecasts_content {
   transition: display 0.5s ease;
+  margin-top: 25px;
 }
 
 #weather_forecasts_content.hidden {
   display: none;
 }
 
+#tide_forecasts_content {
+  margin-top: 25px;
+}
+
 #tide_forecasts_content.hidden {
   display: none;
   margin-left: 29px;
   margin-right: 29px;
+}
+
+.feedbacks-content {
+  padding-bottom: 25px;
 }
 
 .feedbacks-container {
@@ -75,7 +101,11 @@
   margin-top: 15px;
   background: white;
   padding: 10px 40px;
-  width: 40%;
+  width: 45%;
+}
+
+.add-review-button {
+  margin-top: 20px;
 }
 
 .margin-29 {

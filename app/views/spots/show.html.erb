@@ -74,33 +74,37 @@
             </div>
 
             <!-- Feedback infos -->
+            <div class="feedbacks-content">
               <div class="section-title">
                 <h2>Real time feedbacks</h2>
               </div>
               <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
-              <div class="text-center">
+              <div class="add-review-button text-center">
                 <% if user_signed_in? %>
-                  <div class="section-title">
-                    <a type="button" data-toggle="modal" data-target="#myModal"><h3>Give a real time feedback</h3></a>
-                  </div>
+                  <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#myModal">
+                    Give a real time feedback
+                  </button>
                 <% else %>
-                  <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+                  <%= link_to "Add a review", new_user_session_path, class: "kite-std-btn"%>
                 <% end %>
               </div>
-
+            </div>
 
             <!-- Weather forecasts -->
-            <div class="section-title">
+            <div class="section-title orange-underlining">
               <a href="" id="weather_forecasts_link"><h2>Weather forecasts</h2></a>
             </div>
-            <div id="weather_forecasts_content" class="hidden">
+            <div class="arrow">
+              <%= image_tag "orange-triangle.svg" %>
+            </div>
+            <div id="weather_forecasts_content" class="margin-29 hidden">
               <%= render 'forecast', forecasts: nil %>
             </div>
             <!-- Tide infos -->
             <div class="section-title">
               <a href="" id="tide_forecasts_link"><h2>Tide forecasts</h2></a>
             </div>
-            <div id="tide_forecasts_content" class="hidden">
+            <div id="tide_forecasts_content" class="margin-29 hidden">
               <div class="tide-data hidden">
                 <% query = @spot.harbor.query if @spot.harbor %>
                 <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
