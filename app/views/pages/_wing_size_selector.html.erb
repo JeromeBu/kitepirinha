@@ -15,13 +15,24 @@
       console.log('toto is good');
       $('.small-wing').on('click', function(event) {
         $(this).toggleClass('wing-selected');
-        test_fcn('toto', 'tata');
+        update_form_selected_wing_sizes();
       });
 
     });
 
-    function test_fcn(arg1, arg2) {
-      console.log(arg1 + arg2);
+    function update_form_selected_wing_sizes() {
+      //$('.wing-selected').forEach(function(toto) {
+      //  console.log(toto);
+      //});
+      var selected_wing_sizes = "";
+      $( ".wing-selected p span" ).each(function( index ) {
+        //console.log( index + ": " + $( this ).text() );
+        selected_wing_sizes = selected_wing_sizes + $(this).text() + ",";
+      });
+      selected_wing_sizes = selected_wing_sizes.slice(0,-1); //remove last coma
+
+      console.log($('.wing-sizes-form'));
+      $('#selected-wing-sizes').attr('value', selected_wing_sizes);
     }
 
   <% end %>

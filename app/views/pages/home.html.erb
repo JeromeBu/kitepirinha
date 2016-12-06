@@ -3,9 +3,14 @@
   <h3 id="sub-title">Choose the right spot wherever you go</h3>
 </div>
 
-<div class="lets-go flex-center">
-  <%= link_to "Let's start !", spots_path, class:"btn kite-home-btn" %>
-</div>
+
+<%= form_tag spots_path, method: :get do %>
+  <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+  <div class="lets-go flex-center">
+    <%= submit_tag "Let's start", class:"btn kite-home-btn" %>
+    <%#= link_to "Let's start !", spots_path, class:"btn kite-home-btn" %>
+  </div>
+<% end %>
 
 <%= render 'wing_size_selector' %>
 
