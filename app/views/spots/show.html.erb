@@ -8,7 +8,6 @@
 <div class="banner banner-show" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)),
          url('<%= img_url %>')">
   <h1 id="spot-show-h1-title"><%= @spot.name.capitalize %>
-
     <% if @spot.average_rating %>
       <div id="spot-rating">
         <% @spot.average_rating.round.times do %>
@@ -22,8 +21,7 @@
     <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-round-btn" do %>
       <i class="fa fa-heart"></i>
     <% end %>
-
-    </h1>
+  </h1>
 
   <div class="tabs">
     <a class="tab active" href="#" id="tab_weather">
@@ -42,60 +40,132 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
+        <!-- Content for Weather section -->
+        <div class="content" id="content_for_weather">
+          <!-- Weather infos -->
+          <div class="col-xs-12">
+            <div class="summary text-center">
+              <div class="info-spot">
+                <div class="info-spot-items" id="temperature">
+                  <h1><%= @spot.fresh_forecasts.first.temperature.round %> °C</h1>
+                  <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
+                </div>
+                <div class="info-spot-items">
+                  <% condition = @spot.fresh_forecasts.first.icon %>
+                  <%= image_tag @condition_icons[condition] %>
+                  <%= @condition_string[condition] %>
+                </div>
+                <div class="info-spot-items">
+                  <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
+                  <%= @humidity.round %>%
+                  <p>Humidity</p>
+                </div>
+                <div class="info-spot-items text-center">
+                  <%= image_tag "wind.svg", id: "strength" %> <br>
+                  <%= @spot.fresh_forecasts.first.wind_strength.round %> kt
+                </div>
+                <div class="info-spot-items">
+                  <% w = @spot.fresh_forecasts.first.wind_direction%>
+                  <div style="transform: rotate(<%= w + 180 %>deg)"> <%= image_tag "wind_direction.svg" %></div>
+                  <%= @spot.find_string_direction(w) %>
+                </div>
+                  <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
+              </div>
+            </div>
 
+            <!-- Feedback infos -->
+            <div class="feedbacks-content">
+              <div class="section-title">
+                <h2>Real time feedbacks</h2>
+              </div>
+              <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
+              <div class="add-review-button text-center">
+                <% if user_signed_in? %>
+                  <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
+                    Give a real time feedback
+                  </button>
+                <% else %>
+                  <%= link_to "Add a review", new_user_session_path, class: "kite-std-btn"%>
+                <% end %>
+              </div>
+            </div>
+
+            <!-- Weather forecasts -->
+            <div class="feedbacks-content">
+              <div class="section-title orange-underlining" id="weather_forecasts_link">
+                <a href=""><h2>Weather forecasts</h2></a>
+              </div>
+              <div class="arrow">
+                <%= image_tag "orange-arrow.svg" %>
+              </div>
+              <div id="weather_forecasts_content" class="margin-29 hidden">
+                <%= render 'forecast', forecasts: nil %>
+              </div>
+            </div>
+              <!-- Tide infos -->
+            <div class="feedbacks-content">
+              <div class="section-title orange-underlining" id="tide_forecasts_link">
+                <a href=""><h2>Tide forecasts</h2></a>
+              </div>
+              <div class="arrow">
+                <%= image_tag "orange-arrow.svg" %>
+              </div>
+              <div id="tide_forecasts_content" class="margin-29 hidden">
+                <div class="tide-data hidden">
+                  <% query = @spot.harbor.query if @spot.harbor %>
+                  <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
+                  <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
+                </div>
+              </div>
+            </div>
+          <!-- End of content for Weather section -->
+          </div>
+      </div>
 
         <!-- Content for Infos section -->
         <div class="content hidden" id="content_for_infos">
           <!-- Title Section -->
           <div class="col-xs-12">
-            <div class="spot-show-card">
-              <%= render 'h2_title', title: "Description"%>
-              <p><%= @spot.description unless @spot.description.nil?%></p>
+            <div class="section-title">
+              <h2>Description</h2>
             </div>
+            <p class="margin-29"><%= @spot.description unless @spot.description.nil?%></p>
           </div>
-
           <!-- Facilities -->
           <div class="col-xs-12">
-            <div class="spot-show-card">
-              <%= render 'h2_title', title: "Facilities"%>
-
-              <% unless @spot.facility.nil? %>
-                <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
-                <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
-                <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
-                <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
-                <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
-                <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
-                <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
-              <% else %>
-                <p>No facilities added for this spot</p>
-              <% end %>
+            <div class="section-title">
+              <h2>Facilities</h2>
             </div>
+            <% unless @spot.facility.nil? %>
+              <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
+              <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
+              <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
+              <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
+              <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
+              <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
+              <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+            <% else %>
+              <p>No facilities added for this spot</p>
+            <% end %>
           </div>
         </div>
-
         <!-- End of content for Infos section -->
-
 
         <!-- Content for Reviews section -->
         <div class="content hidden" id="content_for_reviews">
           <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="spot-show-card">
-              <h2 id="reviews_count">
-                <%= render "spots/reviews_count", spot: @spot %>
-              </h2>
-
-              <!-- Modal for reviews -->
-              <!-- btn btn-primary btn-lg -->
-              <% if user_signed_in? %>
-                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
-                  Add a review
-                </button>
-              <% else %>
-                <%= link_to "Sign in and add a review", new_user_session_path(redirection: spot_path(@spot))  , class: "kite-std-btn"%>
-
-              <% end %>
+            <div class="section-title">
+              <%= render "spots/reviews_count", spot: @spot %>
             </div>
+            <!-- Modal for reviews -->
+            <!-- btn btn-primary btn-lg -->
+            <% if user_signed_in? %>
+              <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
+                Add a review
+              </button>
+            <% else %>
+              <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+            <% end %>
             <hr>
             <div class="spot-show-card" id="reviews">
               <% @spot.reviews.each do |review| %>
@@ -105,59 +175,6 @@
           </div>
         </div>
         <!-- End of content for Reviews section -->
-
-
-        <!-- Content for Weather section -->
-        <div class="content" id="content_for_weather">
-          <!-- Weather infos -->
-          <div class="col-xs-12">
-            <div class="recommendation text-center">
-              <h2><i class="fa fa-sun-o" aria-hidden="true"></i></h2>
-              <h2>17°C</h2>
-              <h2>Take your 4.2 Wing and go for it</h2>
-            </div>
-            <div class="spot-show-card">
-              <%= render 'h2_title', title: "Weather forecast"%>
-              <%= render 'forecast', forecasts: nil %>
-            </div>
-          </div>
-
-          <!-- Tide infos -->
-          <div class="col-xs-12 col-sm-6" id="tide-container">
-            <div class="spot-show-card">
-              <div class="tide-data hidden">
-                <%= render 'h2_title', title: "Tide forecast"%>
-                <% query = @spot.harbor.query if @spot.harbor %>
-                <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
-                <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
-              </div>
-            </div>
-          </div>
-
-          <!-- Feedback infos -->
-          <div class="col-xs-12 col-sm-6" id='feedbacks-container'>
-            <div class="spot-show-card">
-              <%= render 'h2_title', title: "Weather feedback"%>
-              <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
-
-              <% if user_signed_in? %>
-                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#weather-feedbacks-modal">
-                  Add a weather feedback
-                </button>
-              <% else %>
-                <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
-              <% end %>
-            </div>
-          </div>
-
-
-
-        </div>
-
-        <!-- End of content for Weather section -->
-
-
-
 
         <!-- Review Modal -->
           <div class="modal fade" id="myModalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -194,9 +211,7 @@
               </div>
             </div>
           </div>
-
         <!-- End of features -->
-
       </div>
     </div>
   </div>

@@ -75,7 +75,7 @@ class Spot < ApplicationRecord
   def mean_weather_feedback
     last_feedbacks = self.weather_feedbacks.where("created_at > ?", DateTime.now - 4.hours)
     if last_feedbacks.empty?
-      mean_feedback = {message: "No recent data for this spot"}
+      mean_feedback = {message: "Your fellows haven't provided any recent data for this spot."}
     else
       sum_strength = 0
       sum_x_direction = 0
@@ -97,7 +97,7 @@ class Spot < ApplicationRecord
       mean_direction = (Math.atan2(mean_y_direction, mean_x_direction) * 180 / Math::PI).round
       mean_direction = mean_direction + 360 if mean_direction < 0
       mean_feedback = {
-        message: "#{last_feedbacks.length} feedbacks in the 2 past hours, last one at #{last_feedback.created_at.strftime('%H:%M')}",
+        message: "#{last_feedbacks.length} feedbacks in the past 2 hours, last one at #{last_feedback.created_at.strftime('%H:%M')}",
         mean_strength: mean_strength,
         mean_direction: mean_direction,
         max_strength: max_strength,
