@@ -1,0 +1,126 @@
+.summary {
+  background: white;
+  padding: 20px 0px;
+  margin-left: 29px;
+  margin-right: 29px;
+  border-bottom: 5px solid $orange;
+}
+
+.feedbacks-content {
+  background: white;
+  margin-left: 29px;
+  margin-right: 29px;
+}
+
+.info-spot{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.section-title {
+  text-align: left;
+  background: white;
+  margin-left: 29px;
+  margin-right: 90px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    padding: 15px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  h2:hover {
+    color: $light_blue;
+  }
+  h3 {
+    padding: 15px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  h3:hover {
+    color: $light_blue;
+  }
+  h4 {
+    padding: 15px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  h4:hover {
+    color: $light_blue;
+  }
+  a {
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.orange-underlining {
+  border-bottom: 3px solid #F6A623;
+}
+
+.arrow {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+#weather_forecasts_content {
+  transition: display 0.5s ease;
+  margin-top: 25px;
+}
+
+#weather_forecasts_content.hidden {
+  display: none;
+}
+
+#weather_forecasts_link {
+  cursor: pointer;
+}
+
+#tide_forecasts_content {
+  margin-top: 25px;
+}
+
+#tide_forecasts_content.hidden {
+  display: none;
+  margin-left: 29px;
+  margin-right: 29px;
+}
+
+#tide_forecasts_link {
+  cursor: pointer;
+}
+
+.feedbacks-content {
+  padding-bottom: 25px;
+  position: relative;
+}
+
+.feedbacks-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.feedback-card {
+  text-align: center;
+  margin-top: 15px;
+  background: white;
+  padding: 10px 40px;
+  width: 45%;
+}
+
+.add-review-button {
+  margin-top: 20px;
+}
+
+.margin-29 {
+  margin-left: 29px;
+  margin-right: 29px;
+}

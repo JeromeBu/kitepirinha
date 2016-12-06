@@ -27,3 +27,13 @@ $( "#tab_reviews" ).click(function() {
   $( "#content_for_infos" ).addClass ("hidden");
   $( "#content_for_reviews" ).removeClass ("hidden");
 });
+
+$( '#weather_forecasts_link' ).click(function() {
+  event.preventDefault();
+  $( "#weather_forecasts_content").toggleClass("hidden");
+});
+
+$( '#tide_forecasts_link' ).click(function() {
+  event.preventDefault();
+  $( "#tide_forecasts_content").toggleClass("hidden");
+});

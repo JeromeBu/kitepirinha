@@ -1,2 +1,4 @@
 <% nb_reviews = pluralize spot.reviews.size, "review" %>
-<%= render 'spots/h2_title', title: nb_reviews %>
+<h2 id="reviews_count">
+  <%= nb_reviews %>
+</h2>
