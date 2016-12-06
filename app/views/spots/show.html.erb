@@ -92,7 +92,8 @@
                   Add a review
                 </button>
               <% else %>
-                <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+                <%= link_to "Sign in and add a review", new_user_session_path(redirection: spot_path(@spot))  , class: "kite-std-btn"%>
+
               <% end %>
             </div>
             <hr>
