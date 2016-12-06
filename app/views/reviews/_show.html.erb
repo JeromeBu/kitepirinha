@@ -1,4 +1,13 @@
 <h2 class="title-surrounding"></h2>
 <p>Review added by <%= review.user.first_name || review.user.email %></p>
-<p>Rating : <%= review.rating %></p>
+<p>Rating : <%= review.rating %>
+  <div id="spot-rating">
+    <% review.rating.times do %>
+      <i class="fa fa-star yellow-filled"></i>
+    <% end %>
+    <% (5 - @spot.average_rating.round).times do %>
+      <i class="fa fa-star-o"></i>
+    <% end %>
+  </div>
+</p>
 <p>Description : <%= review.content %></p>
