@@ -1,5 +1,24 @@
-<h3 class="unmargined"><%= link_to spot.name, spot_path(spot) %></h3>
-<p style="margin-top: 5px">The wind is blowing from <%= spot.find_string_direction(spot.fresh_forecasts.first.wind_direction) %> and blows at <%= spot.fresh_forecasts.first.wind_strength.round %> kt</p>
-<% nav_score = spot.nav_score_max(@wing_sizes) %>
-<% punchline = spot.punchline(nav_score) %>
-<h4><%= punchline %></h4>
+<div class="infowindow-card">
+  <h3 class="unmargined"><%= link_to spot.name, spot_path(spot) %></h3>
+
+
+  <% nav_score = spot.nav_score_max(@wing_sizes) %>
+  <% punchline = spot.punchline(nav_score, @wing_sizes) %>
+  <h4><%= punchline %></h4>
+
+  <div class="wind-info">
+    <p>
+      <%= image_tag "wind.svg", id: "strength" %>
+      <%= spot.fresh_forecasts.first.wind_strength.round %> kt
+    </p>
+    <p>
+      <% w = spot.fresh_forecasts.first.wind_direction%>
+      <div> <%= image_tag "wind_direction.svg", style: "transform: rotate(#{w + 180}deg)" %>
+        <%= spot.find_string_direction(w) %>
+      </div>
+    </p>
+  </div>
+
+
+
+</div>
