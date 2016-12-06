@@ -46,6 +46,7 @@ class Spot < ApplicationRecord
       @fresh_forecasts = Forecast.where("created_at > ?", most_recent_date - 2.minutes).where(spot: self)
       # fin du pas très DRY
     end
+
     @fresh_forecasts.sort_by { |k| k["date_time"] }
   end
 
@@ -57,7 +58,6 @@ class Spot < ApplicationRecord
     forecast_raw_json = JSON.parse(url)
 
     hourly = forecast_raw_json["hourly"]["data"]
-    hourly_for_icon = forecast_raw_json["hourly"]
 
     hourly.each do |data_for_the_hour|
       forecast = Forecast.new({
@@ -69,7 +69,7 @@ class Spot < ApplicationRecord
         precip_probability: data_for_the_hour["precipProbability"],
         cloud_cover: data_for_the_hour["cloudCover"],
         temperature: data_for_the_hour["temperature"],
-        icon: hourly_for_icon["icon"]
+        icon: data_for_the_hour["icon"]
       })
       forecast.save
     end
@@ -135,6 +135,23 @@ class Spot < ApplicationRecord
     return score
   end
 
+  def which_wing_for_best_score(wing_sizes)
+    max_score = nil
+    best_wing = nil
+    wing_sizes.each do |wing_size|
+      score = nav_score_max([wing_size])
+      if !max_score || score > max_score
+        max_score = score
+        best_wing = wing_size
+      end
+    end
+    if max_score > 1
+      return best_wing
+    else
+      return nil
+    end
+  end
+
   def nav_score_max(wing_sizes)
     # Possible return values :
     # 3: BEST CONDITIONS (best conditions to kite!)
@@ -164,6 +181,27 @@ class Spot < ApplicationRecord
       return 1
     end
     return max
+  end
+
+  def punchline(nav_score)
+    if wind_direction_compatible?
+      if nav_score == 1
+        return "Conditions are bad, try to find another spot"
+      elsif nav_score == 2
+        return "Conditions have been better but you can go, make sure you have the right wing"
+      elsif nav_Score == 3
+        return "Conditions have never been better. Go go go"
+      end
+    else
+      @strings = ["The wind is not with you", "You should wait until the wind turns", "Go get a drink and come back later"]
+      return @strings.sample
+    end
+  end
+
+  def find_string_direction(wind_direction)
+    @wind_orientations = { (0..11) => "North", (12..34) => "NNE", (35..56) => "NE", (57..78) => "ENE", (79..101) => "East", (102..124) => "ESE", (125..147) => "SE", (148..170) => "SSE", (171..191) => "South", (192..213) => "SSO", (214..236) => "SO", (237..259) => "OSO", (260..282) => "West", (283..305) => "ON0", (306..327) => "NO", (328..349) => "NNO", (350..360) => "North" }
+    couple = @wind_orientations.select { |k, v| k.include?(wind_direction) }
+    return couple.values[0]
   end
 
   private

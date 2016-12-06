@@ -11,22 +11,21 @@ class SpotsController < ApplicationController
       @spots = Spot.near(params[:address], 50).where.not(latitude: nil, longitude: nil)
     end
 
-    @forecasts_results = {}
-    @wind_strength = 0
-    @wind_direction = 0
-
-    @spots_index.each do |spot|
-      forecasts = spot.fresh_forecasts
-      @forecasts_results[spot.name] = forecasts.first(6)
-    end
-    @forecasts_results
-
     # à remplacer par les params selon la recherche home page
-    wing_sizes = [5, 17]
+    params["selected-wing-sizes"] == nil if params["selected-wing-sizes"] == ""
+
+    if params["selected-wing-sizes"] == nil
+      @wing_sizes = [6, 8, 10, 13, 15]
+    else
+      @wing_sizes = params["selected-wing-sizes"].split(",")
+      @wing_sizes.map! do |wing_size|
+        wing_size.to_i
+      end
+    end
     #########################################################
 
     @hash = Gmaps4rails.build_markers(@spots.reverse) do |spot, marker|
-      score = spot.nav_score_max(wing_sizes)
+      score = spot.nav_score_max(@wing_sizes)
       if score == 1
         color = "red"
       elsif score == 2
@@ -44,13 +43,15 @@ class SpotsController < ApplicationController
         height: 70
       })
     end
-    #replace color of flag by output given by jeremy's method
+
+    @condition_icons = { "clear-day" => "clear_day.svg", "clear-night" => "clear_night.svg", "rain" => "rain.svg", "snow" => "snow.svg", "sleet" => "sleet.svg", "wind" => "wind.svg", "fog" => "fog.svg", "cloudy" => "cloudy.svg", "partly-cloudy-day" => "partly_cloudy_day.svg", "partly-cloudy-night" => "partly_cloudy_night.svg" }
   end
 
   def show
     @mean_weather_feedback = @spot.mean_weather_feedback
     @forecasts = @spot.fresh_forecasts
     @review = Review.new
+    @feedback = WeatherFeedback.new
     authorize @review
   end
 
