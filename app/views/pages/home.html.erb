@@ -7,15 +7,16 @@
   <h3 id="sub-title">Choose the right spot wherever you go</h3>
 </div>
 
-<%= form_tag spots_path, method: :get do %>
-  <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
-  <div class="lets-go flex-center not-clicked-yet">
-    <%= submit_tag "Let's start !", class:"btn kite-home-btn" %>
-  </div>
-<% end %>
 <div class="wing_size hidden">
   <%= render 'wing_size_selector' %>
 </div>
+<%= form_tag spots_path, method: :get do %>
+  <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+  <div class="lets-go flex-center">
+    <%= submit_tag "Let's start !", class:"btn kite-home-btn not-clicked-yet", id:"first-button" %>
+    <%= submit_tag "Let's start !", class:"btn kite-home-btn hidden", id:"second-button" %>
+  </div>
+<% end %>
 
 <!-- OCEAN -->
 <div class="home_sea">
