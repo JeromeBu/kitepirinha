@@ -52,11 +52,15 @@
 // ******************************* BUTTON *******************************
 
 .lets-go {
-  margin-top: 25vh;
-  input {
-    margin-left: 1vw;
+  width: 100vw;
+  #first-button {
+    margin: 20vh 0 0 13vw;
+  }
+  #second-button {
+    margin: 5vh 0 0 13vw;
   }
 }
+
 
 // ******************************* ANIMATION *******************************
 
@@ -120,6 +124,39 @@
   }
 }
 
+// ******************************* WING SELECTOR *******************************
+
+.wing_size {
+  margin: 10vh 0 0 44vw;
+  #message {
+    color: #fff;
+  }
+}
+
+
+.wing-sizes-selector{
+  width: 400px;
+  height: 150px;
+  display: flex;
+  color: #fff;
+}
+
+.small-wing{
+  height: 70px;
+  width: 70px;
+  position: relative;
+}
+
+.wing-sizes-selector > p {
+  position: absolute;
+  top: 100px;
+  text-align: center;
+}
+
+.wing-selected{
+  border: solid white 5px;
+}
+
 // ******************************* CATCHPHRASE + WIND *******************************
 
 .box-bottom-right {
@@ -148,79 +185,3 @@
   max-width: 24rem;
   max-height: 24rem;
 }
-
-// ******************************* WING SELECTOR *******************************
-
-.wing-sizes-selector{
-  width: 400px;
-  height: 150px;
-  display: flex;
-  color: #fff;
-}
-
-.small-wing{
-  height: 70px;
-  width: 70px;
-  position: relative;
-}
-
-.wing-sizes-selector > p {
-  position: absolute;
-  top: 100px;
-  text-align: center;
-}
-
-.wing-selected{
-  border: solid white 5px;
-}
-
-// ******************************* HOME PAGE V1 *******************************
-
-// #home-container {
-//   padding: 0px;
-// }
-
-// #titre {
-//   width: 100%;
-// }
-
-// .banner {
-//   color: white;
-//   // text-align: center;
-//   height: calc(100vh - 115px);
-//   /* if you have a 70px navbar => height: calc(100vh - 70px); */
-//   background-size: cover !important;
-//   // display: flex;
-//   // align-items: center;
-//   // justify-content: center;
-//   // position: relative;
-// }
-
-// #banner-content {
-//   margin-top: 200px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-around;
-//   h2 {
-//     font-size: 50px;
-//     font-weight: bold;
-//     text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
-//     margin-bottom: 30px;
-//     width: 700px;
-//     letter-spacing: 10px;
-//   }
-//   h4 {
-//     margin-bottom: 100px;
-//   }
-// }
-
-// #best-kitesurf{
-//   font-weight: bolder;
-//   color: $dark_blue;
-// }
-
-// .thinner {
-//   font-weight: lighter;
-// }
-
-

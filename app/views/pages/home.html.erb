@@ -7,19 +7,21 @@
 </div>
 
 <div class="wing_size hidden">
+  <h4 id="message">Choose your wing size:</h4>
   <%= render 'wing_size_selector' %>
 </div>
   <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
   <div class="lets-go flex-center">
+    <!-- OCEAN -->
+    <div class="home_sea">
+      <%= render "home_sea" %>
+    </div>
+    <!-- BUTTONS -->
     <%= submit_tag "Let's start !", class:"btn kite-home-btn not-clicked-yet", id:"first-button" %>
-    <%= submit_tag "Let's start !", class:"btn kite-home-btn hidden", id:"second-button" %>
+    <%= submit_tag "Go now !", class:"btn kite-home-btn hidden", id:"second-button" %>
   </div>
 <% end %>
 
-<!-- OCEAN -->
-<div class="home_sea">
-  <%= render "home_sea" %>
-</div>
 
 
 <!-- CATCHPHRASE -->
