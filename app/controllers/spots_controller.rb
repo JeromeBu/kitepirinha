@@ -43,6 +43,7 @@ class SpotsController < ApplicationController
     @mean_weather_feedback = @spot.mean_weather_feedback
     @forecasts = @spot.fresh_forecasts
     @review = Review.new
+    @feedback = WeatherFeedback.new
     authorize @review
   end
 
