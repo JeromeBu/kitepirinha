@@ -35,7 +35,7 @@ class SpotsController < ApplicationController
       })
     end
 
-    @condition_icons = { "clear-day" => "clear_day.svg", "clear-night" => "clear_night.svg", "rain" => "rain.svg", "snow" => "snow.svg", "sleet" => "sleet.svg", "wind" => "wind.svg", "fog" => "fog.svg", "cloudy" => "cloudy.svg", "partly-cloudy-day" => "partly-cloudy-day.svg", "partly-cloudy-night" => "partly-cloudy-night.svg" }
+    @condition_icons = { "clear-day" => "clear_day.svg", "clear-night" => "clear_night.svg", "rain" => "rain.svg", "snow" => "snow.svg", "sleet" => "sleet.svg", "wind" => "wind.svg", "fog" => "fog.svg", "cloudy" => "cloudy.svg", "partly-cloudy-day" => "partly_cloudy_day.svg", "partly-cloudy-night" => "partly_cloudy_night.svg" }
 
   end
 

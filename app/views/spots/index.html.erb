@@ -25,10 +25,25 @@
                     <h1><%= spot.fresh_forecasts.first.temperature.round %> °C</h1>
                     <p id="hour"><%= Time.now.strftime("%H:%M") %></p>
                   </div>
-                  <div class="info-spot-items"><%= image_tag @condition_icons["rain"] %></div>
-                  <div class="info-spot-items"><%= spot.fresh_forecasts.first.cloud_cover %></div>
-                  <div class="info-spot-items"><%= image_tag "wind-4-icon.jpg", id: "strength" %><%= spot.fresh_forecasts.first.wind_strength.round %> kt</div>
-                  <div class="info-spot-items"><%= image_tag "direction_compass.ico", id: "direction" %><%= spot.fresh_forecasts.first.wind_direction %>°</div>
+                  <div class="info-spot-items">
+                    <% condition = spot.fresh_forecasts.first.icon %>
+                    <%= image_tag @condition_icons[condition] %>
+                    <%= condition %>
+                  </div>
+                  <div class="info-spot-items">
+                    <% @humidity = spot.fresh_forecasts.first.cloud_cover*100 %>
+                    <%= @humidity.round %>%
+                    <p>Humidity</p>
+                  </div>
+                  <div class="info-spot-items">
+                    <%= image_tag "wind.svg", id: "strength" %>
+                    <%= spot.fresh_forecasts.first.wind_strength.round %> kt
+                  </div>
+                  <div class="info-spot-items">
+                    <% w = spot.fresh_forecasts.first.wind_direction %>
+                    <div style="transform: rotate(<%= w %>deg)"> <%= image_tag "wind_direction.svg" %></div>
+                    <%= spot.find_string_direction(w) %>
+                  </div>
                     <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
                 </div>
               </div>

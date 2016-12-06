@@ -166,6 +166,12 @@ class Spot < ApplicationRecord
     return max
   end
 
+  def find_string_direction(wind_direction)
+    @wind_orientations = { (0..11) => "North", (12..34) => "NNE", (35..56) => "NE", (57..78) => "ENE", (79..101) => "East", (102..124) => "ESE", (125..147) => "SE", (148..170) => "SSE", (171..191) => "South", (192..213) => "SSO", (214..236) => "SO", (237..259) => "OSO", (260..282) => "West", (283..305) => "ON0", (306..327) => "NO", (328..349) => "NNO", (350..360) => "North" }
+    couple = @wind_orientations.select { |k, v| k.include?(wind_direction) }
+    return couple.values[0]
+  end
+
   private
 
   def wind_direction_compatible?
