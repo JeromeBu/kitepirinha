@@ -8,3 +8,24 @@
   overflow-x: hidden;
   overflow-y: auto;
 }
+
+.wind-info {
+  display: flex;
+  align-items: center;
+  p:first-child {
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+  img {
+    margin-right: 5px;
+  }
+}
+
+.infowindow-card {
+  a:hover {
+    text-decoration: none;
+  }
+  h4 {
+    margin-bottom: 50px;
+  }
+}

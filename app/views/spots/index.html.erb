@@ -27,20 +27,20 @@
                 <div class="header-info-spot">
                   <div class="info-spot-items" id="temperature">
                     <h1><%= spot.fresh_forecasts.first.temperature.round %> °C</h1>
-                    <p id="hour"><%= Time.now.strftime("%H:%M") %></p>
+                    <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
                   </div>
                   <div class="info-spot-items">
                     <% condition = spot.fresh_forecasts.first.icon %>
                     <%= image_tag @condition_icons[condition] %>
-                    <%= condition %>
+                    <%= @condition_string[condition] %>
                   </div>
                   <div class="info-spot-items">
                     <% @humidity = spot.fresh_forecasts.first.cloud_cover*100 %>
                     <%= @humidity.round %>%
                     <p>Humidity</p>
                   </div>
-                  <div class="info-spot-items">
-                    <%= image_tag "wind.svg", id: "strength" %>
+                  <div class="info-spot-items text-center">
+                    <%= image_tag "wind.svg", id: "strength" %> <br>
                     <%= spot.fresh_forecasts.first.wind_strength.round %> kt
                   </div>
                   <div class="info-spot-items">
