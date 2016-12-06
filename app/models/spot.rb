@@ -135,6 +135,23 @@ class Spot < ApplicationRecord
     return score
   end
 
+  def which_wing_for_best_score(wing_sizes)
+    max_score = nil
+    best_wing = nil
+    wing_sizes.each do |wing_size|
+      score = nav_score_max([wing_size])
+      if !max_score || score > max_score
+        max_score = score
+        best_wing = wing_size
+      end
+    end
+    if max_score > 1
+      return best_wing
+    else
+      return nil
+    end
+  end
+
   def nav_score_max(wing_sizes)
     # Possible return values :
     # 3: BEST CONDITIONS (best conditions to kite!)
