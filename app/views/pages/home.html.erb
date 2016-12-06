@@ -2,11 +2,14 @@
 
 <div class="main-title-section">
   <h1 id="main-title">Just go kite-surfing.</h1>
-  <input type="text" name="address" id="search_address" class="form-control border-radius hidden" placeholder="Where should we go?">
+  <div class= "search_address_box hidden">
+    <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Enter Spot" autofocus="autofocus">
+    <i class="fa fa-arrow-circle-o-right" aria-hidden="true" id="arrow"></i>
+  </div>
   <h3 id="sub-title">Choose the right spot wherever you go</h3>
 </div>
 
-<div class="wing_size hidden">
+<div class="wing_size text-center hidden">
   <h4 id="message">Choose your wing size:</h4>
   <%= render 'wing_size_selector' %>
 </div>
