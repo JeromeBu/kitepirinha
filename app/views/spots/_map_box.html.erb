@@ -1,1 +1,5 @@
-<%= link_to spot.name, spot_path(spot) %>
+<h3 class="unmargined"><%= link_to spot.name, spot_path(spot) %></h3>
+<p style="margin-top: 5px">The wind is blowing from <%= spot.find_string_direction(spot.fresh_forecasts.first.wind_direction) %> and blows at <%= spot.fresh_forecasts.first.wind_strength.round %> kt</p>
+<% nav_score = spot.nav_score_max(@wing_sizes) %>
+<% punchline = spot.punchline(nav_score) %>
+<h4><%= punchline %></h4>

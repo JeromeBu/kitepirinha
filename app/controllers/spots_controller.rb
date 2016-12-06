@@ -12,11 +12,20 @@ class SpotsController < ApplicationController
     end
 
     # à remplacer par les params selon la recherche home page
-    wing_sizes = [5, 17]
+    params["selected-wing-sizes"] == nil if params["selected-wing-sizes"] == ""
+
+    if params["selected-wing-sizes"] == nil
+      @wing_sizes = [6, 8, 10, 13, 15]
+    else
+      @wing_sizes = params["selected-wing-sizes"].split(",")
+      @wing_sizes.map! do |wing_size|
+        wing_size.to_i
+      end
+    end
     #########################################################
 
     @hash = Gmaps4rails.build_markers(@spots.reverse) do |spot, marker|
-      score = spot.nav_score_max(wing_sizes)
+      score = spot.nav_score_max(@wing_sizes)
       if score == 1
         color = "red"
       elsif score == 2
@@ -36,7 +45,6 @@ class SpotsController < ApplicationController
     end
 
     @condition_icons = { "clear-day" => "clear_day.svg", "clear-night" => "clear_night.svg", "rain" => "rain.svg", "snow" => "snow.svg", "sleet" => "sleet.svg", "wind" => "wind.svg", "fog" => "fog.svg", "cloudy" => "cloudy.svg", "partly-cloudy-day" => "partly_cloudy_day.svg", "partly-cloudy-night" => "partly_cloudy_night.svg" }
-
   end
 
   def show
