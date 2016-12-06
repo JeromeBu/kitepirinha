@@ -23,15 +23,21 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem 'jquery-ui-rails'
 
+
+
+
 #scrapping for tides
 gem 'capybara'
 gem 'poltergeist'
+
+
 
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
+  gem 'rails-assets-seiyria-bootstrap-slider'
 end
 
 group :development, :test do
