@@ -91,29 +91,35 @@
             </div>
 
             <!-- Weather forecasts -->
-            <div class="section-title orange-underlining">
-              <a href="" id="weather_forecasts_link"><h2>Weather forecasts</h2></a>
+            <div class="feedbacks-content">
+              <div class="section-title orange-underlining" id="weather_forecasts_link">
+                <a href=""><h2>Weather forecasts</h2></a>
+              </div>
+              <div class="arrow">
+                <%= image_tag "orange-arrow.svg" %>
+              </div>
+              <div id="weather_forecasts_content" class="margin-29 hidden">
+                <%= render 'forecast', forecasts: nil %>
+              </div>
             </div>
-            <div class="arrow">
-              <%= image_tag "orange-triangle.svg" %>
-            </div>
-            <div id="weather_forecasts_content" class="margin-29 hidden">
-              <%= render 'forecast', forecasts: nil %>
-            </div>
-            <!-- Tide infos -->
-            <div class="section-title">
-              <a href="" id="tide_forecasts_link"><h2>Tide forecasts</h2></a>
-            </div>
-            <div id="tide_forecasts_content" class="margin-29 hidden">
-              <div class="tide-data hidden">
-                <% query = @spot.harbor.query if @spot.harbor %>
-                <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
-                <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
+              <!-- Tide infos -->
+            <div class="feedbacks-content">
+              <div class="section-title orange-underlining" id="tide_forecasts_link">
+                <a href=""><h2>Tide forecasts</h2></a>
+              </div>
+              <div class="arrow">
+                <%= image_tag "orange-arrow.svg" %>
+              </div>
+              <div id="tide_forecasts_content" class="margin-29 hidden">
+                <div class="tide-data hidden">
+                  <% query = @spot.harbor.query if @spot.harbor %>
+                  <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
+                  <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
+                </div>
               </div>
             </div>
           <!-- End of content for Weather section -->
           </div>
-
       </div>
 
         <!-- Content for Infos section -->

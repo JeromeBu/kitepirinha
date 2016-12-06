@@ -21,11 +21,13 @@
 }
 
 .section-title {
-  text-align: center;
+  text-align: left;
   background: white;
   margin-left: 29px;
-  margin-right: 29px;
+  margin-right: 90px;
   margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
   h2 {
     padding: 15px 0px;
     margin-top: 0px;
@@ -59,12 +61,13 @@
 }
 
 .orange-underlining {
-  border-bottom: 5px solid #F6A623;
+  border-bottom: 3px solid #F6A623;
 }
 
 .arrow {
-  text-align: center;
-  margin-top: -5px;
+  position: absolute;
+  top: 25px;
+  right: 25px;
 }
 
 #weather_forecasts_content {
@@ -74,6 +77,10 @@
 
 #weather_forecasts_content.hidden {
   display: none;
+}
+
+#weather_forecasts_link {
+  cursor: pointer;
 }
 
 #tide_forecasts_content {
@@ -86,8 +93,13 @@
   margin-right: 29px;
 }
 
+#tide_forecasts_link {
+  cursor: pointer;
+}
+
 .feedbacks-content {
   padding-bottom: 25px;
+  position: relative;
 }
 
 .feedbacks-container {
