@@ -2,9 +2,9 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url('https://fonts.googleapis.com/css?family=Muli|Oswald:300,400,700');
-$base-font: "muli", "sans-serif";
-$header-font: "muli", "sans-serif";
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400|Oswald:300,400,700');
+$base-font: "Oswald", "sans-serif";
+$header-font: "Oswald", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -33,7 +33,7 @@ $gray: #000000;
 
 $blue:  #0682FE ;
 $dark_blue: #084A83;
-$light_blue: #C6E5F3;
+$light_blue: #3d9eff;
 $gray_bg: #E8F1F5;
 
 $brand-color: $blue;
