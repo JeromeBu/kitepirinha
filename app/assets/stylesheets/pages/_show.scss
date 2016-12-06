@@ -187,3 +187,82 @@ body{
 .content.hidden {
   display: none;
 }
+
+.control-label-display-block{
+  display: block;
+}
+
+.wing-size-feedback-slider-left-margin{
+  margin-left: 10px;
+}
+
+#add-feedback-modal-button{
+  display: block;
+  margin: 0 auto;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+#wing_size_rating{
+  flex-direction: column;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+#experience_rating{
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+
+#picker-with-cardinals{
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin: 0 auto;
+}
+#picker{
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+p#N{
+  position: absolute;
+  top: -10px;
+  right: 70px;
+}
+p#S{
+  position: absolute;
+  top: 140px;
+  right: 70px;
+}
+
+p#E{
+  position: absolute;
+  top: 65px;
+  right: -4px;
+}
+
+p#W{
+  position: absolute;
+  top: 65px;
+  right: 140px;
+}
+
+p#current_value_degrees{
+  position: absolute;
+  right: -80px;
+  top: 65px;
+}
+
+.label-where-wind{
+  margin-bottom: 15px;
+}

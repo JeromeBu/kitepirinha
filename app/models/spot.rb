@@ -27,22 +27,23 @@ class Spot < ApplicationRecord
     #Retourne les forecasts de moins de 2H en allant les chercher si nécessaire
     if self.forecasts.empty?
       fetch_and_parse_forecast_data
+      p "calling 1"
     end
 
   # Testing if the spot last data is older then 2 hours
-    most_recent_date = 0
-    self.forecasts.each do |forecast|
-      most_recent_date = forecast.created_at if forecast.created_at > most_recent_date
-    end
+    most_recent_date = self.forecasts.order(created_at: :asc).last.created_at
+    p DateTime.now
+    p most_recent_date
+
     # optimisation possible : reduire la table pour ne boucler que sur les derniers forecasts
-    if DateTime.now < most_recent_date + 2.hours
-      @fresh_forecasts = Forecast.where("created_at > ?", most_recent_date - 1.minutes).where(spot: self)
+    if DateTime.now < most_recent_date + 10.minutes
+      @fresh_forecasts = Forecast.where("created_at > ?", most_recent_date - 2.minutes).where(spot: self)
     else
+      p "calling 2"
       fetch_and_parse_forecast_data
       # code ci dessous pas DRY, on pourrait tenter un truc récursif en rappelant la fonction forecast_data
-      self.forecasts.each do |forecast|
-        most_recent_date = forecast.created_at if forecast.created_at > most_recent_date
-      end
+      most_recent_date = self.forecasts.order(created_at: :asc).last.created_at
+
       @fresh_forecasts = Forecast.where("created_at > ?", most_recent_date - 2.minutes).where(spot: self)
       # fin du pas très DRY
     end
