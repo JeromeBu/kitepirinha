@@ -183,14 +183,16 @@ class Spot < ApplicationRecord
     return max
   end
 
-  def punchline(nav_score)
+  def punchline(nav_score, wing_sizes)
     if wind_direction_compatible?
       if nav_score == 1
         return "Conditions are bad, try to find another spot"
       elsif nav_score == 2
-        return "Conditions have been better but you can go, make sure you have the right wing"
+        recommendation = which_wing_for_best_score(wing_sizes)
+        return "Conditions have been better but you can go, we recommend you to use your #{recommendation}m2 wing"
       elsif nav_Score == 3
-        return "Conditions have never been better. Go go go"
+        recommendation = which_wing_for_best_score(wing_sizes)
+        return "Conditions have never been better. One suggestion : take your #{recommendation}m2 wing"
       end
     else
       @strings = ["The wind is not with you", "You should wait until the wind turns", "Go get a drink and come back later"]

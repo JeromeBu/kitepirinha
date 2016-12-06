@@ -11,5 +11,5 @@
 </p>
 
 <% nav_score = spot.nav_score_max(@wing_sizes) %>
-<% punchline = spot.punchline(nav_score) %>
+<% punchline = spot.punchline(nav_score, @wing_sizes) %>
 <h4><%= punchline %></h4>
