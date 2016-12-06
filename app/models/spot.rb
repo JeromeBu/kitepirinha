@@ -46,6 +46,7 @@ class Spot < ApplicationRecord
       @fresh_forecasts = Forecast.where("created_at > ?", most_recent_date - 2.minutes).where(spot: self)
       # fin du pas très DRY
     end
+
     @fresh_forecasts.sort_by { |k| k["date_time"] }
   end
 
@@ -57,7 +58,6 @@ class Spot < ApplicationRecord
     forecast_raw_json = JSON.parse(url)
 
     hourly = forecast_raw_json["hourly"]["data"]
-    hourly_for_icon = forecast_raw_json["hourly"]
 
     hourly.each do |data_for_the_hour|
       forecast = Forecast.new({
@@ -69,7 +69,7 @@ class Spot < ApplicationRecord
         precip_probability: data_for_the_hour["precipProbability"],
         cloud_cover: data_for_the_hour["cloudCover"],
         temperature: data_for_the_hour["temperature"],
-        icon: hourly_for_icon["icon"]
+        icon: data_for_the_hour["icon"]
       })
       forecast.save
     end
@@ -133,6 +133,23 @@ class Spot < ApplicationRecord
       end
     end
     return score
+  end
+
+  def which_wing_for_best_score(wing_sizes)
+    max_score = nil
+    best_wing = nil
+    wing_sizes.each do |wing_size|
+      score = nav_score_max([wing_size])
+      if !max_score || score > max_score
+        max_score = score
+        best_wing = wing_size
+      end
+    end
+    if max_score > 1
+      return best_wing
+    else
+      return nil
+    end
   end
 
   def nav_score_max(wing_sizes)
