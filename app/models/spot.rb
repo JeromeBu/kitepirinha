@@ -166,6 +166,21 @@ class Spot < ApplicationRecord
     return max
   end
 
+  def punchline(nav_score)
+    if wind_direction_compatible?
+      if nav_score == 1
+        return "Conditions are bad, try to find another spot"
+      elsif nav_score == 2
+        return "Conditions have been better but you can go, make sure you have the right wing"
+      elsif nav_Score == 3
+        return "Conditions have never been better. Go go go"
+      end
+    else
+      @strings = ["The wind is not with you", "You should wait until the wind turns", "Go get a drink and come back later"]
+      return @strings.sample
+    end
+  end
+
   def find_string_direction(wind_direction)
     @wind_orientations = { (0..11) => "North", (12..34) => "NNE", (35..56) => "NE", (57..78) => "ENE", (79..101) => "East", (102..124) => "ESE", (125..147) => "SE", (148..170) => "SSE", (171..191) => "South", (192..213) => "SSO", (214..236) => "SO", (237..259) => "OSO", (260..282) => "West", (283..305) => "ON0", (306..327) => "NO", (328..349) => "NNO", (350..360) => "North" }
     couple = @wind_orientations.select { |k, v| k.include?(wind_direction) }

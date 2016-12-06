@@ -40,8 +40,8 @@
                     <%= spot.fresh_forecasts.first.wind_strength.round %> kt
                   </div>
                   <div class="info-spot-items">
-                    <% w = spot.fresh_forecasts.first.wind_direction %>
-                    <div style="transform: rotate(<%= w %>deg)"> <%= image_tag "wind_direction.svg" %></div>
+                    <% w = spot.fresh_forecasts.first.wind_direction%>
+                    <div style="transform: rotate(<%= w + 180 %>deg)"> <%= image_tag "wind_direction.svg" %></div>
                     <%= spot.find_string_direction(w) %>
                   </div>
                     <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
