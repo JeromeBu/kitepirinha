@@ -1,7 +1,10 @@
 .pages-home {
-  background: $blue;
-  background: -webkit-linear-gradient(to left, $light_blue , $blue);
-  background: linear-gradient(to left, $light_blue , $blue);
+  background: #00c6ff; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #0fbbff , $blue); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #0fbbff , $blue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
   margin: 0;
   height: 100vh;
 
@@ -146,10 +149,9 @@
   margin: 90px 0 60px 0;
   #message {
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
   }
 }
-
 
 .wing-sizes-selector{
   display: flex;
@@ -160,7 +162,7 @@
 }
 
 .small-wing{
-  width: 80px;
+  width: 105px;
   position: relative;
 }
 
