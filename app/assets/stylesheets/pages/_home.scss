@@ -1,9 +1,7 @@
 .pages-home {
   background: #00c6ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #0fbbff , $blue); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #0fbbff , $blue); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
+  background: -webkit-linear-gradient(to left, #0fbbff , $blue_home); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #0fbbff , $blue_home); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   margin: 0;
   height: 100vh;
@@ -76,7 +74,11 @@
 .lets-go {
   width: 100vw;
   #first-button {
+    color: $blue_home;
     margin: 24vh 0 0 4vw;
+  }
+  #second-button {
+    color: $blue_home;
   }
 }
 
