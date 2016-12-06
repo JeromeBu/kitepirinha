@@ -1,29 +1,37 @@
 <div class="main-title-section">
   <h1 id="main-title">Just go kite-surfing.</h1>
+  <%= form_tag(spots_path, :method => "get", class: "form-inline hidden", id: "search") do %>
+    <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where should we go?">
+    <button type="submit" class="btn kite-home-btn">Go !</button>
+  <% end %>
   <h3 id="sub-title">Choose the right spot wherever you go</h3>
 </div>
 
-
 <%= form_tag spots_path, method: :get do %>
   <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
-  <div class="lets-go flex-center">
-    <%= submit_tag "Let's start", class:"btn kite-home-btn" %>
-    <%#= link_to "Let's start !", spots_path, class:"btn kite-home-btn" %>
+  <div class="lets-go flex-center not-clicked-yet">
+    <%= submit_tag "Let's start !", class:"btn kite-home-btn" %>
   </div>
 <% end %>
+<div class="wing_size hidden">
+  <%= render 'wing_size_selector' %>
+</div>
 
-<%= render 'wing_size_selector' %>
+<!-- OCEAN -->
+<div class="home_sea">
+  <%= render "home_sea" %>
+</div>
+
 
 <!-- CATCHPHRASE -->
-  <div class="box-bottom-right text-center">
-    <h3 id="title-bottom">All the info you need in one place</h3>
-    <div class="icon-wind">
+<div class="box-bottom-right text-center">
+  <h3 id="title-bottom">All the info you need in one place</h3>
+  <div class="icon-wind">
+    <%= link_to spots_path do %>
       <%= render "wind_button" %>
-      <!-- SEA -->
-
-      <div class="home_sea">
-        <%= render "home_sea" %>
-      </div>
-
-    </div>
+    <% end %>
   </div>
+</div>
+
+
+
