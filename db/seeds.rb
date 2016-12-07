@@ -1104,7 +1104,13 @@ if true #write false if you don't wanna seed the spots
   # s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: " A completer", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
   # RecommendedWindDirection.create!(sector_start: 160, sector_end: 340, spot: Spot.find_by(name: "Quend Plage"))
 
+  s = Spot.create!(name: "Plage Benoit", address: "Espl. Benoît, 44500 La Baule-Escoublac", description: "Très bon spot pour débutant. La plage Benoit est située à l'ouest de la grande baie de La Baule, du côté du Pouliguen. Belle plage de sable fin, idéale pour se mettre à l'eau mais attention aux baigneurs qui sont souvent nombreux en été.", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Pornichet"))
+  Facility.create!(parking: "Pas de parking officiel", kite_school: "Gliss Evolution", shop: "Plusieurs magasins sur le ramblais", comment: "- Dangers particuliers: les baigneurs et l'affluence en mer (dériveurs, planchistes, etc", spot: s)
+  RecommendedWindDirection.create!(sector_start: 135, sector_end: 270, spot: Spot.find_by(name: "Plage Benoit"))
 
+  s = Spot.create!(name: "Pornichet", address: "206 Boulevard des Océanides, 44500 Pornichet", description: "Côté est de la grande baie de La Baule, en face des célèbres immeubles en vagues. Belle plage de sable fin, idéale pour se mettre à l'eau mais attention aux baigneurs qui sont souvent nombreux en été.", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Pornichet"))
+  Facility.create!(parking: "Pas de parking officiel", kite_school: "Gliss Evolution", shop: "Plusieurs magasins sur le port de Pornichet", comment: "- Dangers particuliers: les baigneurs et l'affluence en mer (dériveurs, planchistes, etc", spot: s)
+  RecommendedWindDirection.create!(sector_start: 180, sector_end: 225, spot: Spot.find_by(name: "Pornichet"))
 
 end
 
