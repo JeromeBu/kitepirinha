@@ -1,3 +1,5 @@
+// **************************** WHOLE BOX ****************************
+
 #search-box-index {
   padding: 0px;
 }
@@ -9,43 +11,74 @@
   background: #fff;
   padding-top: 5px;
   padding-bottom: 5px;
-  padding-left: 38px;
-  border-bottom: 2px solid $blue_home;
+  padding-left: 25px;
 }
+
+// **************************** SEARCH ****************************
 
 .search-bar-index-fixed {
     top: 0;
     z-index: 100;
     position: fixed;
-    width: 100%;
+    width: 99%;
 }
 
 #search-form {
-  flex: 0 1 51%;
+  flex: 0 1 50%;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 }
 
-.kite-index-btn {
-  font-family: roboto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.form-inline .form-control {
+  width: 100%;
+  padding-left: 0;
+  border: none;
+  box-shadow: none;
+  border-bottom: 2px solid $blue_home;
+}
 
-  background-color: #fff;
-  border: 2px solid #fff;
+
+.form-control {
+  height: 43px;
   padding: 10px 15px;
+
+  font-family: roboto;
+  font-size: 16px;
+  font-weight: lighter;
+  background-color: #fff;
+  &:focus{
+    border: none;
+  }
+}
+
+// **************************** WING ****************************
+
+.wing-size-message {
+  font-weight: lighter;
+}
+
+// **************************** BUTTON ****************************
+
+#search-index-btn{
+  position: absolute;
+  right: 0;
+  padding: 10px 0px;
+
+  background-color: transparent;
+  border: 2px solid transparent;
   border-radius: 2px;
   font-weight: bolder;
 
-  color: $blue_home;
+  font-family: roboto;
   font-weight: lighter;
   font-size: 14px;
+  color: #616668;
   text-decoration: none;
 
   &:hover{
-    color: #fff;
+    color: $blue_home;
     background-color: transparent;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -53,25 +86,47 @@
   }
 }
 
-.form-inline .form-control {
-  display: inline-block;
-  width: 85%;
-  vertical-align: middle;
+#wing-index-btn {
+  padding: 10px 15px;
+
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  font-weight: bolder;
+
+  font-family: roboto;
+  font-weight: lighter;
+  font-size: 14px;
+  color: #616668;
+  text-decoration: none;
+
+  &:hover{
+    color: $blue_home;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-family: roboto;
+  }
 }
 
-.form-control {
+.kite-index-btn {
+
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  font-weight: bolder;
+
+  font-family: roboto;
+  font-weight: lighter;
+  font-size: 14px;
+  color: #616668;
+  text-decoration: none;
+
+  &:hover{
+    color: $blue_home;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
     font-family: roboto;
-    display: block;
-    width: 80%;
-    height: 43px;
-    padding: 10px 15px;
-    font-size: 16px;
-    color: #0682FE;
-    background-color: #fff;
-    background-image: none;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  }
 }

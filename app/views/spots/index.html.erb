@@ -4,14 +4,14 @@
       <div id="search-bar-index">
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
           <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
-          <button type="submit" class="kite-index-btn"><i class="fa fa-search"></i> Search</button>
+          <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined">You have selected <%= pluralize @spots.size, "wing size" %> :
+        <p class="unmargined wing-size-message">You have selected <%= pluralize @spots.size, "wing size" %> :
           <% @wing_sizes.each do |size| %>
             <span><%= size.to_i %> m2</span>
           <% end %>
         <div class="wing-box-index">
-          <button class="kite-index-btn" type="button" data-toggle="modal" data-target="#wing-sizes-modal">
+          <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
             Change wing sizes option
           </button>
         </div>
@@ -25,8 +25,8 @@
                 </div>
                 <div class="modal-body text-center" id="wing-sizes-container">
                   <h3>Choose your wing sizes</h3>
-                  <div class="wing_size text-center">
-                    <%= render 'pages/wing_size_selector' %>
+                  <div class="wing_size_index text-center">
+                    <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
                       <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
                       <%= submit_tag "Update", class: "kite-index-btn" %>
