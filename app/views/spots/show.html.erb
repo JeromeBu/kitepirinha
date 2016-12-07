@@ -31,7 +31,7 @@
       <p>INFOS</p>
     </a>
     <a class="tab" href="#" id="tab_reviews">
-      <p>REVIEWS (<%= @spot.reviews.size %>) </p>
+      <p id="give_number_reviews"><%= render 'number_reviews', spot: @spot %></p>
     </a>
   </div>
 </div>
@@ -45,6 +45,11 @@
           <!-- Weather infos -->
           <div class="col-xs-12">
             <div class="summary text-center">
+              <h2 class="message">
+                <% local_nav_score = @spot.nav_score(@wing_sizes) %>
+                <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
+                <%= punchline %>
+              </h2>
               <div class="info-spot">
                 <div class="info-spot-items" id="temperature">
                   <h1><%= @spot.fresh_forecasts.first.temperature.round %> °C</h1>
