@@ -6,10 +6,14 @@
   border-bottom: 5px solid $orange;
 }
 
-.feedbacks-content {
+.block-content {
   background: white;
   margin-left: 29px;
   margin-right: 29px;
+  padding-bottom: 25px;
+  padding-right: 30px;
+  padding-left: 30px;
+  position: relative;
 }
 
 .info-spot{
@@ -23,7 +27,6 @@
 .section-title {
   text-align: left;
   background: white;
-  margin-left: 29px;
   margin-right: 90px;
   margin-top: 25px;
   display: flex;
@@ -97,11 +100,6 @@
   cursor: pointer;
 }
 
-.feedbacks-content {
-  padding-bottom: 25px;
-  position: relative;
-}
-
 .feedbacks-container {
   display: flex;
   justify-content: space-around;
@@ -117,10 +115,16 @@
 }
 
 .add-review-button {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-left: 29px;
 }
 
-.margin-29 {
-  margin-left: 29px;
-  margin-right: 29px;
+.facilities-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 25px;
+  img {
+    margin-bottom: 10px;
+  }
 }
