@@ -10,7 +10,9 @@
     <p id="current_value_degrees">0°</p>
     <div id="picker"></div>
   </div>
-  <%= hidden_field_tag 'wind_measured_angle', class: "wind_measured_angle"%>
+  <%= hidden_field_tag 'wind_measured_angle', 0%>
+  <%= hidden_field_tag 'wing_size', 11%>
+  <%= hidden_field_tag 'wing_size_exp_rating', 3%>
 
   <div id="wing_size_rating" class="flex-center">
     <%= label_tag "wing_size", "Wing size (m2)", class:"control-label control-label-display-block" %>
@@ -20,7 +22,7 @@
       data-slider-min="5"
       data-slider-max="17"
       data-slider-step="1"
-      data-slider-value="10">
+      data-slider-value="11">
   </div>
 
   <div id="experience_rating" class="flex-center">

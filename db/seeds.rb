@@ -1069,6 +1069,34 @@ if true #write false if you don't wanna seed the spots
   s = Spot.create!(name: "Quend Plage", address: "Quend Plage, Quend, France", description: "Super spot !", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Cayeux-sur-Mer"))
   RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Quend Plage"))
   s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1480689281/jn8j9odml1yq4glq3wov.jpg"
+
+  # adding seeds
+
+  s = Spot.create!(name: "St Germain sur Ay coté Havre de Lessay", address: "56 Rue des Carrières, 50430 Saint-Germain-sur-Ay", description: "Ultra plat, pour ceux qui veulent de l’eau lisse comme un miroir, qui veulent tirer des bord pleine balle pendant 4 km. Pour ceux qui veulent se promener, faire le tour de l’île, visiter un spot magnifique. Possibilité de naviguer dans la baie, sous le vent de l’île et de la pointe de départ. Même si il y a une cote sous le vent, c’est comme si vous kitiez par vent offshore (de terre) donc danger ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  RecommendedWindDirection.create!(sector_start: 110, sector_end: 315, spot: Spot.find_by(name: "St Germain sur Ay coté Havre de Lessay"))
+
+  # repositionner les coordonnées GPS pour le chemin des dunes
+  s = Spot.create!(name: "Créance plage chemin des dunes", address: "315-365 Rue du Haut Dy, 50710 Créances", description: "Vous êtes dans le HDL, vous avez de l’eau super lisse, vous êtes à l’endroit où il n’y a pas de courant et ou vous avez pieds assez loin. L’inconvénient c’est que c’est la première partie qui se vide. Les vents dominants sont bien orientés par rapport à la cote (side / on shore). C’est un bon point de départ pour kiter dans le HDL, car c’est l’endroit quasiment le plus sous le vent (si secteur ouest/ sud), en remontant au vent (facilement grâce à l’eau lisse ) on peut aller sous le vent de l’île.", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  RecommendedWindDirection.create!(sector_start: 160, sector_end: 315, spot: Spot.find_by(name: "Créance plage chemin des dunes"))
+
+  s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: "Equivalent au Spot de St Germain sur Ay coté mer avec moins d’îlots rocheux, et un peu moins de baïnes. Bon départ pour les down-wind ", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  RecommendedWindDirection.create!(sector_start: 160, sector_end: 340, spot: Spot.find_by(name: "Créance Plage"))
+
+  s = Spot.create!(name: "Urville-Nacqueville", address: "459 Avenue de la Plage, 50460 Urville-Nacqueville", description: "Spot qui fonctionne par vent est / nord est / nord( full onshore )/ nord ouest / oues. Vagues: vagues/ big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Superbe plage naturelle et sauvage. Tous niveaux ! ", user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by_name("Omonville-La-Rogue"))
+  RecommendedWindDirection.create!(sector_start: 245, sector_end: 90, spot: Spot.find_by(name: "Urville-Nacqueville"))
+
+  s = Spot.create!(name: "Sciotot", address: "Plage de Sciotot", description: "Vagues: vagues / surf spot / big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Grande plage de sable plus ou moins mou à marée basse", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Flamanville"))
+  RecommendedWindDirection.create!(sector_start: 160, sector_end: 315, spot: Spot.find_by(name: "Sciotot"))
+
+  s = Spot.create!(name: "Siouville", address: "2 Rue Amiral Lemonnier, 50340 Siouville-Hague", description: "- Vagues: vagues / surf spot / big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Flamanville"))
+  RecommendedWindDirection.create!(sector_start: 180, sector_end: 340, spot: Spot.find_by(name: "Siouville"))
+
+  # pour les suivants
+  # s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: " A completer", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  # RecommendedWindDirection.create!(sector_start: 160, sector_end: 340, spot: Spot.find_by(name: "Quend Plage"))
+
+
+
 end
 
 

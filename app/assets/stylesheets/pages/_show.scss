@@ -2,6 +2,10 @@ body{
   color: #616668;
 }
 
+.message{
+  margin-bottom: 22px;
+}
+
 .banner-show{
   height: 45vh;
   position: relative;
@@ -24,18 +28,13 @@ body{
 
 .spot-show-card {
   text-align: left;
-  padding: 15px 30px;
-  // border-radius: 5px;
-  // box-shadow: 2px 2px #AAAAAA;
-  // background-color: white;
-
+  padding: 15px 0px;
   margin-top: 10px;
   position: relative;
 }
 
-.spot-show-card h2 {
-  font-size: 25px;
-  color: $dark_blue;
+.spot-rating{
+  margin-bottom: 11px;
 }
 
 #spot-show-h1-title{
@@ -274,8 +273,7 @@ p#current_value_degrees{
   margin-bottom: 15px;
 }
 
-.review-created-at {
-  font-size : 12px;
-  font-weight: lighter;
-  color : #BCBCBCFF;
+.review {
+  margin-bottom: 15px;
+  border-bottom: 1px solid $blue;
 }
