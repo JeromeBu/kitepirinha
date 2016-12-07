@@ -9,5 +9,5 @@
   </div>
   <p><%= review.content %></p>
 
-  <p style="margin-bottom: 5px">Added by <%= review.user.first_name || review.user.email %> - <%= review[:created_at].strftime('%H:%M - %A, %b %d') %></p>
+  <p style="margin-bottom: 5px">Added by <%= review.user.first_name || review.user.email %> - <%= time_ago_in_words(review[:created_at])%> ago</p>
 </div>
