@@ -3,10 +3,10 @@
   <% review.rating.times do %>
     <i class="fa fa-star yellow-filled"></i>
   <% end %>
-  <% (5 - @spot.average_rating.round).times do %>
+  <% (5 - review.rating).times do %>
     <i class="fa fa-star-o"></i>
   <% end %>
 </div>
 <p><%= review.content %></p>
 
-<p class="review-created-at">Review added by <%= review.user.first_name || review.user.email %> at <%= review[:created_at].strftime('%H:%M') %> on the <%= review[:created_at].strftime('%A, %b %d') %></p>
+<p class="review-created-at">Added by <%= review.user.first_name || review.user.email %> - <%= review[:created_at].strftime('%H:%M - %A, %b %d') %></p>

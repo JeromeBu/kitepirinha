@@ -168,7 +168,7 @@
             <% end %>
             <hr>
             <div class="spot-show-card" id="reviews">
-              <% @spot.reviews.each do |review| %>
+              <% @spot.reviews.order(created_at: :desc).each do |review| %>
                <%= render 'reviews/show', review: review %>
               <% end %>
             </div>

@@ -2,8 +2,8 @@
   // Create a paragraph for the new review. But hide it.
   var new_review = $("<%= j render 'reviews/show', review: @review %>").hide();
   // Add it to the DOM, at the end of the existing reviews. It's still hidden.
-  $('#reviews').append(new_review);
-  $('#myModal').modal('hide')
+  $('#reviews').prepend(new_review);
+  $('#myModalReview').modal('hide')
   // Show the new review with an animation!
   new_review.slideDown();
   $('#review_content').val('');
