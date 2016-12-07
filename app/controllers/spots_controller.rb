@@ -68,8 +68,8 @@ class SpotsController < ApplicationController
     @spot = Spot.new(spot_params)
     @spot.user = current_user
     authorize @spot
-    @spot.harbor = Harbor.find_closest_from(@spot.latitude, @spot.longitude)
     if @spot.save
+      @spot.harbor = Harbor.find_closest_from(@spot.latitude, @spot.longitude)
       @spot.fetch_and_parse_forecast_data
       @spot.save
       redirect_to spot_path(@spot)
