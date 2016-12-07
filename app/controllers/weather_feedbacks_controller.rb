@@ -7,6 +7,7 @@ class WeatherFeedbacksController < ApplicationController
   end
 
   def create
+    binding.pry
     @weather_feedback = WeatherFeedback.new(weather_feedback_params)
     @weather_feedback.spot = @spot
     @weather_feedback.user = current_user
