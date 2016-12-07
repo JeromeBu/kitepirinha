@@ -83,7 +83,11 @@
               <div class="section-title">
                 <h2>Real time feedbacks</h2>
               </div>
-              <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
+
+              <div id="weather_feedbacks_ajax">
+                <%= render 'weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>
+              </div>
+
               <div class="add-review-button">
                 <% if user_signed_in? %>
                   <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
