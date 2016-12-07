@@ -11,7 +11,6 @@ class SpotsController < ApplicationController
       @spots = Spot.near(params[:address], 50).where.not(latitude: nil, longitude: nil)
     end
 
-    # à remplacer par les params selon la recherche home page
     params["selected-wing-sizes"] == nil if params["selected-wing-sizes"] == ""
 
     if params["selected-wing-sizes"] == nil

@@ -1,15 +1,40 @@
 <div class="container-fluid wrapper">
-
-<!--   <div class="row">
-    <%= render 'shared/form_slider' %>
-  </div> -->
-
   <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-6">
-      <%= form_tag(spots_path, :method => "get", class: "form-inline text-center", id: "search-form") do %>
-        <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?">
-        <button type="submit" class="btn kite-search-btn"><i class="fa fa-search"></i> Search</button>
-      <% end %>
+    <div class="col-xs-12 col-sm-12 col-md-12" id="search-box-index">
+      <div id="search-bar-index">
+        <p style="color: white">You have selected wing-sizes: <%= @wing_sizes %></p>
+        <div class="wing-box-index">
+          <button class="kite-index-btn" type="button" data-toggle="modal" data-target="#wing-sizes-modal">
+            Change wing sizes option
+          </button>
+        </div>
+        <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
+          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?">
+          <button type="submit" class="kite-index-btn"><i class="fa fa-search"></i> Search</button>
+        <% end %>
+        <!-- Wing sizes Modal -->
+          <div class="modal fade" id="wing-sizes-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" id="modal-content-wing-sizes">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Wing sizes choices</h4>
+                </div>
+                <div class="modal-body text-center" id="wing-sizes-container">
+                  <h3>Choose your wing sizes</h3>
+                  <div class="wing_size text-center">
+                    <%= render 'pages/wing_size_selector' %>
+                    <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
+                      <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+                      <%= submit_tag "Update", class: "kite-index-btn" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Wing sizes Modal -->
+      </div>
     </div>
   </div>
   <div class="row">

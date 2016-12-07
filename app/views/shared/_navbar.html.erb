@@ -2,13 +2,20 @@
   <div id="navbar-top">
 
     <!-- Logo -->
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= cl_image_tag("kite-logo_kwhyz1.png") %>
+    <%= link_to root_path, class: "navbar-brand", id:"logo" do %>
+      <%= render "pages/wind_button" %>
     <% end %>
 
     <!-- Right Navigation -->
     <div class="navbar-right hidden-xs hidden-sm">
 
+      <%= link_to "All spots", spots_path, class: "navbar-item navbar-link" %>
+
+      <% if user_signed_in? %>
+        <%= link_to "My favorite spots", favorite_spots_path, class: "navbar-item navbar-link" %>
+      <% end %>
+
+      <%= link_to "Submit a spot", new_spot_path, class: "navbar-item navbar-link" %>
       <!-- Different navigation if login or not -->
       <% if user_signed_in? %>
 
@@ -21,13 +28,5 @@
       <% end %>
 
     </div>
-  </div>
-
-  <div id="navbar-bottom">
-    <%= link_to "All spots", spots_path, class: "navbar-item navbar-bottom-link" %>
-    <% if user_signed_in? %>
-      <%= link_to "My favorite spots", favorite_spots_path, class: "navbar-item navbar-bottom-link" %>
-    <% end %>
-    <%= link_to "Submit a spot", new_spot_path, class: "navbar-item navbar-bottom-link" %>
   </div>
 </div>
