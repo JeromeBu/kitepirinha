@@ -39,3 +39,10 @@ $light_blue: #3d9eff;
 $gray_bg: #FAFAFA;
 
 $brand-color: $blue;
+
+
+.form-control:focus  {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: $blue-home;
+}

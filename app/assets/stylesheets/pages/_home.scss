@@ -14,6 +14,7 @@
     display: none;
   }
 }
+
 .hidden {
   display:none;
 }
@@ -63,6 +64,7 @@
     color: #fff;
     opacity: 0.8;
     font-size: 60px;
+    cursor: pointer;
     &:hover {
       opacity: 1;
     }
@@ -74,11 +76,7 @@
 .lets-go {
   width: 100vw;
   #first-button {
-    color: $blue_home;
     margin: 24vh 0 0 4vw;
-  }
-  #second-button {
-    color: $blue_home;
   }
 }
 
@@ -148,24 +146,33 @@
 // ******************************* WING SELECTOR *******************************
 
 .wing_size {
-  margin: 90px 0 60px 0;
+  flex-direction: column;
+  margin: 90px 0 60px 120vw;
+  transition: all 0.5s ease;
   #message {
     color: #fff;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
   }
+  #second-button {
+  }
+}
+
+.wing_size.active {
+  margin: 90px 0 60px 0;
 }
 
 .wing-sizes-selector{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-bottom: 20px;
   color: #fff;
 }
 
 .small-wing{
   width: 105px;
   position: relative;
+  cursor: pointer;
 }
 
 .wing-sizes-selector > p {
@@ -206,4 +213,5 @@
   min-height: 8rem;
   max-width: 24rem;
   max-height: 24rem;
+  cursor: pointer;
 }
