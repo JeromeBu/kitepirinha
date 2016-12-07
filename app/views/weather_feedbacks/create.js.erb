@@ -1,13 +1,5 @@
 <% if @weather_feedback.errors.any? %>
-  // Render new review form with errors
-  //$('#new_review').html("<%= j render 'reviews/form', restaurant: @restaurant, review: @review %>");
+  $('#weather-feedbacks-modal').modal('show');
 <% else %>
-  // Create a paragraph for the new review. But hide it.
-  //var new_weather_feedback = $("<%= j render 'spots/weather_feedbacks' %>").hide();
-  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
   $('#weather_feedbacks_ajax').html("<%= j render 'spots/weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>");
-  // Show the new review with an animation!
-  //new_review.slideDown();
-  // Reset the form
-  //$('#new_review').html("<%= j render 'reviews/form', restaurant: @restaurant, review: Review.new %>");
 <% end %>

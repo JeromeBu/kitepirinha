@@ -7,7 +7,6 @@ class WeatherFeedbacksController < ApplicationController
   end
 
   def create
-
     wind_strength_estimation = WeatherFeedback.estimate_wind_strength(params[:wing_size].to_i, params[:wing_size_exp_rating].to_i)
     @weather_feedback = WeatherFeedback.new(
       direction: params[:wind_measured_angle],
@@ -16,7 +15,7 @@ class WeatherFeedbacksController < ApplicationController
       rating: params[:wing_size_exp_rating])
     @weather_feedback.user = current_user
     @weather_feedback.spot = @spot
-
+    @mean_weather_feedback = @spot.mean_weather_feedback
 
     if @weather_feedback.save
       respond_to do |format|
