@@ -187,7 +187,7 @@ class Spot < ApplicationRecord
       elsif nav_score == 2
         recommendation = which_wing_for_best_score(wing_sizes)
         return "Conditions have been better but you can go, we recommend you to use your #{recommendation}m2 wing"
-      elsif nav_Score == 3
+      elsif nav_score == 3
         recommendation = which_wing_for_best_score(wing_sizes)
         return "Conditions have never been better. One suggestion : take your #{recommendation}m2 wing"
       end
