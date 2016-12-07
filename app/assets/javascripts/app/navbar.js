@@ -2,10 +2,10 @@ $(document).ready(function() {
 
   $(window).scroll(function () {
     if ($(window).scrollTop() > 65) {
-      $('#navbar-bottom').addClass('navbar-fixed');
+      $('#search-bar-index').addClass('search-bar-index-fixed');
     }
     if ($(window).scrollTop() < 65) {
-      $('#navbar-bottom').removeClass('navbar-fixed');
+      $('#search-bar-index').removeClass('search-bar-index-fixed');
     }
   });
 });

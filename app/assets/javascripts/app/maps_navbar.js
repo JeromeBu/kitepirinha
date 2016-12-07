@@ -3,13 +3,13 @@ $(window).scroll(function () {
 
   if ($(window).scrollTop() < 65) {
     var topPage = $(window).scrollTop();
-    var setTop = 115 - topPage;
+    var setTop = 120 - topPage;
     $('.width_box').css('top', setTop + 'px')
-    $('#map').css('height', 'calc(100vh - 115px')
+    $('#map').css('height', 'calc(100vh - 120px')
   }
   if ($(window).scrollTop() > 65) {
-    $('.width_box').css('top', '50px')
-    $('#map').css('height', 'calc(100vh - 50px')
+    $('.width_box').css('top', '55px')
+    $('#map').css('height', 'calc(100vh - 55px')
   }
   });
 
