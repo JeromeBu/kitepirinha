@@ -31,7 +31,7 @@
       <p>INFOS</p>
     </a>
     <a class="tab" href="#" id="tab_reviews">
-      <p>REVIEWS</p>
+      <p>REVIEWS (<%= @spot.reviews.size %>) </p>
     </a>
   </div>
 </div>
@@ -74,43 +74,43 @@
             </div>
 
             <!-- Feedback infos -->
-            <div class="feedbacks-content">
+            <div class="block-content">
               <div class="section-title">
                 <h2>Real time feedbacks</h2>
               </div>
               <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
-              <div class="add-review-button text-center">
+              <div class="add-review-button">
                 <% if user_signed_in? %>
                   <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
-                    Give a real time feedback
+                    Give a feedback
                   </button>
                 <% else %>
-                  <%= link_to "Add a review", new_user_session_path, class: "kite-std-btn"%>
+                  <%= link_to "Give a feedback", new_user_session_path, class: "kite-std-btn"%>
                 <% end %>
               </div>
             </div>
 
             <!-- Weather forecasts -->
-            <div class="feedbacks-content">
+            <div class="block-content">
               <div class="section-title orange-underlining" id="weather_forecasts_link">
                 <a href=""><h2>Weather forecasts</h2></a>
               </div>
               <div class="arrow">
                 <%= image_tag "orange-arrow.svg" %>
               </div>
-              <div id="weather_forecasts_content" class="margin-29 hidden">
+              <div id="weather_forecasts_content" class="hidden">
                 <%= render 'forecast', forecasts: nil %>
               </div>
             </div>
               <!-- Tide infos -->
-            <div class="feedbacks-content">
+            <div class="block-content">
               <div class="section-title orange-underlining" id="tide_forecasts_link">
                 <a href=""><h2>Tide forecasts</h2></a>
               </div>
               <div class="arrow">
                 <%= image_tag "orange-arrow.svg" %>
               </div>
-              <div id="tide_forecasts_content" class="margin-29 hidden">
+              <div id="tide_forecasts_content" class="hidden">
                 <div class="tide-data hidden">
                   <% query = @spot.harbor.query if @spot.harbor %>
                   <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
@@ -125,25 +125,29 @@
         <!-- Content for Infos section -->
         <div class="content hidden" id="content_for_infos">
           <!-- Title Section -->
-          <div class="col-xs-12">
+          <div class="block-content">
             <div class="section-title">
               <h2>Description</h2>
             </div>
-            <p class="margin-29"><%= @spot.description unless @spot.description.nil?%></p>
+            <p><%= @spot.description unless @spot.description.nil?%></p>
           </div>
           <!-- Facilities -->
-          <div class="col-xs-12">
+          <div class="block-content">
             <div class="section-title">
               <h2>Facilities</h2>
             </div>
             <% unless @spot.facility.nil? %>
-              <% unless @spot.facility[:parking].nil? %><p><strong>Parking:</strong> <%= @spot.facility[:parking] %></p><% end %>
-              <% unless @spot.facility[:safety_watch].nil? %><p><strong>Sécurité: <%= @spot.facility[:safety_watch] %></p><% end %></strong>
-              <% unless @spot.facility[:kite_school].nil? %><p><strong>Ecoles:</strong> <%= @spot.facility[:kite_school] %></p><% end %>
-              <% unless @spot.facility[:water_spot].nil? %><p><strong>Point d'eau:</strong> <%= @spot.facility[:water_spot] %></p><% end %>
-              <% unless @spot.facility[:shop].nil? %><p><strong>Shop:</strong> <%= @spot.facility[:shop] %></p><% end %>
-              <% unless @spot.facility[:shower].nil? %><p><strong>Douches:</strong> <%= @spot.facility[:shower] %></p><% end %>
-              <% unless @spot.facility[:comment].nil? %><p><strong>Commentaires:</strong> <%= @spot.facility[:comment] %></p><% end %>
+              <div class="facilities-content">
+                <% unless @spot.facility[:parking].nil? %> <div class="text-center"><%= image_tag "parking.svg" %> <br> <%= @spot.facility[:parking] %></div><% end %>
+                <% unless @spot.facility[:safety_watch].nil? %> <div class="text-center"><%= image_tag "safety-watch.svg" %> <br> <%= @spot.facility[:safety_watch] %></div><% end %>
+                <% unless @spot.facility[:kite_school].nil? %> <div class="text-center"><%= image_tag "school.svg" %> <br> <%= @spot.facility[:kite_school] %></div> <% end %>
+                <% unless @spot.facility[:water_spot].nil? %> <div class="text-center"><%= image_tag "water-spot.svg" %> <br> <%= @spot.facility[:water_spot] %></div><% end %>
+                <% unless @spot.facility[:shop].nil? %> <div class="text-center"><%= image_tag "cart.svg" %> <br> <%= @spot.facility[:shop] %></div><% end %>
+                <% unless @spot.facility[:shower].nil? %> <div class="text-center"><%= image_tag "shower.svg" %> <br> <%= @spot.facility[:shower] %></div><% end %>
+              </div>
+              <div class="facility-comment">
+                <% unless @spot.facility[:comment].nil? %><p><h4>Commentaires</h4><br> <%= @spot.facility[:comment] %></p><% end %>
+              </div>
             <% else %>
               <p>No facilities added for this spot</p>
             <% end %>
@@ -153,12 +157,17 @@
 
         <!-- Content for Reviews section -->
         <div class="content hidden" id="content_for_reviews">
-          <div class="col-xs-12 col-sm-12 col-md-12">
+          <div class="block-content">
             <div class="section-title">
               <%= render "spots/reviews_count", spot: @spot %>
             </div>
             <!-- Modal for reviews -->
             <!-- btn btn-primary btn-lg -->
+            <div class="spot-show-card" id="reviews">
+              <% @spot.reviews.order(created_at: :desc).each do |review| %>
+               <%= render 'reviews/show', review: review %>
+              <% end %>
+            </div>
             <% if user_signed_in? %>
               <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
                 Add a review
@@ -166,12 +175,6 @@
             <% else %>
               <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
             <% end %>
-            <hr>
-            <div class="spot-show-card" id="reviews">
-              <% @spot.reviews.order(created_at: :desc).each do |review| %>
-               <%= render 'reviews/show', review: review %>
-              <% end %>
-            </div>
           </div>
         </div>
         <!-- End of content for Reviews section -->
