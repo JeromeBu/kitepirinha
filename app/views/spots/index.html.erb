@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="search-box-index">
       <div id="search-bar-index">
-        <p class="unmargined" style="color: white">You have selected <%= pluralize @spots.size, "wing size" %> :
+        <p class="unmargined" style="color: white">You have selected <%= pluralize @wing_sizes.size, "wing size" %> :
           <% @wing_sizes.each do |size| %>
             <%= size.to_i %> m2
           <% end %>
@@ -13,7 +13,7 @@
         </div>
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
           <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
-          <button type="submit" class="kite-index-btn"><i class="fa fa-search"></i> Search</button>
+          <button type="submit" class="kite-index-btn" id="search-button-index"><i class="fa fa-search"></i> Search</button>
         <% end %>
         <!-- Wing sizes Modal -->
           <div class="modal fade" id="wing-sizes-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
