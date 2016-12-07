@@ -20,7 +20,7 @@ class WeatherFeedback < ApplicationRecord
     }
   }
 
-  def estimate_wind_strength(wing_size, rating, user)
+  def self.estimate_wind_strength(wing_size, rating)
     WIND_CORRESPONDANCE_75KG[rating][wing_size]
   end
 end

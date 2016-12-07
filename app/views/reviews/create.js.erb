@@ -9,6 +9,7 @@
   $('#review_content').val('');
   $('#review_rating').val('');
   $('#reviews_count').html('<%= j render "spots/reviews_count", spot: @spot %>')
+  $('#give_number_reviews').html('<%= j render "spots/number_reviews", spot: @spot %>')
 <% else %>
   $('#review_form_container').html('<%= j render "reviews/form", spot: @spot, review: @review %>')
 <% end %>

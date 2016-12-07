@@ -31,7 +31,7 @@
       <p>INFOS</p>
     </a>
     <a class="tab" href="#" id="tab_reviews">
-      <p>REVIEWS (<%= @spot.reviews.size %>) </p>
+      <p id="give_number_reviews"><%= render 'number_reviews', spot: @spot %></p>
     </a>
   </div>
 </div>
@@ -45,6 +45,11 @@
           <!-- Weather infos -->
           <div class="col-xs-12">
             <div class="summary text-center">
+              <h2 class="message">
+                <% local_nav_score = @spot.nav_score(@wing_sizes) %>
+                <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
+                <%= punchline %>
+              </h2>
               <div class="info-spot">
                 <div class="info-spot-items" id="temperature">
                   <h1><%= @spot.fresh_forecasts.first.temperature.round %> °C</h1>
@@ -78,7 +83,11 @@
               <div class="section-title">
                 <h2>Real time feedbacks</h2>
               </div>
-              <%= render 'weather_feedbacks', feedbacks: @spot.weather_feedbacks %>
+
+              <div id="weather_feedbacks_ajax">
+                <%= render 'weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>
+              </div>
+
               <div class="add-review-button">
                 <% if user_signed_in? %>
                   <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">

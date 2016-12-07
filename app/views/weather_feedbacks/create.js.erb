@@ -1,0 +1,5 @@
+<% if @weather_feedback.errors.any? %>
+  $('#weather-feedbacks-modal').modal('show');
+<% else %>
+  $('#weather_feedbacks_ajax').html("<%= j render 'spots/weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>");
+<% end %>

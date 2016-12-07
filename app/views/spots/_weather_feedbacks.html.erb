@@ -1,26 +1,26 @@
-<h4><%= @mean_weather_feedback[:message] %></h4>
+<h4><%= mean_weather_feedback[:message] %></h4>
 
-<% unless @mean_weather_feedback[:last_feedback].nil? %>
+<% unless mean_weather_feedback[:last_feedback].nil? %>
   <div class="feedbacks-container">
     <div class="feedback-card">
       <h3>Calculated Mean</h3>
       <h4>Mean strength</h4>
       <%= image_tag "wind.svg", id: "strength" %> <br>
-      <%= @mean_weather_feedback[:mean_strength] %> kt
+      <%= mean_weather_feedback[:mean_strength] %> kt
       <h4>Mean direction</h4>
-      <% w = @mean_weather_feedback[:mean_direction] %>
+      <% w = mean_weather_feedback[:mean_direction] %>
       <div style="transform: rotate(<%= w + 180 %>deg); width: 360px;"> <%= image_tag "wind_direction.svg" %></div>
-      <%= @spot.find_string_direction(w) %>
+      <%= spot.find_string_direction(w) %>
     </div>
     <div class="feedback-card">
       <h3>Last given feedback</h3>
         <h4>Strength</h4>
         <%= image_tag "wind.svg", id: "strength" %> <br>
-        <%= @mean_weather_feedback[:last_feedback][:strength] %> kt
+        <%= mean_weather_feedback[:last_feedback][:strength] %> kt
         <h4>Direction</h4>
-        <% y = @mean_weather_feedback[:last_feedback][:direction] %>
+        <% y = mean_weather_feedback[:last_feedback][:direction] %>
         <div style="transform: rotate(<%= w + 180 %>deg); width: 360px;"> <%= image_tag "wind_direction.svg" %></div>
-        <%= @spot.find_string_direction(y) %>
+        <%= spot.find_string_direction(y) %>
     </div>
   </div>
 <% end %>
