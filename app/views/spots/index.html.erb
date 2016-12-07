@@ -2,14 +2,17 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="search-box-index">
       <div id="search-bar-index">
-        <p style="color: white">You have selected wing-sizes: <%= @wing_sizes %></p>
+        <p class="unmargined" style="color: white">You have selected <%= pluralize @spots.size, "wing size" %> :
+          <% @wing_sizes.each do |size| %>
+            <%= size.to_i %> m2
+          <% end %>
         <div class="wing-box-index">
           <button class="kite-index-btn" type="button" data-toggle="modal" data-target="#wing-sizes-modal">
             Change wing sizes option
           </button>
         </div>
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
-          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?">
+          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
           <button type="submit" class="kite-index-btn"><i class="fa fa-search"></i> Search</button>
         <% end %>
         <!-- Wing sizes Modal -->
@@ -39,6 +42,9 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">
+      <div class="results">
+        <h2><%= @spots.size %> results</h2>
+      </div>
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-12 " id="spot-card-boundaries">
           <% if spot.photo %>
