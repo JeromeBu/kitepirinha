@@ -2,8 +2,8 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url('https://fonts.googleapis.com/css?family=Oswald:400,700|Roboto:300,400,500');
-$base-font: "Roboto", "sans-serif";
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,700|Roboto:300,400,500');
+$base-font: "Oswald", "sans-serif";
 $header-font: "Oswald", "sans-serif";
 
 
@@ -32,10 +32,22 @@ $orange: #E67E22;
 $green: #32B796;
 $gray: #000000;
 
-$blue_home:  #0682FE ;
-$blue:  #22B2DA ;
-$dark_blue: #084A83;
-$light_blue: #3d9eff;
+$blue_home:  #0682FE;
+$blue_title_1: #056BD0;
+$blue: #056BD0;
+$blue_title_2: #05498C;
+$dark_blue: #011149;
+$light_blue: #3398FE;
+
 $gray_bg: #FAFAFA;
 
-$brand-color: $blue;
+$brand-color: $blue_title_1;
+
+
+
+
+.form-control:focus  {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: $blue-home;
+}

@@ -7,9 +7,9 @@
     $('.search_address_box').toggleClass('hidden');
 
     $('.home_sea').toggleClass('hidden');
+    $('.wing_size').toggleClass('hidden');
   });
 
   $('#arrow').on('click', function(event) {
-    $('.wing_size').toggleClass('hidden');
-    $('#second-button').toggleClass('hidden');
+    $('.wing_size').toggleClass('active');
   });

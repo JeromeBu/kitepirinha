@@ -1,27 +1,47 @@
-/* Main class */
-#logo {
-  with: auto;
-  height: 60;
-}
-
-#full-navbar {
-  background: $blue_home;
+#full-navbar{
   padding: 0;
-  color: white;
+  background: $blue_home;
+  color: #fff;
+  height: 80px;
 }
 
 #navbar-top {
+  position: relative;
   transition: all 0.3s ease;
-  display: flex;
-  height: 65px;
-  align-items: center;
-  justify-content: space-between;
-  margin-left: 200px;
-  margin-right: 200px;
+}
+
+.svg-logo-wind {
+  width: 5.5rem;
+  height: 5.5rem;
+  min-width: 5.5rem;
+  min-height: 5.5rem;
+  max-width: 24rem;
+  max-height: 24rem;
+  cursor: pointer;
+
+  position: absolute;
+  top: calc(calc(80px - 5.5rem)/2);
+  left: 35px;
+}
+
+
+.navbar-right {
+  position: absolute;
+  right: 35px;
+  letter-spacing: 0.7px;
+  font-weight: lighter;
+  height: 80px;
 }
 
 .navbar-link {
-  color: white;
+  color: #fff;
+  border-bottom: 3px solid transparent;
+
+  &:hover{
+    text-decoration: none;
+    color: #fff;
+    border-bottom: 3px solid #fff;
+  }
 }
 
 /* Navbar logo */
@@ -41,7 +61,6 @@
 
 /* Navbar item */
 .navbar-item {
-  flex: 0 1 auto;
   cursor: pointer;
-  padding: 0 20px;
+  margin: 0 20px;
 }

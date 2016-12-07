@@ -9,9 +9,10 @@
   <h3 id="sub-title">Choose the right spot wherever you go</h3>
 </div>
 
-<div class="wing_size text-center hidden">
+<div class="wing_size text-center hidden flex-center">
   <h4 id="message">Choose your wing sizes:</h4>
   <%= render 'wing_size_selector' %>
+  <%= submit_tag "Go now !", class:"btn kite-home-btn", id:"second-button" %>
 </div>
   <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
   <div class="lets-go flex-center">
@@ -21,7 +22,6 @@
     </div>
     <!-- BUTTONS -->
     <%= submit_tag "Let's start !", class:"btn kite-home-btn not-clicked-yet", id:"first-button" %>
-    <%= submit_tag "Go now !", class:"btn kite-home-btn hidden", id:"second-button" %>
   </div>
 <% end %>
 

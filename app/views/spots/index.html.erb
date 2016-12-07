@@ -2,19 +2,19 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="search-box-index">
       <div id="search-bar-index">
-        <p class="unmargined" style="color: white">You have selected <%= pluralize @wing_sizes.size, "wing size" %> :
+        <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
+          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
+          <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
+        <% end %>
+        <p class="unmargined wing-size-message">You have selected <%= pluralize @spots.size, "wing size" %> :
           <% @wing_sizes.each do |size| %>
-            <%= size.to_i %> m2
+            <span><%= size.to_i %> m2</span>
           <% end %>
         <div class="wing-box-index">
-          <button class="kite-index-btn" type="button" data-toggle="modal" data-target="#wing-sizes-modal">
+          <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
             Change wing sizes option
           </button>
         </div>
-        <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
-          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
-          <button type="submit" class="kite-index-btn" id="search-button-index"><i class="fa fa-search"></i> Search</button>
-        <% end %>
         <!-- Wing sizes Modal -->
           <div class="modal fade" id="wing-sizes-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
@@ -25,8 +25,8 @@
                 </div>
                 <div class="modal-body text-center" id="wing-sizes-container">
                   <h3>Choose your wing sizes</h3>
-                  <div class="wing_size text-center">
-                    <%= render 'pages/wing_size_selector' %>
+                  <div class="wing_size_index text-center">
+                    <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
                       <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
                       <%= submit_tag "Update", class: "kite-index-btn" %>
@@ -100,7 +100,7 @@
                 var handler = Gmaps.build('Google');
                 handler.buildMap({
                   provider: {
-                    styles: [{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"color":"#c0e4f3"},{"visibility":"on"}]}]
+                    styles: [{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#fffffa"}]},{"featureType":"water","stylers":[{"lightness":50}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","stylers":[{"visibility":"off"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"lightness":40}]}]
                   },
                   internal: { id: 'map' } }, function() {
                   markers = handler.addMarkers(<%= raw @hash.to_json %>);

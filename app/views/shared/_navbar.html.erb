@@ -2,12 +2,12 @@
   <div id="navbar-top">
 
     <!-- Logo -->
-    <%= link_to root_path, class: "navbar-brand", id:"logo" do %>
-      <%= render "pages/wind_button" %>
+    <%= link_to root_path, class: "navbar-brand flex-center-column", id:"logo" do %>
+      <%= render "pages/wind_logo" %>
     <% end %>
 
     <!-- Right Navigation -->
-    <div class="navbar-right hidden-xs hidden-sm">
+    <div class="navbar-right hidden-xs hidden-sm flex-center">
 
       <%= link_to "All spots", spots_path, class: "navbar-item navbar-link" %>
 
