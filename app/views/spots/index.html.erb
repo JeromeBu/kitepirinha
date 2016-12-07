@@ -4,9 +4,10 @@
       <div id="search-bar-index">
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
           <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
+          <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined wing-size-message">You have selected <%= pluralize @spots.size, "wing size" %> :
+        <p class="unmargined wing-size-message">You have selected <%= pluralize @wing_sizes.size, "wing size" %> :
           <% @wing_sizes.each do |size| %>
             <span><%= size.to_i %> m2</span>
           <% end %>
@@ -29,8 +30,10 @@
                     <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
                       <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+                      <%= hidden_field_tag 'address', params[:address] %>
                       <%= submit_tag "Update", class: "kite-index-btn" %>
                     <% end %>
+
                   </div>
                 </div>
               </div>
