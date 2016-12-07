@@ -1,4 +1,12 @@
 <h2 class="title-surrounding"></h2>
-<p>Review added by <%= review.user.first_name || review.user.email %></p>
-<p>Rating : <%= review.rating %></p>
-<p>Description : <%= review.content %></p>
+<div class="spot-rating">
+  <% review.rating.times do %>
+    <i class="fa fa-star yellow-filled"></i>
+  <% end %>
+  <% (5 - @spot.average_rating.round).times do %>
+    <i class="fa fa-star-o"></i>
+  <% end %>
+</div>
+<p><%= review.content %></p>
+
+<p class="review-created-at">Review added by <%= review.user.first_name || review.user.email %> at <%= review[:created_at].strftime('%H:%M') %> on the <%= review[:created_at].strftime('%A, %b %d') %></p>

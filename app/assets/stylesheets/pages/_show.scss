@@ -67,17 +67,17 @@ body{
   border: 0px;
 }
 
-#spot-rating{
+.spot-rating{
   // position: absolute;
   // top: 0px;
   // right: 100px;
 
 }
 
-#spot-rating i.fa-star{
+.spot-rating i.fa-star{
   font-size: 20px;
 }
-#spot-rating i.fa-star-o{
+.spot-rating i.fa-star-o{
   font-size: 20px;
 }
 
@@ -265,4 +265,10 @@ p#current_value_degrees{
 
 .label-where-wind{
   margin-bottom: 15px;
+}
+
+.review-created-at {
+  font-size : 11px;
+  font-weight: lighter;
+  color : #BCBCBCFF;
 }
