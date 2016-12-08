@@ -75,7 +75,7 @@ class Spot < ApplicationRecord
   def mean_weather_feedback
     last_feedbacks = self.weather_feedbacks.where("created_at > ?", DateTime.now - 4.hours)
     if last_feedbacks.empty?
-      mean_feedback = {message: "Personne n'a fournit de feedback sur le spot récemment"}
+      mean_feedback = {message: "Personne n'a fourni de feedback sur le spot récemment"}
     else
       sum_strength = 0
       sum_x_direction = 0
