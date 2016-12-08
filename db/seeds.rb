@@ -1050,7 +1050,7 @@ if true #write false if you don't wanna seed the spots
   # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204421/11_resized_dednjd.jpg"
   puts("Spot #{count+=1} seeded")
   s = Spot.create!(name: "Antifer", address: "Cap d'Antifer, La Poterie-Cap-d'Antifer, France", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"),
-    photo: File.open(Rails.root.join('db/fixtures/images/9_resized.jpg')))
+    photo: File.open(Rails.root.join('db/fixtures/images/14_resized.jpg')))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
