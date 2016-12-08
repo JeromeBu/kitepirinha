@@ -4,20 +4,32 @@
   <div class="feedbacks-container">
     <div class="feedback-card">
       <h7>Calculated Mean</h7>
+      <br>
+      <br>
       <h8>Mean strength</h8>
-      <%= image_tag "wind.svg", id: "strength" %> <br>
+      <br>
+      <%= image_tag "wind.svg", id: "strength" %>
       <%= mean_weather_feedback[:mean_strength] %> kt
-      <h7>Mean direction</h7>
+      <br>
+      <br>
+      <h8>Mean direction</h8>
+      <br>
       <% w = mean_weather_feedback[:mean_direction] %>
       <div style="transform: rotate(<%= w + 180 %>deg); width: 360px;"> <%= image_tag "wind_direction.svg" %></div>
       <%= spot.find_string_direction(w) %>
     </div>
     <div class="feedback-card">
       <h7>Last given feedback</h7>
+      <br>
+      <br>
         <h8>Strength</h8>
-        <%= image_tag "wind.svg", id: "strength" %> <br>
+        <br>
+        <%= image_tag "wind.svg", id: "strength" %>
         <%= mean_weather_feedback[:last_feedback][:strength] %> kt
+        <br>
+        <br>
         <h8>Direction</h8>
+        <br>
         <% y = mean_weather_feedback[:last_feedback][:direction] %>
         <div style="transform: rotate(<%= w + 180 %>deg); width: 360px;"> <%= image_tag "wind_direction.svg" %></div>
         <%= spot.find_string_direction(y) %>
