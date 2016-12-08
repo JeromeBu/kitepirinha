@@ -53,7 +53,7 @@
             <!-- Weather infos -->
             <div class="summary text-center">
               <h7 class="message">
-                <% local_nav_score = @spot.nav_score(@wing_sizes) %>
+                <% local_nav_score = @spot.nav_score_max(@wing_sizes) %>
                 <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
                 <%= punchline %>
               </h7>
