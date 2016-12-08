@@ -1,19 +1,24 @@
 <div class="container-fluid wrapper">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="search-box-index">
+
       <div id="search-bar-index">
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
           <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined wing-size-message">You have selected <%= pluralize @spots.size, "wing size" %> :
-          <% @wing_sizes.each do |size| %>
-            <span><%= size.to_i %> m2</span>
-          <% end %>
-        <div class="wing-box-index">
-          <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
-            Change wing sizes option
-          </button>
+
+        <div class="wing_index">
+          <span class="unmargined wing-size-message">You have selected <%= pluralize @spots.size, "wing size" %> :
+            <% @wing_sizes.each do |size| %>
+              <span><%= size.to_i %> m2</span>
+            <% end %>
+            </span>
+          <div class="wing-box-index">
+            <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
+              Change wing sizes option
+            </button>
+          </div>
         </div>
         <!-- Wing sizes Modal -->
           <div class="modal fade" id="wing-sizes-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

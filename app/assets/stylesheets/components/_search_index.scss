@@ -17,14 +17,15 @@
 // **************************** SEARCH ****************************
 
 .search-bar-index-fixed {
-    top: 0;
-    z-index: 100;
-    position: fixed;
-    width: 99%;
+  top: 0;
+  z-index: 100;
+  position: fixed;
+  width: 99%;
 }
 
 #search-form {
-  flex: 0 1 50%;
+  flex: 0 1 46%;
+  margin-left: 6px;
   display: flex;
   align-items: center;
   justify-content: space-around;
