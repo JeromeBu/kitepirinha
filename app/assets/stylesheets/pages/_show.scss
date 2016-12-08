@@ -105,7 +105,7 @@ body{
 
 #spot-show-h1-title{
  margin-top: 0px;
- margin-left: 200px;
+ margin-left:200px;
  padding-top: 50px;
 }
 
@@ -200,14 +200,14 @@ body{
 .tabs {
   position: absolute;
   bottom: 0px;
-  left: 200px;
+  left: 194px;
   width: auto;
   background: transparent;
   display: flex;
 }
 
 .tabs a {
-  color: white;
+  color: #616668;
   text-decoration: none;
 }
 .tabs a:hover {
@@ -246,8 +246,8 @@ body{
 }
 
 .tab:hover{
-  background: white;
-  opacity: 0.8;
+  background: #FAFAFA;
+  opacity: 0.2;
   color: black;
 }
 
