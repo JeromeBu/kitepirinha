@@ -50,27 +50,8 @@
   }
 }
 
-// .kite-std-btn {
-//   color: #fff;
-//   text-decoration: none;
-//   font-size: 17px;
-//   background-color: $blue_title_2;
-//   padding: 12px 15px;
-//   cursor: pointer;
-//   opacity: 0.9;
-//   font-weight: lighter;
-//   border-radius
-
-
-//   &:hover{
-//     opacity: 1;
-//     transition: all 0.3s ease;
-//     color: #fff;
-//     text-decoration: none;
-//   }
-// }
-
 .kite-round-btn{
+  display: none;
   padding: 20px 20px;
   border: 1px solid $blue_title_1;
   border-radius: 50%;
