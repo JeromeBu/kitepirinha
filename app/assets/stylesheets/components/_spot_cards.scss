@@ -19,16 +19,21 @@
   right: 0px;
   left: 0px;
   text-align: center;
+  h7 {
+    font-family: oswald;
+  }
 }
 
 .spot-infos.small {
   height: 25%;
-  h3 {
+  padding-top: 15px;
+  h7 {
     margin: 15px 0 0 0;
   }
 }
 
 .spot-infos.full {
+  padding-top: 15px;
   height: 70%;
   opacity: 0.7;
   transition: 0.4s ease;

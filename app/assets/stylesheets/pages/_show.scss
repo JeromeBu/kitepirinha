@@ -35,9 +35,10 @@ body{
     font-family: $header-font;
     font-size: 40px;
     font-weight: bold;
-    color: #056BD0;
+    color: #fff;
   }
   h7 {
+    margin-top: 15px;
     font-family: $base-font;
     font-size: 30px;
     font-weight: light;
@@ -48,6 +49,13 @@ body{
     font-size: 20px;
     font-weight: light;
     color: $gray-content;
+  }
+
+  h9{
+    font-family: $base-font;
+    font-size: 16px;
+    font-weight: light;
+    color: white;
   }
 
   p{
@@ -66,6 +74,7 @@ body{
 .banner-show{
   height: 45vh;
   position: relative;
+  background-size: cover;
 }
 
 .bg-white{
@@ -95,7 +104,6 @@ body{
 }
 
 #spot-show-h1-title{
- color: $dark_blue;
  margin-top: 0px;
  margin-left: 200px;
  padding-top: 50px;
@@ -220,15 +228,15 @@ body{
 }
 
 #tab_weather {
-  border-bottom: 5px solid #FF8000;
+  border-bottom: 5px solid $dark_blue;
 }
 
 #tab_infos {
-  border-bottom: 5px solid #004080;
+  border-bottom: 5px solid $blue_title_1;
 }
 
 #tab_reviews {
-  border-bottom: 5px solid #008000;
+  border-bottom: 5px solid $light_blue;
 }
 
 .tab.active {

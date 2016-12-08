@@ -1,35 +1,42 @@
 <div class="container-fluid wrapper">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12" id="search-box-index">
+
       <div id="search-bar-index">
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
           <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
           <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined wing-size-message">Ailes selectionnées <%= @wing_sizes.size %> aile<%= @wing_sizes.count > 1 ? "s" : "" %> :
+
+      <div class="wing_index">
+        <span class="unmargined wing-size-message"><%= @wing_sizes.size %> Aile<%= @wing_sizes.count > 1 ? "s" : "" %> Selectionnée<%= @wing_sizes.count > 1 ? "s" : "" %>:
           <%= @wing_sizes.map { |x| x.to_s }.reduce("") { |acc, x| acc += x + " m2, " }.chomp(", ") %>
+        </span>
         <div class="wing-box-index">
           <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
             Choix des ailes
           </button>
         </div>
+      </div>
+
         <!-- Wing sizes Modal -->
           <div class="modal fade" id="wing-sizes-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content" id="modal-content-wing-sizes">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Choix des ailes</h4>
+                  <h6 class="modal-title" id="myModalLabel">Choix des ailes</h6>
                 </div>
                 <div class="modal-body text-center" id="wing-sizes-container">
                   <h3>Choisis les ailes que tu as</h3>
                   <div class="wing_size_index text-center">
                     <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
-                      <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+                      <%= hidden_field_tag 'selected-wing-sizes-index' %>
+                      <%= hidden_field_tag 'selected-wing-sizes' %>
                       <%= hidden_field_tag 'address', params[:address] %>
-                      <%= submit_tag "Update", class: "kite-index-btn" %>
+                      <%= submit_tag "Update", class: "kite-modal-btn text-center" %>
                     <% end %>
 
                   </div>
@@ -53,14 +60,14 @@
           <% else %>
             <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_200,w_658,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
           <% end %>
-          <div class="spot-card" data-name="<%= spot.name %>" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)), url('<%=  img_url %>')">
+          <div class="spot-card" data-name="<%= spot.name %>" style="background-image: url('<%=  img_url %>')">
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
               <h7><%= spot.name %></h7>
               <div class="spot-full-infos">
                 <div class="header-info-spot">
                   <div class="info-spot-items" id="temperature">
-                    <h1><%= spot.fresh_forecasts.first.temperature.round %> °C</h1>
+                    <h7><%= spot.fresh_forecasts.first.temperature.round %> °C</h7>
                     <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
                   </div>
                   <div class="info-spot-items">

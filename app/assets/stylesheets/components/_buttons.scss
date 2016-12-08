@@ -44,10 +44,10 @@
 
 .kite-round-btn{
   padding: 20px 20px;
-  border: 1px solid $dark_blue;
+  border: 1px solid $blue_title_1;
   border-radius: 50%;
   font-size: 30px;
-  color: $dark_blue;
+  color: $blue_title_1;
   background-color: transparent;
   font-size: 15px;
   transition: all 0.3s ease;
@@ -55,7 +55,7 @@
 
   &:hover{
     color: white;
-    background-color: $dark_blue;
+    background-color: $blue_title_1;
     transition: all 0.3s ease;
     opacity: 0.8;
   }
@@ -81,5 +81,34 @@
     color: #fff;
     text-decoration: none;
     border: 1px solid #fff;
+  }
+}
+
+.kite-modal-btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #fff;
+  border: 2px solid #fff;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-weight: bolder;
+
+  margin-left: 42.3%;
+  color: $blue_home;
+  font-weight: bolder;
+  font-size: 16px;
+  text-decoration: none;
+  font-family: Oswald;
+  cursor: pointer;
+
+  &:hover{
+    color: #fff;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-family: Oswald;
+    cursor: pointer;
   }
 }

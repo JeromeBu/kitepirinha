@@ -13,6 +13,11 @@
   #full-navbar {
     display: none;
   }
+
+  p {
+    color: white;
+    font-family: oswald;
+  }
 }
 
 .hidden {
@@ -189,6 +194,9 @@
   position: absolute;
   top: 100px;
   text-align: center;
+
+  color: #fff;
+  font-family: Oswald;
 }
 
 .wing-selected{

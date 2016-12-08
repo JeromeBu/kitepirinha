@@ -3,7 +3,7 @@
   padding: 20px 0px;
   margin-left: 29px;
   margin-right: 29px;
-  border-bottom: 5px solid $orange;
+  border-bottom: 5px solid $blue_title_2;
 }
 
 .block-content {
@@ -31,40 +31,22 @@
   margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  h2 {
-    padding: 15px 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  h2:hover {
-    color: $light_blue;
-  }
-  h3 {
-    padding: 15px 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  h3:hover {
-    color: $light_blue;
-  }
-  h4 {
-    padding: 15px 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-  h4:hover {
-    color: $light_blue;
-  }
   a {
+    margin-top: 15px;
     text-decoration: none;
-  }
   a:hover {
-    text-decoration: none;
+    color: $light_blue;
+  }
+  }
+  h7 {
+    padding: 15px 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }
 
 .orange-underlining {
-  border-bottom: 3px solid #F6A623;
+  border-bottom: 3px solid $blue_title_2;
 }
 
 .arrow {
