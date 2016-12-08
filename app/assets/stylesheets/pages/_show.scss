@@ -81,6 +81,7 @@ body{
   background-color: white;
 }
 
+
 .results {
   margin-left: 15px;
   h2 {
@@ -101,12 +102,6 @@ body{
 
 .spot-rating{
   margin-bottom: 11px;
-}
-
-#spot-show-h1-title{
- margin-top: 0px;
- margin-left:200px;
- padding-top: 50px;
 }
 
 #add-feedback-btn{
@@ -197,14 +192,35 @@ body{
   opacity: 0.5;
 }
 
+#banner-content {
+  position: relative;
+}
+
+#banner-row {
+  height: 100%;
+}
+
+#banner-col {
+  height: 100%;
+}
+
+#banner-content-header {
+  position: absolute;
+}
+
 .tabs {
   position: absolute;
   bottom: 0px;
-  left: 200px;
   width: auto;
   background: transparent;
   display: flex;
 }
+
+#tabs-row {
+  position: absolute;
+  bottom: 0px;
+}
+
 
 .tabs a {
   color: #616668;
@@ -222,8 +238,11 @@ body{
   width: 200px;
   padding-top: 10px;
   padding-bottom: 10px;
-  p {
-    margin: 0px;
+  background-color: #999999;
+  opacity: 0.8;
+  color: white;
+  h9 {
+    opacity: 1;
   }
 }
 
@@ -248,11 +267,9 @@ body{
 .tab:hover{
   background: #FAFAFA;
   opacity: 0.2;
-  color: black;
-}
-
-.tab.active a {
-  opacity: 1;
+  h9 {
+    color: #616668;
+  }
 }
 
 .content.hidden {
