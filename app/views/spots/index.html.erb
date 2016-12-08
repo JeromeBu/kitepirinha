@@ -10,7 +10,7 @@
         <% end %>
 
       <div class="wing_index">
-        <span class="unmargined wing-size-message">Ailes selectionnées <%= @wing_sizes.size %> aile<%= @wing_sizes.count > 1 ? "s" : "" %> :
+        <span class="unmargined wing-size-message"><%= @wing_sizes.size %> Aile<%= @wing_sizes.count > 1 ? "s" : "" %> Selectionnée<%= @wing_sizes.count > 1 ? "s" : "" %>:
           <%= @wing_sizes.map { |x| x.to_s }.reduce("") { |acc, x| acc += x + " m2, " }.chomp(", ") %>
         </span>
         <div class="wing-box-index">
