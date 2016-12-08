@@ -11,7 +11,11 @@ class SpotsController < ApplicationController
       @spots = Spot.near(params[:address], 50).where.not(latitude: nil, longitude: nil)
     end
 
-    params["selected-wing-sizes"] = nil if params["selected-wing-sizes"] == ""
+    if params["selected-wing-sizes"] == "" && params["selected-wing-sizes-index"] == ""
+      params["selected-wing-sizes"] = nil
+    elsif params["selected-wing-sizes"] == "" && params["selected-wing-sizes-index"] != ""
+      params["selected-wing-sizes"] = params["selected-wing-sizes-index"]
+    end
 
     if params["selected-wing-sizes"] == nil
       @wing_sizes = [6, 8, 10, 13, 15]

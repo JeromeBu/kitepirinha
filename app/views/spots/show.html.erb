@@ -7,7 +7,7 @@
 <% end %>
 <div class="banner banner-show" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)),
          url('<%= img_url %>')">
-  <h1 id="spot-show-h1-title"><%= @spot.name.capitalize %>
+  <h5 id="spot-show-h1-title"><%= @spot.name.capitalize %>
     <% if @spot.average_rating %>
       <div class="spot-rating">
         <% @spot.average_rating.round.times do %>
@@ -21,17 +21,17 @@
     <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-round-btn" do %>
       <i class="fa fa-heart"></i>
     <% end %>
-  </h1>
+  </h5>
 
   <div class="tabs">
     <a class="tab active" href="#" id="tab_weather">
-      <p>WEATHER</p>
+      <h9>WEATHER</h9>
     </a>
     <a class="tab" href="#" id="tab_infos">
-      <p>INFOS</p>
+      <h9>INFOS</h9>
     </a>
     <a class="tab" href="#" id="tab_reviews">
-      <p id="give_number_reviews"><%= render 'number_reviews', spot: @spot %></p>
+      <h9 id="give_number_reviews"><%= render 'number_reviews', spot: @spot %></h9>
     </a>
   </div>
 </div>
@@ -45,14 +45,14 @@
           <!-- Weather infos -->
           <div class="col-xs-12">
             <div class="summary text-center">
-              <h2 class="message">
+              <h7 class="message">
                 <% local_nav_score = @spot.nav_score(@wing_sizes) %>
                 <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
                 <%= punchline %>
-              </h2>
+              </h7>
               <div class="info-spot">
                 <div class="info-spot-items" id="temperature">
-                  <h1><%= @spot.fresh_forecasts.first.temperature.round %> °C</h1>
+                  <h7><%= @spot.fresh_forecasts.first.temperature.round %> °C</h7>
                   <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
                 </div>
                 <div class="info-spot-items">
@@ -81,7 +81,7 @@
             <!-- Feedback infos -->
             <div class="block-content">
               <div class="section-title">
-                <h2>Real time feedbacks</h2>
+                <h7>Real time feedbacks</h7>
               </div>
 
               <div id="weather_feedbacks_ajax">
@@ -102,7 +102,7 @@
             <!-- Weather forecasts -->
             <div class="block-content">
               <div class="section-title orange-underlining" id="weather_forecasts_link">
-                <a href=""><h2>Weather forecasts</h2></a>
+                <a href=""><h7>Weather forecasts</h7></a>
               </div>
               <div class="arrow">
                 <%= image_tag "orange-arrow.svg" %>
@@ -114,7 +114,7 @@
               <!-- Tide infos -->
             <div class="block-content">
               <div class="section-title orange-underlining" id="tide_forecasts_link">
-                <a href=""><h2>Tide forecasts</h2></a>
+                <a href=""><h7>Tide forecasts</h7></a>
               </div>
               <div class="arrow">
                 <%= image_tag "orange-arrow.svg" %>
@@ -136,14 +136,14 @@
           <!-- Title Section -->
           <div class="block-content">
             <div class="section-title">
-              <h2>Description</h2>
+              <h7>Description</h7>
             </div>
             <p><%= @spot.description unless @spot.description.nil?%></p>
           </div>
           <!-- Facilities -->
           <div class="block-content">
             <div class="section-title">
-              <h2>Facilities</h2>
+              <h7>Facilities</h7>
             </div>
             <% unless @spot.facility.nil? %>
               <div class="facilities-content">
@@ -194,7 +194,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Your review</h4>
+                  <h6 class="modal-title" id="myModalLabel">Your review</h6>
                 </div>
                 <div class="modal-body" id="review_form_container">
                   <%= render 'reviews/form', spot: @spot, review: @review %>
@@ -212,7 +212,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Weather feedback</h4>
+                  <h6 class="modal-title" id="myModalLabel">Weather feedback</h6>
                 </div>
                 <div class="modal-body" id="forecast_form_container">
                   <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>
