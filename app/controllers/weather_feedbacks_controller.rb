@@ -15,14 +15,15 @@ class WeatherFeedbacksController < ApplicationController
       rating: params[:wing_size_exp_rating])
     @weather_feedback.user = current_user
     @weather_feedback.spot = @spot
-    @mean_weather_feedback = @spot.mean_weather_feedback
-
     if @weather_feedback.save
+      @mean_weather_feedback = @spot.mean_weather_feedback
+      puts "*****SAVED*****"
       respond_to do |format|
         format.html { redirect_to spot_path(@spot) }
         format.js  # <-- will render `app/views/weather_feedbacks/create.js.erb`
       end
     else
+      puts "*****NOT SAVED*****"
       respond_to do |format|
         format.html { render 'spots/show' }
         format.js  # <-- idem
