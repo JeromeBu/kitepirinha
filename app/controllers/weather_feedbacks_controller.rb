@@ -17,13 +17,11 @@ class WeatherFeedbacksController < ApplicationController
     @weather_feedback.spot = @spot
     if @weather_feedback.save
       @mean_weather_feedback = @spot.mean_weather_feedback
-      puts "*****SAVED*****"
       respond_to do |format|
         format.html { redirect_to spot_path(@spot) }
         format.js  # <-- will render `app/views/weather_feedbacks/create.js.erb`
       end
     else
-      puts "*****NOT SAVED*****"
       respond_to do |format|
         format.html { render 'spots/show' }
         format.js  # <-- idem
