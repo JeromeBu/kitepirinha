@@ -42,93 +42,92 @@
       <div class="col-xs-12">
         <!-- Content for Weather section -->
         <div class="content" id="content_for_weather">
+
           <!-- Weather infos -->
-          <div class="col-xs-12">
-            <div class="summary text-center">
-              <h7 class="message">
-                <% local_nav_score = @spot.nav_score(@wing_sizes) %>
-                <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
-                <%= punchline %>
-              </h7>
-              <div class="info-spot">
-                <div class="info-spot-items" id="temperature">
-                  <h7><%= @spot.fresh_forecasts.first.temperature.round %> °C</h7>
-                  <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
-                </div>
-                <div class="info-spot-items">
-                  <% condition = @spot.fresh_forecasts.first.icon %>
-                  <%= image_tag @condition_icons[condition] %>
-                  <%= @condition_string[condition] %>
-                </div>
-                <div class="info-spot-items">
-                  <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
-                  <%= @humidity.round %>%
-                  <p>Humidité</p>
-                </div>
-                <div class="info-spot-items text-center">
-                  <%= image_tag "wind.svg", id: "strength" %> <br>
-                  <%= @spot.fresh_forecasts.first.wind_strength.round %> kt
-                </div>
-                <div class="info-spot-items">
-                  <% w = @spot.fresh_forecasts.first.wind_direction%>
-                  <div style="transform: rotate(<%= w + 180 %>deg)"> <%= image_tag "wind_direction.svg" %></div>
-                  <%= @spot.find_string_direction(w) %>
-                </div>
-                  <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
+          <div class="summary text-center">
+            <h7 class="message">
+              <% local_nav_score = @spot.nav_score(@wing_sizes) %>
+              <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
+              <%= punchline %>
+            </h7>
+            <div class="info-spot">
+              <div class="info-spot-items" id="temperature">
+                <h7><%= @spot.fresh_forecasts.first.temperature.round %> °C</h7>
+                <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
               </div>
+              <div class="info-spot-items">
+                <% condition = @spot.fresh_forecasts.first.icon %>
+                <%= image_tag @condition_icons[condition] %>
+                <%= @condition_string[condition] %>
+              </div>
+              <div class="info-spot-items">
+                <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
+                <%= @humidity.round %>%
+                <p>Humidité</p>
+              </div>
+              <div class="info-spot-items text-center">
+                <%= image_tag "wind.svg", id: "strength" %> <br>
+                <%= @spot.fresh_forecasts.first.wind_strength.round %> kt
+              </div>
+              <div class="info-spot-items">
+                <% w = @spot.fresh_forecasts.first.wind_direction%>
+                <div style="transform: rotate(<%= w + 180 %>deg)"> <%= image_tag "wind_direction.svg" %></div>
+                <%= @spot.find_string_direction(w) %>
+              </div>
+                <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
             </div>
-
-            <!-- Feedback infos -->
-            <div class="block-content">
-              <div class="section-title">
-                <h7>Feedbacks temps réel</h7>
-              </div>
-
-              <div id="weather_feedbacks_ajax">
-                <%= render 'weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>
-              </div>
-
-              <div class="add-review-button">
-                <% if user_signed_in? %>
-                  <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
-                    Faire un feedback
-                  </button>
-                <% else %>
-                  <%= link_to "Faire un feedback", new_user_session_path, class: "kite-std-btn"%>
-                <% end %>
-              </div>
-            </div>
-
-            <!-- Weather forecasts -->
-            <div class="block-content">
-              <div class="section-title orange-underlining" id="weather_forecasts_link">
-                <a href=""><h7>Prévisions météos</h7></a>
-              </div>
-              <div class="arrow">
-                <%= image_tag "orange-arrow.svg" %>
-              </div>
-              <div id="weather_forecasts_content" class="hidden">
-                <%= render 'forecast', forecasts: nil %>
-              </div>
-            </div>
-              <!-- Tide infos -->
-            <div class="block-content">
-              <div class="section-title orange-underlining" id="tide_forecasts_link">
-                <a href=""><h7>Prochaines marées</h7></a>
-              </div>
-              <div class="arrow">
-                <%= image_tag "orange-arrow.svg" %>
-              </div>
-              <div id="tide_forecasts_content" class="hidden">
-                <div class="tide-data hidden">
-                  <% query = @spot.harbor.query if @spot.harbor %>
-                  <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
-                  <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
-                </div>
-              </div>
-            </div>
-          <!-- End of content for Weather section -->
           </div>
+
+          <!-- Feedback infos -->
+          <div class="block-content">
+            <div class="section-title">
+              <h7>Feedbacks temps réel</h7>
+            </div>
+
+            <div id="weather_feedbacks_ajax">
+              <%= render 'weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>
+            </div>
+
+            <div class="add-review-button">
+              <% if user_signed_in? %>
+                <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
+                  Faire un feedback
+                </button>
+              <% else %>
+                <%= link_to "Faire un feedback", new_user_session_path, class: "kite-std-btn"%>
+              <% end %>
+            </div>
+          </div>
+
+          <!-- Weather forecasts -->
+          <div class="block-content">
+            <div class="section-title orange-underlining" id="weather_forecasts_link">
+              <a href=""><h7>Prévisions météos</h7></a>
+            </div>
+            <div class="arrow">
+              <%= image_tag "blue-arrow.svg" %>
+            </div>
+            <div id="weather_forecasts_content" class="hidden">
+              <%= render 'forecast', forecasts: nil %>
+            </div>
+          </div>
+            <!-- Tide infos -->
+          <div class="block-content">
+            <div class="section-title orange-underlining" id="tide_forecasts_link">
+              <a href=""><h7>Prochaines marées</h7></a>
+            </div>
+            <div class="arrow">
+              <%= image_tag "blue-arrow.svg" %>
+            </div>
+            <div id="tide_forecasts_content" class="hidden">
+              <div class="tide-data hidden">
+                <% query = @spot.harbor.query if @spot.harbor %>
+                <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
+                <script src="http://services.data.shom.fr/hdm/vignette/petite/<%= query %>?locale=fr"></script>
+              </div>
+            </div>
+          </div>
+          <!-- End of content for Weather section -->
       </div>
 
         <!-- Content for Infos section -->
