@@ -4,7 +4,7 @@
 
       <div id="search-bar-index">
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
-          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
+          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Lieu ?" value="<%= params[:address] %>">
           <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
@@ -51,7 +51,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">
       <div class="results">
-        <h5><%= @spots.size %> results</h5>
+        <h5><%= @spots.size %> résultat<%= @spots.count > 1 ? "s" : "" %></h5>
       </div>
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-12 " id="spot-card-boundaries-<%= spot.id %>">
@@ -78,7 +78,7 @@
                   <div class="info-spot-items">
                     <% @humidity = spot.fresh_forecasts.first.cloud_cover*100 %>
                     <%= @humidity.round %>%
-                    <p>Humidity</p>
+                    <p>Humidité</p>
                   </div>
                   <div class="info-spot-items text-center">
                     <%= image_tag "wind.svg", id: "strength" %> <br>

@@ -48,7 +48,7 @@ class SpotsController < ApplicationController
     end
 
     @condition_icons = { "clear-day" => "clear_day.svg", "clear-night" => "clear_night.svg", "rain" => "rain.svg", "snow" => "snow.svg", "sleet" => "sleet.svg", "wind" => "wind.svg", "fog" => "fog.svg", "cloudy" => "cloudy.svg", "partly-cloudy-day" => "partly_cloudy_day.svg", "partly-cloudy-night" => "partly_cloudy_night.svg" }
-    @condition_string = { "clear-day" => "Clear Day", "clear-night" => "Clear Night", "rain" => "Raining", "snow" => "Snowing", "sleet" => "Sleet", "wind" => "Windy", "fog" => "Foggy", "cloudy" => "Cloudy", "partly-cloudy-day" => "Partly Cloudy Day", "partly-cloudy-night" => "Partly Cloudy Night" }
+    @condition_string = { "clear-day" => "Beau temps", "clear-night" => "Nuit claire", "rain" => "Pluie", "snow" => "Neige", "sleet" => "Neige fondue", "wind" => "Venteux", "fog" => "Brouillard", "cloudy" => "Nuageux", "partly-cloudy-day" => "Partly Cloudy Day", "Partiellement nuageux" => "Nuit partiellement nuageuse" }
   end
 
   def show
@@ -70,7 +70,7 @@ class SpotsController < ApplicationController
     end
 
     @condition_icons = { "clear-day" => "clear_day.svg", "clear-night" => "clear_night.svg", "rain" => "rain.svg", "snow" => "snow.svg", "sleet" => "sleet.svg", "wind" => "wind.svg", "fog" => "fog.svg", "cloudy" => "cloudy.svg", "partly-cloudy-day" => "partly_cloudy_day.svg", "partly-cloudy-night" => "partly_cloudy_night.svg" }
-    @condition_string = { "clear-day" => "Clear Day", "clear-night" => "Clear Night", "rain" => "Raining", "snow" => "Snowing", "sleet" => "Sleet", "wind" => "Windy", "fog" => "Foggy", "cloudy" => "Cloudy", "partly-cloudy-day" => "Partly Cloudy Day", "partly-cloudy-night" => "Partly Cloudy Night" }
+    @condition_string = { "clear-day" => "Beau temps", "clear-night" => "Nuit claire", "rain" => "Pluie", "snow" => "Neige", "sleet" => "Neige fondue", "wind" => "Venteux", "fog" => "Brouillard", "cloudy" => "Nuageux", "partly-cloudy-day" => "Partly Cloudy Day", "Partiellement nuageux" => "Nuit partiellement nuageuse" }
   end
 
   def new
