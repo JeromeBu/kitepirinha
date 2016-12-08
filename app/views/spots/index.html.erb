@@ -4,7 +4,7 @@
 
       <div id="search-bar-index">
         <%= form_tag(spots_path, :method => "get", class: "form-inline", id: "search-form") do %>
-          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Where ?" value="<%= params[:address] %>">
+          <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Lieu ?" value="<%= params[:address] %>">
           <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
