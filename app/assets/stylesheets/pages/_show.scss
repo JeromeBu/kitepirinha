@@ -228,15 +228,15 @@ body{
 }
 
 #tab_weather {
-  border-bottom: 5px solid #FF8000;
+  border-bottom: 5px solid $dark_blue;
 }
 
 #tab_infos {
-  border-bottom: 5px solid #004080;
+  border-bottom: 5px solid $blue_title_1;
 }
 
 #tab_reviews {
-  border-bottom: 5px solid #008000;
+  border-bottom: 5px solid $light_blue;
 }
 
 .tab.active {

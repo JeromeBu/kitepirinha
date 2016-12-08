@@ -24,8 +24,7 @@
 }
 
 #search-form {
-  flex: 0 1 47%;
-  margin-left: 6px;
+  flex: 0 1 47.5%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -52,6 +51,7 @@
   background-color: #fff;
   &:focus{
     border: none;
+    border-bottom: 2px solid $blue_home;
   }
 }
 
