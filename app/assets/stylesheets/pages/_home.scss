@@ -77,6 +77,15 @@
   width: 100vw;
   #first-button {
     margin: 24vh 0 0 4vw;
+    &:hover {
+      color: white;
+    }
+  }
+  #second-button {
+    color: $blue_home;
+    &:hover {
+      color: white;
+    }
   }
 }
 
@@ -174,7 +183,6 @@
   position: relative;
   cursor: pointer;
   border: 1px solid transparent;
-
 }
 
 .wing-sizes-selector > p {
