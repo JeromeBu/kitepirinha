@@ -1,18 +1,18 @@
 <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
 
 <div class="main-title-section">
-  <h1 id="main-title">Just go kite-surfing.</h1>
+  <h1 id="main-title">Envie de kite-surfer ?</h1>
   <div class= "search_address_box hidden">
-    <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Enter Spot" autofocus="autofocus">
+    <input type="text" name="address" id="search_address" class="form-control border-radius" placeholder="Choisis un lieu" autofocus="autofocus">
     <i class="fa fa-arrow-circle-o-right" aria-hidden="true" id="arrow"></i>
   </div>
-  <h3 id="sub-title">Choose the right spot wherever you go</h3>
+  <h3 id="sub-title">Trouves le bon spot où que tu sois grâce à Kitepirinha</h3>
 </div>
 
 <div class="wing_size text-center hidden flex-center">
-  <h4 id="message">Choose your wing sizes:</h4>
+  <h4 id="message">Selectionne les tailles d'ailes que tu as :</h4>
   <%= render 'wing_size_selector' %>
-  <%= submit_tag "Go now !", class:"btn kite-home-btn", id:"second-button" %>
+  <%= submit_tag "Trouve ton spot", class:"btn kite-home-btn", id:"second-button" %>
 </div>
   <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
   <div class="lets-go flex-center">
@@ -21,7 +21,7 @@
       <%= render "home_sea" %>
     </div>
     <!-- BUTTONS -->
-    <%= submit_tag "Let's start !", class:"btn kite-home-btn not-clicked-yet", id:"first-button" %>
+    <%= submit_tag "C'est parti !", class:"btn kite-home-btn not-clicked-yet", id:"first-button" %>
   </div>
 <% end %>
 
@@ -29,7 +29,7 @@
 
 <!-- CATCHPHRASE -->
 <div class="box-bottom-right text-center">
-  <h3 id="title-bottom">All the info you need in one place</h3>
+  <h3 id="title-bottom">Toutes les infos essentielles réunies ici !</h3>
   <div class="icon-wind">
     <%= link_to spots_path do %>
       <%= render "wind_button" %>
