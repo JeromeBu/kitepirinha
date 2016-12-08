@@ -183,16 +183,16 @@ class Spot < ApplicationRecord
   def punchline(nav_score, wing_sizes)
     if wind_direction_compatible?
       if nav_score == 1
-        return "Les conditions ne permettent pas de naviguer, essayer un autre spot"
+        return "Les conditions ne permettent pas de naviguer, essaye un autre spot"
       elsif nav_score == 2
         recommendation = which_wing_for_best_score(wing_sizes)
         return "Conditions moyennes, une aile de #{recommendation}m2 peut le faire"
       elsif nav_score == 3
         recommendation = which_wing_for_best_score(wing_sizes)
-        return "Les conditions sont exellentes pour une aile de #{recommendation}m2"
+        return "Les conditions sont excellentes pour une aile de #{recommendation}m2"
       end
     else
-      @strings = ["Mauvaise orientation du vent, éviter ce spot", "Allez prendre une caipi en attendant que le vent tourne"]
+      @strings = ["Mauvaise orientation du vent, évite ce spot", "Va prendre une caipi en attendant que le vent tourne"]
       return @strings.sample
     end
   end
