@@ -204,6 +204,7 @@ body{
   width: auto;
   background: transparent;
   display: flex;
+
 }
 
 .tabs a {
@@ -224,6 +225,12 @@ body{
   padding-bottom: 10px;
   p {
     margin: 0px;
+  }
+}
+
+.tab:hover {
+  h9 {
+    color: #616668;
   }
 }
 
