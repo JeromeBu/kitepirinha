@@ -1,52 +1,59 @@
-<!-- SHOW BANNER -->
-<% if @spot.photo %>
-  <% img_url = cl_image_path @spot.photo.path, :width => 1600, :height => 700, :crop => :fill,
-             :gravity => :south %>
-<% else %>
-  <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_700,w_1600,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
-<% end %>
-<div class="banner banner-show" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)),
-         url('<%= img_url %>')">
-  <h5 id="spot-show-h1-title"><%= @spot.name.capitalize %>
-    <% if @spot.average_rating %>
-      <div class="spot-rating">
-        <% @spot.average_rating.round.times do %>
-          <i class="fa fa-star yellow-filled"></i>
-        <% end %>
-        <% (5 - @spot.average_rating.round).times do %>
-          <i class="fa fa-star-o"></i>
-        <% end %>
+<div class="container-fluid" id="show-page-container">
+  <div class="row">
+    <!-- SHOW BANNER -->
+    <% if @spot.photo %>
+      <% img_url = cl_image_path @spot.photo.path, :width => 1600, :height => 700, :crop => :fill,
+                 :gravity => :south %>
+    <% else %>
+      <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_700,w_1600,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
+    <% end %>
+    <div class="banner banner-show" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)),
+             url('<%= img_url %>')" id="banner-content">
+      <div class="row" id="banner-row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2" id="banner-col">
+          <div class="banner-content-header">
+            <h5><%= @spot.name.capitalize %>
+              <% if @spot.average_rating %>
+                <div class="spot-rating">
+                  <% @spot.average_rating.round.times do %>
+                    <i class="fa fa-star yellow-filled"></i>
+                  <% end %>
+                  <% (5 - @spot.average_rating.round).times do %>
+                    <i class="fa fa-star-o"></i>
+                  <% end %>
+                </div>
+              <% end %>
+              <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-round-btn" do %>
+                <i class="fa fa-heart"></i>
+              <% end %>
+            </h5>
+          </div>
+        <div class="tabs">
+          <a class="tab active" href="#" id="tab_weather">
+            <h9>METEO</h9>
+          </a>
+          <a class="tab" href="#" id="tab_infos">
+            <h9>INFOS</h9>
+          </a>
+          <a class="tab" href="#" id="tab_reviews">
+            <h9 id="give_number_reviews"><%= render 'number_reviews', spot: @spot %></h9>
+          </a>
+        </div>
       </div>
-    <% end %>
-    <%= link_to favorite_spots_path(spot_id: params[:id]), method: :post, id: "add-to-favorite-btn", class: "kite-round-btn" do %>
-      <i class="fa fa-heart"></i>
-    <% end %>
-  </h5>
-
-  <div class="tabs">
-    <a class="tab active" href="#" id="tab_weather">
-      <h9>WEATHER</h9>
-    </a>
-    <a class="tab" href="#" id="tab_infos">
-      <h9>INFOS</h9>
-    </a>
-    <a class="tab" href="#" id="tab_reviews">
-      <h9 id="give_number_reviews"><%= render 'number_reviews', spot: @spot %></h9>
-    </a>
+    </div>
   </div>
-</div>
 
-<div class="wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <!-- Content for Weather section -->
-        <div class="content" id="content_for_weather">
-          <!-- Weather infos -->
-          <div class="col-xs-12">
+  <div class="wrapper">
+    <div class="container-fluid" id="show-page-content-container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+          <!-- Content for Weather section -->
+          <div class="content" id="content_for_weather">
+
+            <!-- Weather infos -->
             <div class="summary text-center">
               <h7 class="message">
-                <% local_nav_score = @spot.nav_score(@wing_sizes) %>
+                <% local_nav_score = @spot.nav_score_max(@wing_sizes) %>
                 <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
                 <%= punchline %>
               </h7>
@@ -63,7 +70,7 @@
                 <div class="info-spot-items">
                   <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
                   <%= @humidity.round %>%
-                  <p>Humidity</p>
+                  <p>Humidité</p>
                 </div>
                 <div class="info-spot-items text-center">
                   <%= image_tag "wind.svg", id: "strength" %> <br>
@@ -80,21 +87,20 @@
 
             <!-- Feedback infos -->
             <div class="block-content">
-              <div class="section-title">
-                <h7>Real time feedbacks</h7>
+              <div class="section-title orange-underlining">
+                <h7>Feedbacks temps réel</h7>
               </div>
-
-              <div id="weather_feedbacks_ajax">
+              <br>
+              <div id="weather_feedbacks_ajax" class="text-center">
                 <%= render 'weather_feedbacks', mean_weather_feedback: @mean_weather_feedback, feedbacks: @spot.weather_feedbacks, spot: @spot %>
               </div>
-
               <div class="add-review-button">
                 <% if user_signed_in? %>
                   <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
-                    Give a feedback
+                    Faire un feedback
                   </button>
                 <% else %>
-                  <%= link_to "Give a feedback", new_user_session_path, class: "kite-std-btn"%>
+                  <%= link_to "Faire un feedback", new_user_session_path, class: "kite-std-btn"%>
                 <% end %>
               </div>
             </div>
@@ -102,24 +108,18 @@
             <!-- Weather forecasts -->
             <div class="block-content">
               <div class="section-title orange-underlining" id="weather_forecasts_link">
-                <a href=""><h7>Weather forecasts</h7></a>
+                <h7>Prévisions météo</h7>
               </div>
-              <div class="arrow">
-                <%= image_tag "orange-arrow.svg" %>
-              </div>
-              <div id="weather_forecasts_content" class="hidden">
+              <div id="weather_forecasts_content">
                 <%= render 'forecast', forecasts: nil %>
               </div>
             </div>
               <!-- Tide infos -->
             <div class="block-content">
               <div class="section-title orange-underlining" id="tide_forecasts_link">
-                <a href=""><h7>Tide forecasts</h7></a>
+                <h7>Prochaines marées</h7>
               </div>
-              <div class="arrow">
-                <%= image_tag "orange-arrow.svg" %>
-              </div>
-              <div id="tide_forecasts_content" class="hidden">
+              <div id="tide_forecasts_content">
                 <div class="tide-data hidden">
                   <% query = @spot.harbor.query if @spot.harbor %>
                   <% query = "ABER_BENOIT_MEAN_RENEAT" if !@spot.harbor #TEST PURPOSES, line to be delted%>
@@ -127,105 +127,104 @@
                 </div>
               </div>
             </div>
-          <!-- End of content for Weather section -->
-          </div>
-      </div>
-
-        <!-- Content for Infos section -->
-        <div class="content hidden" id="content_for_infos">
-          <!-- Title Section -->
-          <div class="block-content">
-            <div class="section-title">
-              <h7>Description</h7>
-            </div>
-            <p><%= @spot.description unless @spot.description.nil?%></p>
-          </div>
-          <!-- Facilities -->
-          <div class="block-content">
-            <div class="section-title">
-              <h7>Facilities</h7>
-            </div>
-            <% unless @spot.facility.nil? %>
-              <div class="facilities-content">
-                <% unless @spot.facility[:parking].nil? %> <div class="text-center"><%= image_tag "parking.svg" %> <br> <%= @spot.facility[:parking] %></div><% end %>
-                <% unless @spot.facility[:safety_watch].nil? %> <div class="text-center"><%= image_tag "safety-watch.svg" %> <br> <%= @spot.facility[:safety_watch] %></div><% end %>
-                <% unless @spot.facility[:kite_school].nil? %> <div class="text-center"><%= image_tag "school.svg" %> <br> <%= @spot.facility[:kite_school] %></div> <% end %>
-                <% unless @spot.facility[:water_spot].nil? %> <div class="text-center"><%= image_tag "water-spot.svg" %> <br> <%= @spot.facility[:water_spot] %></div><% end %>
-                <% unless @spot.facility[:shop].nil? %> <div class="text-center"><%= image_tag "cart.svg" %> <br> <%= @spot.facility[:shop] %></div><% end %>
-                <% unless @spot.facility[:shower].nil? %> <div class="text-center"><%= image_tag "shower.svg" %> <br> <%= @spot.facility[:shower] %></div><% end %>
-              </div>
-              <div class="facility-comment">
-                <% unless @spot.facility[:comment].nil? %><p><h4>Commentaires</h4><br> <%= @spot.facility[:comment] %></p><% end %>
-              </div>
-            <% else %>
-              <p>No facilities added for this spot</p>
-            <% end %>
-          </div>
+            <!-- End of content for Weather section -->
         </div>
-        <!-- End of content for Infos section -->
 
-        <!-- Content for Reviews section -->
-        <div class="content hidden" id="content_for_reviews">
-          <div class="block-content">
-            <div class="section-title">
-              <%= render "spots/reviews_count", spot: @spot %>
+          <!-- Content for Infos section -->
+          <div class="content hidden" id="content_for_infos">
+            <!-- Title Section -->
+            <div class="block-content">
+              <div class="section-title">
+                <h7>Description</h7>
+              </div>
+              <p><%= @spot.description unless @spot.description.nil?%></p>
             </div>
-            <!-- Modal for reviews -->
-            <!-- btn btn-primary btn-lg -->
-            <div class="spot-show-card" id="reviews">
-              <% @spot.reviews.order(created_at: :desc).each do |review| %>
-               <%= render 'reviews/show', review: review %>
+            <!-- Facilities -->
+            <div class="block-content">
+              <div class="section-title">
+                <h7>Installations</h7>
+              </div>
+              <% unless @spot.facility.nil? %>
+                <div class="facilities-content">
+                  <% unless @spot.facility[:parking].nil? %> <div class="text-center"><%= image_tag "parking.svg" %> <br> <%= @spot.facility[:parking] %></div><% end %>
+                  <% unless @spot.facility[:safety_watch].nil? %> <div class="text-center"><%= image_tag "safety-watch.svg" %> <br> <%= @spot.facility[:safety_watch] %></div><% end %>
+                  <% unless @spot.facility[:kite_school].nil? %> <div class="text-center"><%= image_tag "school.svg" %> <br> <%= @spot.facility[:kite_school] %></div> <% end %>
+                  <% unless @spot.facility[:water_spot].nil? %> <div class="text-center"><%= image_tag "water-spot.svg" %> <br> <%= @spot.facility[:water_spot] %></div><% end %>
+                  <% unless @spot.facility[:shop].nil? %> <div class="text-center"><%= image_tag "cart.svg" %> <br> <%= @spot.facility[:shop] %></div><% end %>
+                  <% unless @spot.facility[:shower].nil? %> <div class="text-center"><%= image_tag "shower.svg" %> <br> <%= @spot.facility[:shower] %></div><% end %>
+                </div>
+                <div class="facility-comment">
+                  <% unless @spot.facility[:comment].nil? %><p><h4>Commentaires</h4><br> <%= @spot.facility[:comment] %></p><% end %>
+                </div>
+              <% else %>
+                <p>Aucune installations n'a été ajouté à ce spot</p>
               <% end %>
             </div>
-            <% if user_signed_in? %>
-              <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
-                Add a review
-              </button>
-            <% else %>
-              <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
-            <% end %>
           </div>
+          <!-- End of content for Infos section -->
+
+          <!-- Content for Reviews section -->
+          <div class="content hidden" id="content_for_reviews">
+            <div class="block-content">
+              <div class="section-title">
+                <%= render "spots/reviews_count", spot: @spot %>
+              </div>
+              <!-- Modal for reviews -->
+              <!-- btn btn-primary btn-lg -->
+              <div class="spot-show-card" id="reviews">
+                <% @spot.reviews.order(created_at: :desc).each do |review| %>
+                 <%= render 'reviews/show', review: review %>
+                <% end %>
+              </div>
+              <% if user_signed_in? %>
+                <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
+                  Ajouter un commentaire
+                </button>
+              <% else %>
+                <%= link_to "Ajouter un commentaire", new_user_session_path, class: "kite-std-btn"%>
+              <% end %>
+            </div>
+          </div>
+          <!-- End of content for Reviews section -->
+
+          <!-- Review Modal -->
+            <div class="modal fade" id="myModalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">Commentaire</h5>
+                  </div>
+                  <div class="modal-body" id="review_form_container">
+                    <%= render 'reviews/form', spot: @spot, review: @review %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="kite-std-btn" data-dismiss="modal">Fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <!-- Weather feedbacks Modal -->
+            <div class="modal fade" id="weather-feedbacks-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h5 class="modal-title" id="myModalLabel">Feedback météo</h5>
+                  </div>
+                  <div class="modal-body" id="forecast_form_container">
+                    <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>
+                  </div>
+  <!--                 <div class="modal-footer">
+                    <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          <!-- End of features -->
         </div>
-        <!-- End of content for Reviews section -->
-
-        <!-- Review Modal -->
-          <div class="modal fade" id="myModalReview" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h6 class="modal-title" id="myModalLabel">Your review</h6>
-                </div>
-                <div class="modal-body" id="review_form_container">
-                  <%= render 'reviews/form', spot: @spot, review: @review %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-           <!-- Weather feedbacks Modal -->
-          <div class="modal fade" id="weather-feedbacks-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h6 class="modal-title" id="myModalLabel">Weather feedback</h6>
-                </div>
-                <div class="modal-body" id="forecast_form_container">
-                  <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>
-                </div>
-<!--                 <div class="modal-footer">
-                  <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
-                </div> -->
-              </div>
-            </div>
-          </div>
-        <!-- End of features -->
       </div>
     </div>
   </div>
 </div>
-
