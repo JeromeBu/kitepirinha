@@ -25,7 +25,7 @@
 
   <div class="tabs">
     <a class="tab active" href="#" id="tab_weather">
-      <h9>METEO</h9>r
+      <h9>METEO</h9>
     </a>
     <a class="tab" href="#" id="tab_infos">
       <h9>INFOS</h9>
@@ -63,7 +63,7 @@
                 <div class="info-spot-items">
                   <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
                   <%= @humidity.round %>%
-                  <p>Humidity</p>
+                  <p>Humidité</p>
                 </div>
                 <div class="info-spot-items text-center">
                   <%= image_tag "wind.svg", id: "strength" %> <br>
@@ -81,7 +81,7 @@
             <!-- Feedback infos -->
             <div class="block-content">
               <div class="section-title">
-                <h7>Real time feedbacks</h7>
+                <h7>Feedbacks temps réel</h7>
               </div>
 
               <div id="weather_feedbacks_ajax">
@@ -91,10 +91,10 @@
               <div class="add-review-button">
                 <% if user_signed_in? %>
                   <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
-                    Give a feedback
+                    Faire un feedback
                   </button>
                 <% else %>
-                  <%= link_to "Give a feedback", new_user_session_path, class: "kite-std-btn"%>
+                  <%= link_to "Faire un feedback", new_user_session_path, class: "kite-std-btn"%>
                 <% end %>
               </div>
             </div>
@@ -102,7 +102,7 @@
             <!-- Weather forecasts -->
             <div class="block-content">
               <div class="section-title orange-underlining" id="weather_forecasts_link">
-                <a href=""><h7>Weather forecasts</h7></a>
+                <a href=""><h7>Prévisions météos</h7></a>
               </div>
               <div class="arrow">
                 <%= image_tag "orange-arrow.svg" %>
@@ -114,7 +114,7 @@
               <!-- Tide infos -->
             <div class="block-content">
               <div class="section-title orange-underlining" id="tide_forecasts_link">
-                <a href=""><h7>Tide forecasts</h7></a>
+                <a href=""><h7>Prochaines marées</h7></a>
               </div>
               <div class="arrow">
                 <%= image_tag "orange-arrow.svg" %>
@@ -143,7 +143,7 @@
           <!-- Facilities -->
           <div class="block-content">
             <div class="section-title">
-              <h7>Facilities</h7>
+              <h7>Instalations</h7>
             </div>
             <% unless @spot.facility.nil? %>
               <div class="facilities-content">
@@ -158,7 +158,7 @@
                 <% unless @spot.facility[:comment].nil? %><p><h4>Commentaires</h4><br> <%= @spot.facility[:comment] %></p><% end %>
               </div>
             <% else %>
-              <p>No facilities added for this spot</p>
+              <p>Aucune instalations n'a été ajouté à ce spot</p>
             <% end %>
           </div>
         </div>
@@ -179,10 +179,10 @@
             </div>
             <% if user_signed_in? %>
               <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
-                Add a review
+                Ajouter un commentaire
               </button>
             <% else %>
-              <%= link_to "Sign in and had a review", new_user_session_path, class: "kite-std-btn"%>
+              <%= link_to "Ajouter un commentaire", new_user_session_path, class: "kite-std-btn"%>
             <% end %>
           </div>
         </div>
@@ -194,13 +194,13 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h6 class="modal-title" id="myModalLabel">Your review</h6>
+                  <h5 class="modal-title" id="myModalLabel">Commentaire</h5>
                 </div>
                 <div class="modal-body" id="review_form_container">
                   <%= render 'reviews/form', spot: @spot, review: @review %>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="kite-std-btn" data-dismiss="modal">Close</button>
+                  <button type="button" class="kite-std-btn" data-dismiss="modal">Fermer</button>
                 </div>
               </div>
             </div>
@@ -212,7 +212,7 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h6 class="modal-title" id="myModalLabel">Weather feedback</h6>
+                  <h5 class="modal-title" id="myModalLabel">Feedback météo</h5>
                 </div>
                 <div class="modal-body" id="forecast_form_container">
                   <%= render 'weather_feedbacks/form', spot: @spot, feedback: @feedback %>

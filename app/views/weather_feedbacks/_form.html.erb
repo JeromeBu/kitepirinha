@@ -1,12 +1,12 @@
 <%= simple_form_for([spot, feedback], remote: true) do |f| %>
   <div class="flex-center label-where-wind">
-    <%= label_tag "wind_direction", "Where was the wind coming from ?", class:"control-label control-label-display-block" %>
+    <%= label_tag "wind_direction", "D'où vient le vent ?", class:"control-label control-label-display-block" %>
   </div>
   <div id="picker-with-cardinals">
     <p id="N">N</p>
     <p id="S">S</p>
     <p id="E">E</p>
-    <p id="W">W</p>
+    <p id="W">O</p>
     <p id="current_value_degrees">0°</p>
     <div id="picker"></div>
   </div>
@@ -15,7 +15,7 @@
   <%= hidden_field_tag 'wing_size_exp_rating', 3%>
 
   <div id="wing_size_rating" class="flex-center">
-    <%= label_tag "wing_size", "Wing size (m2)", class:"control-label control-label-display-block" %>
+    <%= label_tag "wing_size", "Taille d'aile (m2)", class:"control-label control-label-display-block" %>
     <input type="text" class="slider wing-size-feedback-slider"
       data-slider-ticks="[5, 11, 17]"
       data-slider-ticks-labels='["5", "11", "17"]'
@@ -26,10 +26,10 @@
   </div>
 
   <div id="experience_rating" class="flex-center">
-    <%= label_tag "experience_rating", "How appropriate was your wing ?", class:"control-label control-label-display-block" %>
+    <%= label_tag "experience_rating", "Comment étais-tu toilé ?", class:"control-label control-label-display-block" %>
     <input type="text" class="slider wing-releavance-feedback-slider"
       data-slider-ticks="[1, 2, 3, 4, 5]"
-      data-slider-ticks-labels='["Too small", "", "Awesome", "", "Too big"]'
+      data-slider-ticks-labels='["Sous-toilé", "", "Au top", "", "Sur-toilé"]'
       data-slider-min="1"
       data-slider-max="5"
       data-slider-step="1"
@@ -37,5 +37,5 @@
       >
   </div>
 
-  <%= f.submit "Give my feedback", class: "kite-std-btn", id: "add-feedback-modal-button" %>
+  <%= f.submit "Donner mon feedback", class: "kite-std-btn", id: "add-feedback-modal-button" %>
 <% end %>
