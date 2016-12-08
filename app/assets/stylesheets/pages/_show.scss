@@ -50,6 +50,13 @@ body{
     color: $gray-content;
   }
 
+  h9{
+    font-family: $base-font;
+    font-size: 16px;
+    font-weight: light;
+    color: white;
+  }
+
   p{
     font-family: $base-font;
     font-size: 14px;
@@ -95,7 +102,6 @@ body{
 }
 
 #spot-show-h1-title{
- color: $dark_blue;
  margin-top: 0px;
  margin-left: 200px;
  padding-top: 50px;

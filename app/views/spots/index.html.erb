@@ -29,7 +29,8 @@
                   <div class="wing_size_index text-center">
                     <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
-                      <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+                      <%= hidden_field_tag 'selected-wing-sizes-index' %>
+                      <%= hidden_field_tag 'selected-wing-sizes' %>
                       <%= hidden_field_tag 'address', params[:address] %>
                       <%= submit_tag "Update", class: "kite-index-btn" %>
                     <% end %>
@@ -62,7 +63,7 @@
               <div class="spot-full-infos">
                 <div class="header-info-spot">
                   <div class="info-spot-items" id="temperature">
-                    <h1><%= spot.fresh_forecasts.first.temperature.round %> °C</h1>
+                    <h7><%= spot.fresh_forecasts.first.temperature.round %> °C</h7>
                     <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
                   </div>
                   <div class="info-spot-items">
