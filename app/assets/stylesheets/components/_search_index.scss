@@ -24,7 +24,7 @@
 }
 
 #search-form {
-  flex: 0 1 46%;
+  flex: 0 1 47%;
   margin-left: 6px;
   display: flex;
   align-items: center;
@@ -56,8 +56,17 @@
 
 // **************************** WING ****************************
 
+.wing_index {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  right: 148px;
+}
+
 .wing-size-message {
   font-weight: lighter;
+  margin-right: 15px;
 }
 
 // **************************** BUTTON ****************************
@@ -88,7 +97,7 @@
 }
 
 #wing-index-btn {
-  padding: 10px 15px;
+  padding: 0 15px;
 
   background-color: transparent;
   border: 2px solid transparent;
