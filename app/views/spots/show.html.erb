@@ -43,40 +43,40 @@
         <!-- Content for Weather section -->
         <div class="content" id="content_for_weather">
           <!-- Weather infos -->
-          <div class="col-xs-12">
-            <div class="summary text-center">
-              <h7 class="message">
-                <% local_nav_score = @spot.nav_score(@wing_sizes) %>
-                <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
-                <%= punchline %>
-              </h7>
-              <div class="info-spot">
-                <div class="info-spot-items" id="temperature">
-                  <h7><%= @spot.fresh_forecasts.first.temperature.round %> °C</h7>
-                  <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
-                </div>
-                <div class="info-spot-items">
-                  <% condition = @spot.fresh_forecasts.first.icon %>
-                  <%= image_tag @condition_icons[condition] %>
-                  <%= @condition_string[condition] %>
-                </div>
-                <div class="info-spot-items">
-                  <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
-                  <%= @humidity.round %>%
-                  <p>Humidity</p>
-                </div>
-                <div class="info-spot-items text-center">
-                  <%= image_tag "wind.svg", id: "strength" %> <br>
-                  <%= @spot.fresh_forecasts.first.wind_strength.round %> kt
-                </div>
-                <div class="info-spot-items">
-                  <% w = @spot.fresh_forecasts.first.wind_direction%>
-                  <div style="transform: rotate(<%= w + 180 %>deg)"> <%= image_tag "wind_direction.svg" %></div>
-                  <%= @spot.find_string_direction(w) %>
-                </div>
-                  <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
+
+          <div class="summary text-center">
+            <h7 class="message">
+              <% local_nav_score = @spot.nav_score(@wing_sizes) %>
+              <% punchline = @spot.punchline(local_nav_score, @wing_sizes) %>
+              <%= punchline %>
+            </h7>
+            <div class="info-spot">
+              <div class="info-spot-items" id="temperature">
+                <h7><%= @spot.fresh_forecasts.first.temperature.round %> °C</h7>
+                <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
               </div>
+              <div class="info-spot-items">
+                <% condition = @spot.fresh_forecasts.first.icon %>
+                <%= image_tag @condition_icons[condition] %>
+                <%= @condition_string[condition] %>
+              </div>
+              <div class="info-spot-items">
+                <% @humidity = @spot.fresh_forecasts.first.cloud_cover*100 %>
+                <%= @humidity.round %>%
+                <p>Humidity</p>
+              </div>
+              <div class="info-spot-items text-center">
+                <%= image_tag "wind.svg", id: "strength" %> <br>
+                <%= @spot.fresh_forecasts.first.wind_strength.round %> kt
+              </div>
+              <div class="info-spot-items">
+                <% w = @spot.fresh_forecasts.first.wind_direction%>
+                <div style="transform: rotate(<%= w + 180 %>deg)"> <%= image_tag "wind_direction.svg" %></div>
+                <%= @spot.find_string_direction(w) %>
+              </div>
+                <!-- ATTENTION à modifier selon le spot.fresh_forecasts.first.icon -->
             </div>
+          </div>
 
             <!-- Feedback infos -->
             <div class="block-content">
@@ -105,7 +105,7 @@
                 <a href=""><h7>Weather forecasts</h7></a>
               </div>
               <div class="arrow">
-                <%= image_tag "orange-arrow.svg" %>
+                <%= image_tag "blue-arrow.svg" %>
               </div>
               <div id="weather_forecasts_content" class="hidden">
                 <%= render 'forecast', forecasts: nil %>
@@ -117,7 +117,7 @@
                 <a href=""><h7>Tide forecasts</h7></a>
               </div>
               <div class="arrow">
-                <%= image_tag "orange-arrow.svg" %>
+                <%= image_tag "blue-arrow.svg" %>
               </div>
               <div id="tide_forecasts_content" class="hidden">
                 <div class="tide-data hidden">
@@ -128,7 +128,7 @@
               </div>
             </div>
           <!-- End of content for Weather section -->
-          </div>
+
       </div>
 
         <!-- Content for Infos section -->
