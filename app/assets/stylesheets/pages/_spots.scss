@@ -94,12 +94,24 @@
 
 .feedback-card {
   text-align: center;
-  background: white;
   padding: 5px 10px 25px 10px;
   width: 45%;
-  background-color: $blue_title_1;
-  border-radius: 25px;
-  color: white;
+  background-color: rgba(6, 130, 254, 0.1);
+  border-radius: 5px;
+
+  h3 {
+    color: $blue_title_2;
+    margin-top: 22px;
+    margin-bottom: 22px;
+    font-size: 35px;
+  }
+  h4 {
+    color: $blue_title_2;
+    margin-top: 15px;
+    margin-bottom: 11px;
+    font-size: 25px;
+  }
+
 }
 
 .block {
