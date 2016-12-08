@@ -7,7 +7,7 @@
           <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined wing-size-message">Tu as selectionné <%= @wing_sizes.size %> aile<%= @wing_sizes.count > 1 ? "s" : "" %> :
+        <p class="unmargined wing-size-message">Ailes selectionnées <%= @wing_sizes.size %> aile<%= @wing_sizes.count > 1 ? "s" : "" %> :
           <%= @wing_sizes.map { |x| x.to_s }.reduce("") { |acc, x| acc += x + " m2, " }.chomp(", ") %>
         <div class="wing-box-index">
           <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
@@ -23,7 +23,7 @@
                   <h4 class="modal-title" id="myModalLabel">Choix des ailes</h4>
                 </div>
                 <div class="modal-body text-center" id="wing-sizes-container">
-                  <h3>Choisis une ou plusieurs ailes que tu as</h3>
+                  <h3>Choisis les ailes que tu as</h3>
                   <div class="wing_size_index text-center">
                     <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
