@@ -1,5 +1,62 @@
 body{
   color: #616668;
+  h1 {
+    font-family: $header-font;
+    font-size: 75px;
+    font-weight: bold;
+    color: white;
+  }
+  h2 {
+    font-family: $header-font;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+  }
+  h3 {
+    font-family: $header-font;
+    font-size: 40px;
+    font-weight: light;
+    color: white;
+  }
+  h4{
+    font-family: $header-font;
+    font-size: 30px;
+    font-weight: light;
+    color: white;
+  }
+
+  h5 {
+    font-family: $header-font;
+    font-size: 50px;
+    font-weight: bold;
+    color: #056BD0;
+  }
+  h6 {
+    font-family: $header-font;
+    font-size: 40px;
+    font-weight: bold;
+    color: #056BD0;
+  }
+  h7 {
+    font-family: $base-font;
+    font-size: 30px;
+    font-weight: light;
+    color: $gray-content;
+  }
+  h8{
+    font-family: $base-font;
+    font-size: 20px;
+    font-weight: light;
+    color: $gray-content;
+  }
+
+  p{
+    font-family: $base-font;
+    font-size: 14px;
+    font-weight: light;
+    color: $gray-content;
+  }
+
 }
 
 .message{
