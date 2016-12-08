@@ -25,14 +25,15 @@
               <div class="modal-content" id="modal-content-wing-sizes">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Choix des ailes</h4>
+                  <h6 class="modal-title" id="myModalLabel">Choix des ailes</h6>
                 </div>
                 <div class="modal-body text-center" id="wing-sizes-container">
                   <h3>Choisis les ailes que tu as</h3>
                   <div class="wing_size_index text-center">
                     <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
-                      <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
+                      <%= hidden_field_tag 'selected-wing-sizes-index' %>
+                      <%= hidden_field_tag 'selected-wing-sizes' %>
                       <%= hidden_field_tag 'address', params[:address] %>
                       <%= submit_tag "Update", class: "kite-modal-btn text-center" %>
                     <% end %>
@@ -65,7 +66,7 @@
               <div class="spot-full-infos">
                 <div class="header-info-spot">
                   <div class="info-spot-items" id="temperature">
-                    <h1><%= spot.fresh_forecasts.first.temperature.round %> °C</h1>
+                    <h7><%= spot.fresh_forecasts.first.temperature.round %> °C</h7>
                     <p id="hour"><%= (Time.now + 60*60).strftime("%H:%M") %></p>
                   </div>
                   <div class="info-spot-items">
