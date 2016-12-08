@@ -7,14 +7,17 @@
           <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined wing-size-message">You have selected <%= pluralize @wing_sizes.size, "wing size" %> :
-          <% @wing_sizes.each do |size| %>
-            <span><%= size.to_i %> m2</span>
-          <% end %>
-        <div class="wing-box-index">
-          <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
-            Change wing sizes option
-          </button>
+        <div class="wing_index">
+          <span class="unmargined wing-size-message">You have selected <%= pluralize @wing_sizes.size, "wing size" %> :
+            <% @wing_sizes.each do |size| %>
+              <span><%= size.to_i %> m2</span>
+            <% end %>
+          </span>
+          <div class="wing-box-index">
+            <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
+              Modify wing
+            </button>
+          </div>
         </div>
         <!-- Wing sizes Modal -->
           <div class="modal fade" id="wing-sizes-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -31,7 +34,7 @@
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
                       <%= hidden_field_tag 'selected-wing-sizes', class: "wing-sizes-form"%>
                       <%= hidden_field_tag 'address', params[:address] %>
-                      <%= submit_tag "Update", class: "kite-index-btn" %>
+                      <%= submit_tag "Update", class: "kite-modal-btn text-center" %>
                     <% end %>
 
                   </div>
@@ -55,7 +58,7 @@
           <% else %>
             <% img_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/c_crop,g_custom,h_200,w_658,x_922,y_559/v1480531988/image1_henvzi.jpg"%>
           <% end %>
-          <div class="spot-card" data-name="<%= spot.name %>" style="background-image: linear-gradient(rgba(201, 255, 191, 0.2), rgba(255, 175, 189, 0.2)), url('<%=  img_url %>')">
+          <div class="spot-card" data-name="<%= spot.name %>" style="background-image: url('<%=  img_url %>')">
             <%= link_to "", spot_path(spot), class: "spot-card-link" %>
             <div class="spot-infos small">
               <h3><%= spot.name %></h3>
