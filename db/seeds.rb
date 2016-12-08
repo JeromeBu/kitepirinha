@@ -1036,77 +1036,91 @@ end
 
 if true #write false if you don't wanna seed the spots
   Spot.destroy_all
-
-  s = Spot.create!(name: "Franceville", address: "Franceville-Plage, Merville-Franceville-Plage, France", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable assez mou, avec de nombreuses baines", user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by(name: "Ouistreham"))
+  count = 0
+  s = Spot.create!(name: "Franceville", address: "Franceville-Plage, Merville-Franceville-Plage, France", description: "Vagues: plat dans les baïnes / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable assez mou, avec de nombreuses baines", user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by(name: "Ouistreham"),
+    photo: File.open(Rails.root.join('db/fixtures/images/13_resized.jpg')))
   Facility.create!(parking: "parking juste devant la plage", kite_school: "Kite-r (Franceville)",shop: "Le Menhir (Cabourg)", comment: "Dangers particuliers: il y a parfois beaucoup de monde dans la grande baïne", spot: Spot.find_by(name: "Franceville"))
   RecommendedWindDirection.create!(sector_start: 270, sector_end: 45, spot: Spot.find_by(name: "Franceville"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204422/13_resized_xq5ghy.jpg"
-
-  s = Spot.create!(name: "Vierville", address: "Vierville-sur-Mer, France", description: "Vagues: plat dans les baines / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse, pas de plage à marée haute. Baines à marée basse très longue et pas large (300 x 15m), exploitable par vent on shore (Nord). Spot pas exploitable à marée haute: absence de plage.", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by(name: "Grandcamp"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204422/13_resized_xq5ghy.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Vierville", address: "Vierville-sur-Mer, France", description: "Vagues: plat dans les baines / vagues désordonnées en mer. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse, pas de plage à marée haute. Baines à marée basse très longue et pas large (300 x 15m), exploitable par vent on shore (Nord). Spot pas exploitable à marée haute: absence de plage.", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by(name: "Grandcamp"),
+    photo: File.open(Rails.root.join('db/fixtures/images/11_resized.jpg')))
   Facility.create!(parking: "Au bout de la plage (coté gauche en regardant la mer)", kite_school: "Pas d'écoles à proximité", comment: "Dangers particuliers: digue le long de la plage", spot: Spot.find_by(name: "Vierville"))
   RecommendedWindDirection.create!(sector_start: 205, sector_end: 45, spot: Spot.find_by(name: "Vierville"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204421/11_resized_dednjd.jpg"
-
-  s = Spot.create!(name: "Antifer", address: "Cap d'Antifer, La Poterie-Cap-d'Antifer, France", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204421/11_resized_dednjd.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Antifer", address: "Cap d'Antifer, La Poterie-Cap-d'Antifer, France", description: "Vagues: par vent de sud-ouest. Flat: par vent de Nord-est. Plage de galet : elle devient sableuse 3h00 avant et après la marée basse. A marée haute, le spot est trop dangereux pour être navigable : il n'y a plus de plage, l'eau arrive au niveau des falaises... ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by(name: "Etretat"),
+    photo: File.open(Rails.root.join('db/fixtures/images/9_resized.jpg')))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 22, sector_end: 50, spot: Spot.find_by(name: "Antifer"))
   RecommendedWindDirection.create!(sector_start: 200, sector_end: 250, spot: Spot.find_by(name: "Antifer"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204421/9_resized_mavsxj.jpg"
-
-  s = Spot.create!(name: "Saint-Aubin", address: "Val de Saint-Aubin, 76740 Saint-Aubin-sur-Mer", description: "vagues: plat / clapot / petites vagues / shore. Vague par vent de Nord Est fort et par ouest quand il a de la houle. Pas de plage à marée haute. Le spot n'est pas naviguable 2 heure avant et 2 heures après la marée haute. Très bien pour s'initier à la vague sans risque.  ", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by(name: "Etretat"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204421/9_resized_mavsxj.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Saint-Aubin", address: "Saint-Aubin-sur-Mer, France", description: "vagues: plat / clapot / petites vagues / shore. Vague par vent de Nord Est fort et par ouest quand il a de la houle. Pas de plage à marée haute. Le spot n'est pas naviguable 2 heure avant et 2 heures après la marée haute. Très bien pour s'initier à la vague sans risque.  ", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by(name: "Etretat"),
+    photo: File.open(Rails.root.join('db/fixtures/images/12_resized.jpg')))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité",shop: "Nausicaa (Le Havre), Quai34 (Rouen)", comment: "Pas mal de courant. il va de gauche à droite à la marée descendante et s'inverse à la remontante. Il y a des rochers à gauche de la plage de Saussemare et à droite de Saint Aubin (dès que la digue se termine).. Par grandes marées, faire attention à kk rochers au milieu du spot qui découvrent...", spot: Spot.find_by(name: "Saint-Aubin"))
   RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Saint-Aubin"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/12_resized_r3mcwc.jpg"
-
-  s = Spot.create!(name: "Utah Beach", address: "Utah Beach, Sainte-Marie-du-Mont, France", description: "Vagues: petites vagues / moyennes vagues. Profondeur d'eau : pieds loin. Grande plage avec des dunes.", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Iles Saint-Marcouf"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/12_resized_r3mcwc.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Utah Beach", address: "Utah Beach, Sainte-Marie-du-Mont, France", description: "Vagues: petites vagues / moyennes vagues. Profondeur d'eau : pieds loin. Grande plage avec des dunes.", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Iles Saint-Marcouf"),
+    photo: File.open(Rails.root.join('db/fixtures/images/10_resized.jpg')))
   Facility.create!(parking: "On peut se garer le long de la route avant d'arriver au musée du débarquement", kite_school: "Pas d'écoles à proximité", shop: "Pas de shop à proximité", comment: "RESERVE NATURELLE : ne pas naviguer à marée haute et hors des bouées jaunes. \n Dangers particuliers: les parcs à huitres à marée basse un peu partout, signalés par des perches, navigation fortement déconseillée dans ces conditions. ", spot: s)
   RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Utah Beach"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/10_resized_fqts7w.jpg"
-
-  s = Spot.create!(name: "Coutainville", address: "Agon-Coutainville, France", description: "Sympathique spot normand.", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Agon"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/10_resized_fqts7w.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Coutainville", address: "Agon-Coutainville, France", description: "Sympathique spot normand.", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Agon"),
+    photo: File.open(Rails.root.join('db/fixtures/images/7_resized.jpg')))
   Facility.create!(parking: "On peut se garer le long de la route avant d'arriver au musée du débarquement", kite_school: "Pas d'écoles à proximité", shop: "La clinique de la planche (Caen)", comment: "Attention aux rangées de rochers du centre jusque l'école de voile qui divise la cote en plusieurs plages (cf photos) quand la mer est haute. Au sud de l'école de voile, il n'y a pas de rochers. \n En pleine saison, interdiction de traverser les zones de baignades, mef aux baigneurs qui sont nombreux en dehors des zones surveillées. Les CRS sont relativement sympas (Certains nous aident pour poser les ailes). \n Par marrée basse, la mer se retire jusqu'a 3 km avec des coef de 100. 50 cm d'eau max, mais pleins de petit rochers et parc à huitres. Pas top pour naviguer. Avec des petits coefs, on peut naviguer toute la journée avec une mer plate en BM. ", spot: s)
   RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Coutainville"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/7_resized_ambjkz.jpg"
-
-  s = Spot.create!(name: "Quend Plage", address: "Quend Plage, Quend, France", description: "Super spot !", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Cayeux-sur-Mer"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/7_resized_ambjkz.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Quend Plage", address: "Quend Plage, Quend, France", description: "Super spot !", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Cayeux-sur-Mer"),
+    photo: File.open(Rails.root.join('db/fixtures/images/quend_resized.jpg')))
   Facility.create!(parking: "Sur le bras de terre: 1 Corniche du Sénequet, 50230 Agon-Coutainville", kite_school: "Pas d'écoles à proximité", shop: "La clinique de la planche (Caen)", comment: " Attention aux rangées de rochers du centre jusque l'école de voile qui divise la cote en plusieurs plages (cf photos) quand la mer est haute. Au sud de l'école de voile, il n'y a pas de rochers. \n En pleine saison, interdiction de traverser les zones de baignades, mef aux baigneurs qui sont nombreux en dehors des zones surveillées. Les CRS sont relativement sympas (Certains nous aident pour poser les ailes). \n Par marrée basse, la mer se retire jusqu'a 3 km avec des coef de 100. 50 cm d'eau max, mais pleins de petit rochers et parc à huitres. Pas top pour naviguer. Avec des petits coefs, on peut naviguer toute la journée avec une mer plate en BM. ", spot: s)
   RecommendedWindDirection.create!(sector_start: 225, sector_end: 70, spot: Spot.find_by(name: "Quend Plage"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204423/quend_resized_mjs78z.jpg"
-
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204423/quend_resized_mjs78z.jpg"
+  puts("Spot #{count+=1} seeded")
   # adding seeds
 
-  s = Spot.create!(name: "St Germain sur Ay coté Havre de Lessay", address: "56 Rue des Carrières, 50430 Saint-Germain-sur-Ay", description: "Ultra plat, pour ceux qui veulent de l’eau lisse comme un miroir, qui veulent tirer des bord pleine balle pendant 4 km. Pour ceux qui veulent se promener, faire le tour de l’île, visiter un spot magnifique. Possibilité de naviguer dans la baie, sous le vent de l’île et de la pointe de départ. Même si il y a une cote sous le vent, c’est comme si vous kitiez par vent offshore (de terre) donc danger ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  s = Spot.create!(name: "St Germain sur Ay coté Havre de Lessay", address: "56 Rue des Carrières, 50430 Saint-Germain-sur-Ay", description: "Ultra plat, pour ceux qui veulent de l’eau lisse comme un miroir, qui veulent tirer des bord pleine balle pendant 4 km. Pour ceux qui veulent se promener, faire le tour de l’île, visiter un spot magnifique. Possibilité de naviguer dans la baie, sous le vent de l’île et de la pointe de départ. Même si il y a une cote sous le vent, c’est comme si vous kitiez par vent offshore (de terre) donc danger ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"),
+    photo: File.open(Rails.root.join('db/fixtures/images/8_resized.jpg')))
   Facility.create!(parking: "A 500m avant d'arriver sur la plage", kite_school: "Pas d'écoles à proximité", shop: "Pas de shop à proximité", comment: "Forts courants qu’il peut y avoir quand le havre de Lessay se remplit et se vide. Ils dangereux à marée descendante, mais aussi à marée montante, en cas de problème il peut se passer du temps avant que vous vous retrouviez au fond de la baie (déjà testé). Les courants se trouvent principalement entre l’île et la pointe du coté de St Germain sur Ay, et dans le chenal balisé, ce sont aussi les endroits les plus profonds. \n - Passez pas trop près des balises, elles sont dures, et font mal (déjà testé). \n - Attention aux marées qui montent super vite, ne laissez pas vos affaires sur la plage à marée montante, vous risquez de ne pas les retrouver après la session. (Failli tester, ça m’a valu un sprint de 1km après la session). \n - Ne laissez pas quelqu’un sur l’île à marée montante, car il y a trop de courant pour traverser à la nage à marée haute. \n -Possibilité de naviguer dans la baie, sous le vent de l’île et de la pointe de départ. Même si il y a une cote sous le vent, c’est comme si vous kitiez par vent offshore (de terre) donc danger!!!", spot: s)
   RecommendedWindDirection.create!(sector_start: 110, sector_end: 315, spot: Spot.find_by(name: "St Germain sur Ay coté Havre de Lessay"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/8_resized_tmz2sx.jpg"
-
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204420/8_resized_tmz2sx.jpg"
+  puts("Spot #{count+=1} seeded")
   # repositionner les coordonnées GPS pour le chemin des dunes
-  s = Spot.create!(name: "Créance plage chemin des dunes", address: "315-365 Rue du Haut Dy, 50710 Créances", description: "Vous êtes dans le HDL, vous avez de l’eau super lisse, vous êtes à l’endroit où il n’y a pas de courant et ou vous avez pieds assez loin. L’inconvénient c’est que c’est la première partie qui se vide. Les vents dominants sont bien orientés par rapport à la cote (side / on shore). C’est un bon point de départ pour kiter dans le HDL, car c’est l’endroit quasiment le plus sous le vent (si secteur ouest/ sud), en remontant au vent (facilement grâce à l’eau lisse ) on peut aller sous le vent de l’île.", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  s = Spot.create!(name: "Créance plage chemin des dunes", address: "315-365 Rue du Haut Dy, 50710 Créances", description: "Vous êtes dans le HDL, vous avez de l’eau super lisse, vous êtes à l’endroit où il n’y a pas de courant et ou vous avez pieds assez loin. L’inconvénient c’est que c’est la première partie qui se vide. Les vents dominants sont bien orientés par rapport à la cote (side / on shore). C’est un bon point de départ pour kiter dans le HDL, car c’est l’endroit quasiment le plus sous le vent (si secteur ouest/ sud), en remontant au vent (facilement grâce à l’eau lisse ) on peut aller sous le vent de l’île.", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"),
+    photo: File.open(Rails.root.join('db/fixtures/images/2_resized.jpg')))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité", shop: "Pas de shop à proximité", comment: "Il n’y a plus d’eau dans le HDL à partir de mi marée, même à marée haute par petit coefficient (inférieurs à 50)", spot: s)
   RecommendedWindDirection.create!(sector_start: 160, sector_end: 315, spot: Spot.find_by(name: "Créance plage chemin des dunes"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204419/2_resized_bwljzx.jpg"
-
-  s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: "Equivalent au Spot de St Germain sur Ay coté mer avec moins d’îlots rocheux, et un peu moins de baïnes. Bon départ pour les down-wind ", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204419/2_resized_bwljzx.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: "Equivalent au Spot de St Germain sur Ay coté mer avec moins d’îlots rocheux, et un peu moins de baïnes. Bon départ pour les down-wind ", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"),
+    photo: File.open(Rails.root.join('db/fixtures/images/5_resized.jpg')))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité", shop: "Pas de shop à proximité", comment: "-Aux forts courants à marée mi-haute à haute à droite de l’accès, la baignade est interdite à droite de l’accès. \n - Aux parcs à huitres par grande marée basse, ce sont des grands poteaux de 3m de haut, planté tous les 3 mètres sur plusieurs hectares. ", spot: s)
   RecommendedWindDirection.create!(sector_start: 160, sector_end: 340, spot: Spot.find_by(name: "Créance Plage"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204419/5_resized_lxugie.jpg"
-
-  s = Spot.create!(name: "Urville-Nacqueville", address: "459 Avenue de la Plage, 50460 Urville-Nacqueville", description: "Spot qui fonctionne par vent est / nord est / nord( full onshore )/ nord ouest / oues. Vagues: vagues/ big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Superbe plage naturelle et sauvage. Tous niveaux ! ", user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by_name("Omonville-La-Rogue"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204419/5_resized_lxugie.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Urville-Nacqueville", address: "459 Avenue de la Plage, 50460 Urville-Nacqueville", description: "Spot qui fonctionne par vent est / nord est / nord( full onshore )/ nord ouest / oues. Vagues: vagues/ big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Superbe plage naturelle et sauvage. Tous niveaux ! ", user: User.find_by(first_name: "Jérôme"), harbor: Harbor.find_by_name("Omonville-La-Rogue"),
+    photo: File.open(Rails.root.join('db/fixtures/images/4_resized.jpg')))
   Facility.create!(parking: "On peut se garer dans l'avenue qui est parallèle à la plage", kite_school: "Pas d'écoles à proximité", shop: "Quai 34 (Cherbourg)", comment: "- Dangers particuliers:attention au fort courant passé la balise dans le fond. \n - La taille des vagues, ne sur estimez pas votre niveau \n -spot malheureusement interdit au kite l'été. \n -par grand coéfficient pas de mise a l'eau a marée haute ", spot: s)
   RecommendedWindDirection.create!(sector_start: 245, sector_end: 90, spot: Spot.find_by(name: "Urville-Nacqueville"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204418/4_resized_hjsfnb.jpg"
-
-  s = Spot.create!(name: "Sciotot", address: "Plage de Sciotot", description: "Vagues: vagues / surf spot / big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Grande plage de sable plus ou moins mou à marée basse", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Flamanville"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204418/4_resized_hjsfnb.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Sciotot", address: "Plage de Sciotot", description: "Vagues: vagues / surf spot / big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Grande plage de sable plus ou moins mou à marée basse", user: User.find_by(first_name: "Jeremy"), harbor: Harbor.find_by_name("Flamanville"),
+    photo: File.open(Rails.root.join('db/fixtures/images/6_resized.jpg')))
   Facility.create!(parking: "On peut se garer dans l'avenue qui est parallèle à la plage", kite_school: "Pas d'écoles à proximité", shop: "Quai 34 (Cherbourg)", comment: "- La marée ne change pas les conditions de navigation, à part que la mer est plus loin (jusqu'a 500 m). \n - par grande marée haute, il se peut qu'il n'y ait plus de plage ", spot: s)
   RecommendedWindDirection.create!(sector_start: 160, sector_end: 315, spot: Spot.find_by(name: "Sciotot"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204418/6_resized_cuiocg.jpg"
-
-  s = Spot.create!(name: "Siouville", address: "2 Rue Amiral Lemonnier, 50340 Siouville-Hague", description: "- Vagues: vagues / surf spot / big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Flamanville"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204418/6_resized_cuiocg.jpg"
+  puts("Spot #{count+=1} seeded")
+  s = Spot.create!(name: "Siouville", address: "2 Rue Amiral Lemonnier, 50340 Siouville-Hague", description: "- Vagues: vagues / surf spot / big wave quand les dépressions arrivent. Profondeur d'eau : pieds assez loin. Grande plage de sable dur à marée basse ", user: User.find_by(first_name: "Julie"), harbor: Harbor.find_by_name("Flamanville"),
+    photo: File.open(Rails.root.join('db/fixtures/images/3_resized.jpg')))
   Facility.create!(parking: "Pas de parking officiel", kite_school: "Pas d'écoles à proximité", shop: "Quai 34 (Cherbourg)", comment: "- Dangers particuliers: bloc en béton au milieu du spot à marée basse, signalé par une bouée. \n - La taille des vagues, ne sur estimez pas votre niveau. \n - Quelques rochers à gauche du spot à marée haute ", spot: s)
   RecommendedWindDirection.create!(sector_start: 180, sector_end: 340, spot: Spot.find_by(name: "Siouville"))
-  s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204418/3_resized_ee4kws.jpg"
-  # pour les suivants
-  # s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: " A completer", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"))
+  # s.photo_url = "http://res.cloudinary.com/dmx5zou5e/image/upload/v1481204418/3_resized_ee4kws.jpg"
+  # pour les su puts("Spot #{count+=1} seeded')ivan"s
+  # s = Spot.create!(name: "Créance Plage", address: "868 Boulevard de la Mer, 50710 Créances", description: " A completer", user: User.find_by(first_name: "Romain"), harbor: Harbor.find_by_name("Saint-Germain-sur-Ay"),
+  # photo: File.open(Rails.root.join('db/fixtures/images/')))
   # RecommendedWindDirection.create!(sector_start: 160, sector_end: 340, spot: Spot.find_by(name: "Quend Plage"))
 
 
