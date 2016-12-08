@@ -3,36 +3,32 @@
 <% unless mean_weather_feedback[:last_feedback].nil? %>
   <div class="feedbacks-container">
     <div class="feedback-card">
-      <h7>Vent moyen</h7>
-      <br>
-      <br>
-      <h8>Vitesse</h8>
-      <br>
-      <%= image_tag "wind.svg", id: "strength" %>
-      <%= mean_weather_feedback[:mean_strength] %> kt
-      <br>
-      <br>
-      <h8>Direction</h8>
-      <br>
-      <% w = mean_weather_feedback[:mean_direction] %>
-      <div style="transform: rotate(<%= w + 180 %>deg); width: 360px;"> <%= image_tag "wind_direction.svg" %></div>
-      <%= spot.find_string_direction(w) %>
+      <h3>Vent moyen</h3>
+      <div class="mean-feedback-infos col-xs-12">
+        <div class="feedback-item text-center col-xs-12 col-sm-6">
+          <%= image_tag "white-wind.svg", id: "strength"%>
+          <h4><%= mean_weather_feedback[:mean_strength] %> kt</h4>
+        </div>
+        <div class="feedback-item text-center col-xs-12 col-sm-6">
+          <% w = mean_weather_feedback[:mean_direction] %>
+          <div style="transform: rotate(<%= w + 180 %>deg);"> <%= image_tag "white-wind-direction.svg" %></div>
+          <h4><%= spot.find_string_direction(w) %></h4>
+        </div>
+      </div>
     </div>
     <div class="feedback-card">
-      <h7>Dernier feedback</h7>
-      <br>
-      <br>
-        <h8>Vitesse</h8>
-        <br>
-        <%= image_tag "wind.svg", id: "strength" %>
-        <%= mean_weather_feedback[:last_feedback][:strength] %> kt
-        <br>
-        <br>
-        <h8>Direction</h8>
-        <br>
-        <% y = mean_weather_feedback[:last_feedback][:direction] %>
-        <div style="transform: rotate(<%= w + 180 %>deg); width: 360px;"> <%= image_tag "wind_direction.svg" %></div>
-        <%= spot.find_string_direction(y) %>
+      <h3>Dernier feedback</h3>
+        <div class="last-feedback-infos col-xs-12">
+          <div class="feedback-item text-center col-xs-12 col-sm-6">
+            <%= image_tag "white-wind.svg", id: "strength" %>
+            <h4><%= mean_weather_feedback[:last_feedback][:strength] %> kt</h4>
+          </div>
+          <div class="feedback-item text-center col-xs-12 col-sm-6">
+            <% y = mean_weather_feedback[:last_feedback][:direction] %>
+            <div style="transform: rotate(<%= w + 180 %>deg);"> <%= image_tag "white-wind-direction.svg" %></div>
+            <h4><%= spot.find_string_direction(y) %></h4>
+          </div>
+        </div>
     </div>
   </div>
 <% end %>

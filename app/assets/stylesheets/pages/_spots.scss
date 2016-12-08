@@ -1,19 +1,19 @@
+#show-page-container {
+  padding: 0px;
+}
+
+#show-page-content-container{
+  padding: 0px;
+}
+
 .summary {
   background: white;
   padding: 20px 0px;
-  margin-left: 29px;
-  margin-right: 29px;
   border-bottom: 5px solid $blue_title_2;
-}
-
-.content {
-  margin-left: 21px;
 }
 
 .block-content {
   background: white;
-  margin-left: 29px;
-  margin-right: 29px;
   padding-bottom: 25px;
   padding-right: 30px;
   padding-left: 30px;
@@ -31,7 +31,6 @@
 .section-title {
   text-align: left;
   background: white;
-  margin-right: 90px;
   margin-top: 25px;
   display: flex;
   justify-content: space-between;
@@ -90,19 +89,26 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  margin-top: 15px;
 }
 
 .feedback-card {
   text-align: center;
-  margin-top: 15px;
   background: white;
-  padding: 10px 40px;
+  padding: 5px 10px 25px 10px;
   width: 45%;
+  background-color: $blue_title_1;
+  border-radius: 25px;
+  color: white;
+}
+
+.block {
+  display: block;
 }
 
 .add-review-button {
   margin-top: 30px;
-  margin-left: 29px;
+  text-align: center;
 }
 
 .facilities-content {
