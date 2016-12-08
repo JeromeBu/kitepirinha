@@ -44,10 +44,10 @@
 
 .kite-round-btn{
   padding: 20px 20px;
-  border: 1px solid $dark_blue;
+  border: 1px solid $blue_title_1;
   border-radius: 50%;
   font-size: 30px;
-  color: $dark_blue;
+  color: $blue_title_1;
   background-color: transparent;
   font-size: 15px;
   transition: all 0.3s ease;
@@ -55,7 +55,7 @@
 
   &:hover{
     color: white;
-    background-color: $dark_blue;
+    background-color: $blue_title_1;
     transition: all 0.3s ease;
     opacity: 0.8;
   }
