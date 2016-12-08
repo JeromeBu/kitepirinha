@@ -75,7 +75,7 @@ class Spot < ApplicationRecord
   def mean_weather_feedback
     last_feedbacks = self.weather_feedbacks.where("created_at > ?", DateTime.now - 4.hours)
     if last_feedbacks.empty?
-      mean_feedback = {message: "Your fellows haven't provided any recent data for this spot."}
+      mean_feedback = {message: "Personne n'a fournit de feedback sur le spot récemment"}
     else
       sum_strength = 0
       sum_x_direction = 0
@@ -97,7 +97,7 @@ class Spot < ApplicationRecord
       mean_direction = (Math.atan2(mean_y_direction, mean_x_direction) * 180 / Math::PI).round
       mean_direction = mean_direction + 360 if mean_direction < 0
       mean_feedback = {
-        message: "#{last_feedbacks.length} feedbacks in the past 2 hours, last one at #{last_feedback.created_at.strftime('%H:%M')}",
+        message: "#{last_feedbacks.length} feedback sur les 2 dernières heures, le dernier à #{last_feedback.created_at.strftime('%H:%M')}",
         mean_strength: mean_strength,
         mean_direction: mean_direction,
         max_strength: max_strength,
@@ -183,22 +183,22 @@ class Spot < ApplicationRecord
   def punchline(nav_score, wing_sizes)
     if wind_direction_compatible?
       if nav_score == 1
-        return "Conditions are bad, try to find another spot"
+        return "Les conditions ne permettent pas de naviguer, essayer un autre spot"
       elsif nav_score == 2
         recommendation = which_wing_for_best_score(wing_sizes)
-        return "Conditions have been better but you can go, we recommend you to use your #{recommendation}m2 wing"
+        return "Conditions moyennes, une aile de #{recommendation}m2 peut le faire"
       elsif nav_score == 3
         recommendation = which_wing_for_best_score(wing_sizes)
-        return "Conditions have never been better. One suggestion : take your #{recommendation}m2 wing"
+        return "Les conditions sont exellentes pour une aile de #{recommendation}m2"
       end
     else
-      @strings = ["The wind is not with you", "You should wait until the wind turns", "Go get a drink and come back later"]
+      @strings = ["Mauvaise orientation du vent, éviter ce spot", "Allez prendre une caipi en attendant que le vent tourne"]
       return @strings.sample
     end
   end
 
   def find_string_direction(wind_direction)
-    @wind_orientations = { (0..11) => "North", (12..34) => "NNE", (35..56) => "NE", (57..78) => "ENE", (79..101) => "East", (102..124) => "ESE", (125..147) => "SE", (148..170) => "SSE", (171..191) => "South", (192..213) => "SSO", (214..236) => "SO", (237..259) => "OSO", (260..282) => "West", (283..305) => "ON0", (306..327) => "NO", (328..349) => "NNO", (350..360) => "North" }
+    @wind_orientations = { (0..11) => "N", (12..34) => "NNE", (35..56) => "NE", (57..78) => "ENE", (79..101) => "E", (102..124) => "ESE", (125..147) => "SE", (148..170) => "SSE", (171..191) => "S", (192..213) => "SSO", (214..236) => "SO", (237..259) => "OSO", (260..282) => "O", (283..305) => "ON0", (306..327) => "NO", (328..349) => "NNO", (350..360) => "N" }
     couple = @wind_orientations.select { |k, v| k.include?(wind_direction) }
     return couple.values[0]
   end
@@ -208,12 +208,12 @@ class Spot < ApplicationRecord
   def wind_direction_compatible?
     # true if belongs to wind sector
     wind_direction = self.fresh_forecasts.first.wind_direction
-    puts "Current wind direction : #{wind_direction}"
+    puts "Direction du vent : #{wind_direction}"
     result = []
     self.recommended_wind_directions.each do |recommended_wind_sector|
       sector_start = recommended_wind_sector[:sector_start].to_i
       sector_end = recommended_wind_sector[:sector_end].to_i
-      puts "Recommended wind sector:"
+      puts "Secteur de vent recommandé :"
       p recommended_wind_sector
       if sector_start > sector_end
         sector_end += 360
@@ -252,7 +252,6 @@ class Spot < ApplicationRecord
     else
       wind_for_rating.each_with_index do |wind, index|
           if  current_wind >= wind
-            puts "Current wind : #{current_wind}, Wind: #{wind}, Index: #{index}"
             rating = index + 1
           end
       end
