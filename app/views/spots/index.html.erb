@@ -51,7 +51,7 @@
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-6" id="all-spot-cards-boundaries">
       <div class="results">
-        <h5><%= @spots.size %> results</h5>
+        <h5><%= @spots.size %> résultat<%= @spots.count > 1 ? "s" : "" %></h5>
       </div>
       <% @spots.each do |spot| %>
         <div class="col-xs-12 col-sm-12 " id="spot-card-boundaries-<%= spot.id %>">
