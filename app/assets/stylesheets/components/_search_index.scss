@@ -35,6 +35,7 @@
 .form-inline .form-control {
   width: 100%;
   padding-left: 0;
+  margin-left: 5px;
   border: none;
   box-shadow: none;
   border-bottom: 2px solid $blue_home;
@@ -56,12 +57,12 @@
 
 // **************************** WING ****************************
 
-.wing_index {
+.wing_index{
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-item:center;
   position: absolute;
-  right: 148px;
+  right: 25px;
 }
 
 .wing-size-message {
@@ -97,7 +98,11 @@
 }
 
 #wing-index-btn {
+<<<<<<< HEAD
   padding: 0 15px;
+=======
+  padding: 0px 15px;
+>>>>>>> master
 
   background-color: transparent;
   border: 2px solid transparent;
@@ -139,12 +144,4 @@
     text-decoration: none;
     font-family: roboto;
   }
-}
-
-.wing-box-index {
-  margin-right: -124px;
-}
-
-#search-button-index {
-  width: 110px;
 }
