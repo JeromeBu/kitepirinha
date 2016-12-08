@@ -1,7 +1,7 @@
 
 <div class="wing-sizes-selector_index">
   <% [6, 8, 10, 13, 15].each do |wing_size| %>
-    <div class="small-wing" data-size="<%= wing_size %>">
+    <div class="small-wing-index" data-size="<%= wing_size %>">
 <svg width="60px" height="70px" viewBox="0 0 452 432" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="kitesurf" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-1.000000, 9.000000)">
         <g id="Group" fill="#FFFFFF">
@@ -27,14 +27,14 @@
   <script>
     $(document).ready(function() {
       console.log('toto is good');
-      $('.small-wing').on('click', function(event) {
+      $('.small-wing-index').on('click', function(event) {
         $(this).toggleClass('wing-selected');
         update_form_selected_wing_sizes();
       });
       console.log("hey ho")
-      $(".small-wing").removeClass("wing-selected");
+      $(".small-wing-index").removeClass("wing-selected");
       <% @wing_sizes.each do |size| %>
-        $(".small-wing[data-size=<%= size %>]").addClass("wing-selected");
+        $(".small-wing-index[data-size=<%= size %>]").addClass("wing-selected");
       <% end %>
 
     });
