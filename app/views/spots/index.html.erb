@@ -7,13 +7,11 @@
           <input type="hidden" name="selected-wing-sizes" value='<%= params["selected-wing-sizes"] %>'>
           <button type="submit" class="kite-index-btn flex-center" id="search-index-btn">Search</button>
         <% end %>
-        <p class="unmargined wing-size-message">You have selected <%= pluralize @wing_sizes.size, "wing size" %> :
-          <% @wing_sizes.each do |size| %>
-            <span><%= size.to_i %> m2</span>
-          <% end %>
+        <p class="unmargined wing-size-message">Tu as selectionné <%= @wing_sizes.size %> aile<%= @wing_sizes.count > 1 ? "s" : "" %> :
+          <%= @wing_sizes.map { |x| x.to_s }.reduce("") { |acc, x| acc += x + " m2, " }.chomp(", ") %>
         <div class="wing-box-index">
           <button class="kite-index-btn" id="wing-index-btn"  type="button" data-toggle="modal" data-target="#wing-sizes-modal">
-            Change wing sizes option
+            Choix des ailes
           </button>
         </div>
         <!-- Wing sizes Modal -->
@@ -22,10 +20,10 @@
               <div class="modal-content" id="modal-content-wing-sizes">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">Wing sizes choices</h4>
+                  <h4 class="modal-title" id="myModalLabel">Choix des ailes</h4>
                 </div>
                 <div class="modal-body text-center" id="wing-sizes-container">
-                  <h3>Choose your wing sizes</h3>
+                  <h3>Choisis une ou plusieurs ailes que tu as</h3>
                   <div class="wing_size_index text-center">
                     <%= render 'pages/wing_size_selector_index' %>
                     <%= form_tag(spots_path, :method => "get", class: "form-inline") do %>
