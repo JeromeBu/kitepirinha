@@ -78,7 +78,7 @@
                   <div class="info-spot-items">
                     <% @humidity = spot.fresh_forecasts.first.cloud_cover*100 %>
                     <%= @humidity.round %>%
-                    <p>Humidity</p>
+                    <p>Humidité</p>
                   </div>
                   <div class="info-spot-items text-center">
                     <%= image_tag "wind.svg", id: "strength" %> <br>
