@@ -155,7 +155,6 @@ body{
 }
 
 #forecast-data {
-    width: 100%;
     background-color: #CAE0F3;
     padding: 15px;
     border-radius: 5px;
@@ -163,9 +162,6 @@ body{
 
 #forecast-data table {
     width: 100%;
-    background-color: #CAE0F3;
-    padding: 15px;
-    border-radius: 5px;
 }
 
 #forecast-data td {
@@ -185,7 +181,7 @@ body{
   margin-left: 8px;
   margin-top: 3px;
   justify-content: center;
-  width: 25px;
+  width: 2rem;
 }
 
 .time-infos {
