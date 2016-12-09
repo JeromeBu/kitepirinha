@@ -8,7 +8,7 @@ class SpotsController < ApplicationController
     if params[:address] == nil || params[:address] == ""
       @spots = Spot.where.not(latitude: nil, longitude: nil)
     else
-      @spots = Spot.near(params[:address], 50).where.not(latitude: nil, longitude: nil)
+      @spots = Spot.near(params[:address], 100).where.not(latitude: nil, longitude: nil)
     end
 
     if params["selected-wing-sizes"] == "" && params["selected-wing-sizes-index"] == ""
