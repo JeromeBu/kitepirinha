@@ -17,7 +17,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    $("#wing-sizes-modal").on("show.bs.modal", function() {
+    $(document).ready(function() {
       console.log('toto is good');
       $('.small-wing-index').on('click', function(event) {
         $(this).toggleClass('wing-selected');
