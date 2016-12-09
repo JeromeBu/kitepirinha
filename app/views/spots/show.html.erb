@@ -88,7 +88,7 @@
             <!-- Feedback infos -->
             <div class="block-content">
               <div class="section-title orange-underlining">
-                <h7>Feedbacks temps réel</h7>
+                <h7>Conditions sur place</h7>
               </div>
               <br>
               <div id="weather_feedbacks_ajax" class="text-center">
@@ -97,10 +97,10 @@
               <div class="add-review-button">
                 <% if user_signed_in? %>
                   <button class="kite-std-btn" type="button" data-toggle="modal" data-target="#weather-feedbacks-modal">
-                    Faire un feedback
+                    Ajouter une info
                   </button>
                 <% else %>
-                  <%= link_to "Faire un feedback", new_user_session_path, class: "kite-std-btn"%>
+                  <%= link_to "Ajouter une info", new_user_session_path, class: "kite-std-btn"%>
                 <% end %>
               </div>
             </div>
@@ -154,7 +154,7 @@
                   <% unless @spot.facility[:shower].nil? %> <div class="text-center"><%= image_tag "shower.svg" %> <br> <%= @spot.facility[:shower] %></div><% end %>
                 </div>
                 <div class="facility-comment">
-                  <% unless @spot.facility[:comment].nil? %><p><h4>Commentaires</h4><br> <%= @spot.facility[:comment] %></p><% end %>
+                  <% unless @spot.facility[:comment].nil? %><p><h4>Avis</h4><br> <%= @spot.facility[:comment] %></p><% end %>
                 </div>
               <% else %>
                 <p>Aucune installations n'a été ajouté à ce spot</p>
@@ -178,10 +178,10 @@
               </div>
               <% if user_signed_in? %>
                 <button type="button" class="kite-std-btn comment-button" data-toggle="modal" data-target="#myModalReview">
-                  Ajouter un commentaire
+                  Ajouter un avis
                 </button>
               <% else %>
-                <%= link_to "Ajouter un commentaire", new_user_session_path, class: "kite-std-btn"%>
+                <%= link_to "Ajouter un avis", new_user_session_path, class: "kite-std-btn"%>
               <% end %>
             </div>
           </div>
