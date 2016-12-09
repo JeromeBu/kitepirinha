@@ -17,7 +17,7 @@
 
 <% content_for(:after_js) do %>
   <script>
-    $(document).ready(function() {
+    $("#wing-sizes-modal").on("show.bs.modal", function() {
       console.log('toto is good');
       $('.small-wing-index').on('click', function(event) {
         $(this).toggleClass('wing-selected');
@@ -28,7 +28,6 @@
       <% @wing_sizes.each do |size| %>
         $(".small-wing-index[data-size=<%= size %>]").addClass("wing-selected");
       <% end %>
-
     });
 
     function update_form_selected_wing_sizes() {
