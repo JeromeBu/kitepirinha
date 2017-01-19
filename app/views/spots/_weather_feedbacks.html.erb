@@ -7,7 +7,7 @@
       <div class="mean-feedback-infos col-xs-12">
         <div class="feedback-item text-center col-xs-12 col-sm-6">
           <%= image_tag "blue-wind.svg", id: "strength"%>
-          <h4><%= mean_weather_feedback[:mean_strength] %> kt</h4>
+          <h4><%= mean_weather_feedback[:mean_strength] %> noeuds</h4>
         </div>
         <div class="feedback-item text-center col-xs-12 col-sm-6">
           <% w = mean_weather_feedback[:mean_direction] %>
@@ -21,7 +21,7 @@
         <div class="last-feedback-infos col-xs-12">
           <div class="feedback-item text-center col-xs-12 col-sm-6">
             <%= image_tag "blue-wind.svg", id: "strength" %>
-            <h4><%= mean_weather_feedback[:last_feedback][:strength] %> kt</h4>
+            <h4><%= mean_weather_feedback[:last_feedback][:strength] %> noeuds</h4>
           </div>
           <div class="feedback-item text-center col-xs-12 col-sm-6">
             <% y = mean_weather_feedback[:last_feedback][:direction] %>
