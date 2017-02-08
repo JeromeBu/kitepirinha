@@ -12,5 +12,5 @@ Rails.application.routes.draw do
     resources :weather_feedbacks, only: [ :new, :create ]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
+  # Sidekiq Web UI, only for admins.
 end

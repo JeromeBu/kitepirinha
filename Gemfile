@@ -23,8 +23,10 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem 'jquery-ui-rails'
 
-
-
+# for background job parsing forecast data
+# gem 'sidekiq'
+# gem 'sidekiq-failures'
+# gem 'sidekiq-scheduler'
 
 #scrapping for tides
 gem 'capybara'
