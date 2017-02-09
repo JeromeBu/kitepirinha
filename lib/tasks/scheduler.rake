@@ -1,10 +1,10 @@
 desc "This task is called by the Heroku scheduler add-on"
 
-task :fakejob => :environment do
-  puts "Doing the fake job"
-  sleep 3
-  puts "Fake job finished"
-end
+# task :fakejob => :environment do
+#   puts "Doing the fake job"
+#   sleep 3
+#   puts "Fake job finished"
+# end
 
 task :update_forecasts => :environment do
   spots = Spot.all
@@ -18,7 +18,7 @@ task :update_forecasts => :environment do
 
     hourly.each do |data_for_the_hour|
       forecast = Forecast.new({
-        spot: self,
+        spot: spot,
         date_time: DateTime.strptime(data_for_the_hour["time"].to_s, '%s'),
         wind_strength: (data_for_the_hour["windSpeed"]/1.852), # vitesse du vent enregistrée en kt
         wind_direction: data_for_the_hour["windBearing"],
@@ -32,3 +32,4 @@ task :update_forecasts => :environment do
     end
   end
 end
+
