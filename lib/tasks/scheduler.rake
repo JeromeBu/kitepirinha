@@ -30,6 +30,6 @@ task :update_forecasts => :environment do
       })
       forecast.save
     end
+    spot.forecasts.where("created_at < ?", DateTime.now - 2.minutes).destroy_all
   end
 end
-
